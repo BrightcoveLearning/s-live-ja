@@ -1,0 +1,148 @@
+<article class="bcls-article">
+  <h1>Implementing Server-Side Ads in the Live Module</h1>
+  <summary>In this topic you will learn how to implement server-side advertising in the Live module.</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">Introduction</h2>
+    <p>The Live module supports Server-Side Ad Insertion (SSAI) so server-side ads can be requested and displayed during a live stream. SSAI provides these main features during live events:</p>
+    <ul>
+      <li>Since ads are stitched into the live video stream on the server side, they are not affected by ad blockers</li>
+      <li>Ads are inserted at cue points sent from your encoder or you can create an instant cue point using the&nbsp;Live module Control Room</li>
+      <li>You can configure&nbsp;<a href="#fill_slate">fill slates</a>&nbsp;to fill any unused ad time</li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--information">
+      <ul>
+        <li>Before you can use SSAI, your Brightcove account needs to be configured for Dynamic Delivery and enabled for SSAI. Contact your account manager for details.</li>
+        <li>The Live SSAI + DRM feature is not enabled at the moment.</li>
+        <li>SSAI for encrypted (AES) live streams uses <strong>segment-accurate</strong> (not frame-accurate) ad insertion by default. If you require frame-accurate ad insertion, you must contact Support to have your account configured for it.</li>
+      </ul>
+    </aside>
+    <p>This topic focuses on the settings required and the process to request a server-side ad during a live event.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Configuring_the_server_side_ad_settings">Configuring the server-side ad settings</h2>
+    <p>Before server-side ads can be delivered, server-side ad settings must be configured. The server-side ad settings define various aspects of ad playback, including ad calls, timing, beacons and other ad configuration options. These settings are configured as part of the Server-Side Ad Settings in the Admin module. In this example, a simple ad tag is defined.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/implement-ssai/live-ad-config.png" /></figure>
+    <p>For more information, see <a href="/admin/configuring-server-side-ad-settings.html">Configuring Server-Side Ad Settings</a>.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="fill_slate">Configuring the fill slate</h2>
+    <p>Fill slates are videos that will be displayed when there are gaps in a live stream ad break that cannot be filled with a dynamically-served ad. If the requested ad is shorter than the ad break time, the fill slate will be displayed so viewers don't see a blank player. You should configure at least one fill slate before requesting a server-side ad. Ad slates are configured as part of the Live Settings in the Admin module. In this example, a fill slate that displays the Brightcove logo was defined.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/implement-ssai/fill-slate.png" /></figure>
+    <p>For information on creating ad slates, see <a href="/admin/managing-live-settings.html">Managing Live Settings</a>.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Creating_a_live_event_that_supports_server_side_ads">Creating a live event that supports server-side ads</h2>
+    <p>In order for a live event to display server-side ads, the <strong>Enable Server Side Ad Insertion (SSAI)</strong> setting must be selected when the event is created. For complete information on creating a live event using the Live module, see <a href="creating-and-managing-live-events-using-live-module.html">Creating and Managing Live Events using the Live Module</a>.</p>
+    <aside class="bcls-aside bcls-aside--information">You should have configured the Server-Side Ad Settings and added at least one fill slate before creating an event.</aside>
+    <p>To create a new live event that supports server-side ads, follow these steps.</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Open the Live module.</li>
+      <li>From the Manage Events page click <span class="button-blue">Create Event</span>.</li>
+      <li>Enter the event details as needed.</li>
+      <li>Click <strong>Advanced Options</strong> to expand the advanced options.</li>
+      <li>Check <strong>Enable Server Side Ad Insertion (SSAI)</strong>. This will enable server side ad insertion.</li>
+      <li>Select a <strong>Fill Slate</strong>. The fill slate will be displayed when there are gaps in a live stream ad break that cannot be filled with a dynamically-served ad.</li>
+      <li>When the <strong>Ad Audio</strong> setting is checked, the audio levels on ads will be normalized based on the adjustment that is set. This can be used as a way to help make sure ads aren’t significantly louder than the content. Brightcove recommends selecting this option.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/implement-ssai/event-ssai-settings.png" /></figure>
+      </li>
+      <li>Click <span class="button-blue">Create Event</span>.</li>
+      <li>The&nbsp;Control Room page&nbsp;will open with details about the live event including the&nbsp;<strong>Streaming Endpoint (RTMP URL)</strong>&nbsp;and&nbsp;<strong>Stream Name</strong>. These values will be used by the encoder.</li>
+      <li>Configure the encoder and start the live stream.</li>
+      <li>By default, &nbsp;the Control Room preview player shows the ad-free stream. Ads will not be shown in the Control Room unless a Live ad configuration is selected. Use the dropdown below to the player to select an ad configuration.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/implement-ssai/select-ad-config2.png" /></figure>
+      </li>
+      <li><strong>(Optional)</strong> Click the plus button (<img alt="" src="/assets/images/s-live-img/live-module/implement-ssai/plus-icon.png" width="15" height="15" />) to select an additional ad configuration. Doing this will add another preview player on the Control Room page.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/implement-ssai/two-preview-players.png" /></figure>
+      </li>
+    </ol>
+    <p>Click the volume button below the preview player to control which player audio stream is active.</p>
+    <aside class="bcls-aside bcls-aside--information">If the event is using RTMP outputs, ads will not be streamed to the RTMP output. The ad-free stream will be streamed instead.</aside>
+    <aside class="bcls-aside bcls-aside--information">If the event is being used by the  Live to Facebook feature in the Social module, ads will not be streamed to Facebook. The ad-free stream will be streamed instead.</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Requesting_an_ad">Requesting an ad</h2>
+    <p>To request an ad, click <span class="button-blue">Go To Ad ˇ</span>. When clicked, the length of the ad break can be selected.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/implement-ssai/goto-ad.png"  /></figure>
+    <p>Click <span class="button-blue">Insert</span> to insert an ad break into the live stream. If the ad doesn't fill the entire ad break time, the fill slate (selected when the event was created) will be displayed. Ads will be seen in the Control Room preview player and in players that are published using the Live module. This example shows 2 ads being displayed in the Control Room.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/implement-ssai/two-ad-preview.png" /></figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Publishing_the_live_event">Publishing the live event</h2>
+    <p>Live streams with server-side ads cannot be published using the Media module, they must be published using the Live Module.</p>
+    <p>To generate the embed code for a live event with server-side ads, follow these steps:</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Click on an event to open the Control Room page.</li>
+      <li>Click<strong> Publish and Embed</strong> in the left navigation.</li>
+      <li>Select an <strong>Available Player</strong>.
+        <aside class="bcls-aside bcls-aside--information">If the event is configured to enable server-side ads (SSAI), DVR or multi-CDN, Brightcove Player version 6.18.3 and above must be used. Only version 6.18.3 and above players will appear in the dropdown list.</aside>
+      </li>
+      <li>Select the <strong>Ad Configuration</strong> to use with the player. The ad configuration will determine which ad(s) appear in the player.</li>
+      <li>Click the <strong>Player URL</strong> to preview the event in a browser or copy the appropriate embed code to use.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/implement-ssai/publish.png" /></figure>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Publishing_a_remote_live_event">Publishing a remote live event</h2>
+    <p>If you want to publish a remote live event, follow these steps:</p>
+    <ol class="bcls-tasklist-restart">
+      <li>After creating your live event by following the steps <a href="#Creating_a_live_event_that_supports_server_side_ads">listed above</a>, return to the <strong>Live</strong> module's <strong>Control Room</strong>. 
+      </li>
+      <li>If you know the value of your ad config id, then you can insert it into the playlist URL.
+        <p>In the <strong>Live</strong> module's <strong>Control Room</strong>, copy the <strong>Playback URL</strong>.</p>
+        <p></p>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="Playback URL" src="/assets/images/s-live-img/live-module/implement-ssai/playback-url.png" />
+          <figcaption class="bcls-caption--image">Playback URL</figcaption>
+        </figure>
+        <p>Next, insert the ad config id (045f90cfd55187ff6e60c8) that you want to use to the URL as follows:</p>
+        <pre>
+<code class="language-html" translate="No">https://bcovlive-a.akamaihd.net/21e83ff8c229478e8c81416838eb6e1f/us-west-2/NA/<span class="bcls-highlight">045f90cfd55187ff6e60c8/</span>playlist.m3u8</code></pre>
+        <p>Then, rename the playlist from <code translate="No">playlist.m3u8</code> to <code translate="No">playlist_ssaiM.m3u8</code>. The remote asset should look similar to this:</p>
+        <pre>
+<code class="language-html" translate="No">https://bcovlive-a.akamaihd.net/21e83ff8c229478e8c81416838eb6e1f/us-west-2/NA/045f90cfd55187ff6e60c8/<span class="bcls-highlight">playlist_ssaiM.m3u8</span></code></pre>
+        <p>Skip to step 6 and use this playlist URL.</p>
+      </li>
+      <li>If you don't know the value of your ad config id, you can get the complete playlist URL as follows. Select the ad configuration that you want to use.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="Select ad config" src="/assets/images/s-live-img/live-module/implement-ssai/select-ad-config.png" />
+          <figcaption class="bcls-caption--image">Select ad config</figcaption>
+        </figure>
+      </li>
+      <li>For your browser, open the network console tab. In this case, we are using the Chrome browser.
+      </li>
+      <li>In the network console, search for "playlist_ssaiM". Copy the URL that ends with "playlist_ssaiM.m3u8". You may have to refresh the page and re-open your network tab.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="Network console" src="/assets/images/s-live-img/live-module/implement-ssai/network-console.png" />
+          <figcaption class="bcls-caption--image">Network console</figcaption>
+        </figure>
+        <aside class="bcls-aside bcls-aside--information">Since the ad config id is contained within the URL, your SSAI URL will be different depending on the ad config you have selected.</aside>
+        <p>In this example, the URL is:</p>
+        <pre>
+<code class="language-html" translate="No">https://bcovlive-a.akamaihd.net/21e83ff8c229478e8c81416838eb6e1f/us-west-2/NA/582ea6fafea84bf595f610b8ebbeeda8/playlist_ssaiM.m3u8</code></pre>
+      </li>
+      <li>In Studio, navigate to the <strong>Media</strong> module and create a new Remote asset pointing to the playlist URL from the previous step. In the left-side menu, select <strong>+ Add Remote Video</strong>.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="Add Remote Video" src="/assets/images/s-live-img/live-module/implement-ssai/add-remote-video.png" />
+          <figcaption class="bcls-caption--image">Add Remote Video</figcaption>
+        </figure>
+      </li>
+      <li>In the <strong>Add Remote Video</strong> enter a <strong>Video Name</strong> and the playlist URL. Select the <strong>Save</strong> button.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="Add Remote Video dialog" src="/assets/images/s-live-img/live-module/implement-ssai/remote-dialog.png" />
+          <figcaption class="bcls-caption--image">Add Remote Video dialog</figcaption>
+        </figure>
+      </li>
+      <li>You now have a video Id pointing to your remote live stream. You can use this with any player in your account to stream live content with server-side ads.
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Troubleshooting_live_stream_issues">Troubleshooting live stream issues</h2>
+    <p>If you need further help getting your live event to work, you can <a href="https://supportportal.brightcove.com/">contact us</a>. To make sure you get the fastest response possible, below is a list of what support will need to solve the problem.</p>
+    <ul>
+      <li>The specific symptoms the stream is having. For example, does it not play at all or does it stutter or freeze?</li>
+      <li>Whether this stream worked correctly in the past</li>
+      <li>The entry point URL you are using in your encoder</li>
+      <li>The encoding software and hardware are you using</li>
+      <li>The URL to the player to which you have published the live event</li>
+      <li>The video ID of your live asset</li>
+      <li>The results of a trace-route from your encoder to the publishing point host</li>
+    </ul>
+  </section>
+</article>

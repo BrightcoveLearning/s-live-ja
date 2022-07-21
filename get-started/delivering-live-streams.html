@@ -1,0 +1,67 @@
+<article class="bcls-article">
+  <h1>{{ page.title }}</h1>
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <p>Brightcove's live streaming video feature enables you to deliver high-quality live streaming broadcasts to any device or browser. You can deliver live streams without any custom development or complex integration, however, APIs are available if you have custom needs or require custom integrations.</p>
+    <aside class="bcls-aside bcls-aside--information">Note: Live streaming support is available only for Enterprise publishers.</aside>
+    <p>Brightcove also supports live streaming with DVR. When a Brightcove Player is configured with the <a href="https://player.support.brightcove.com/plugins/live-dvrux-plugin.html">DVRUX plugin</a>, live streams act like they are being played through the viewer's digital video recorder.</p>
+    <p>Brightcove offers several options for delivering live streams. This topic contains the following sections:</p>
+    <ul>
+      <li><a href="#compare">Hardware vs. cloud-based encoding</a></li>
+      <li><a href="#livemodule">Live streaming using the Live module</a></li>
+      <li><a href="#hardware">Live streaming using a hardware-based encoder</a></li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="compare">Hardware vs. cloud-based encoding</h2>
+    <p>Brightcove supports both hardware and cloud-based encoding. Various factors may determine whether hardware or cloud-based encoding is best for an event.</p>
+    <h3>When to use hardware encoding</h3>
+    <ul>
+      <li>24x7 linear feeds where capacity is known</li>
+      <li>An architecture based on a single location</li>
+      <li>Broadcast format support</li>
+    </ul>
+    <h3>When to use cloud encoding</h3>
+    <ul>
+      <li>For events</li>
+      <li>When capacity requirements are unknown</li>
+      <li>For de-centralized organizations</li>
+      <li>When event timing is unknown and speed is important</li>
+      <li>If there are bandwidth bottlenecks</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="livemodule">Live streaming using the Live module</h2>
+    <p>The Live module provides an easy to use interface to help you broadcast a live event to both desktop and mobile devices. No programming is required. After entering your event information into the Live module, you will be provided with a set of encoder settings that you plug into your on-site encoder. All transcoding is done in the cloud so you don't need a hardware based transcoder. For more information, see one of these documents.</p>
+    <ul>
+    {% if site.product_short == "Video Cloud" or site.product_short == "Beacon" or site.product_short == "CorpTV" %}
+      <li><a href="/live/live-module/creating-and-managing-live-events-using-live-module.html">Creating and Managing Live Events using the Live Module</a> - Provides all the details on using the Live module</li>
+      <li><a href="/live/get-started/step-step-using-live-module-telestream-wirecast.html">Step-by-Step: Using the Live Module with Telestream Wirecast</a> - Provides a step by step guide on using the Live module with Telestream Wirecast</li>
+      <li><a href="/live/get-started/step-step-using-live-module-open-broadcaster-software-obs.html">Step-by-Step: Using the Live Module with Open Broadcaster Software (OBS)</a> - Provides a step by step guide on using the Live module with Open Broadcaster Software</li>
+      <li><a href="/live/get-started/live-module-guidelines-and-best-practices.html">Live Module Guidelines and Best Practices</a> - Provides a series of best practices and recommendations to help ensure a high quality, stable, live streaming experience</li>
+        {% endif %}
+    {% if site.product_short == "Live" %}
+      <li><a href="/live-module/creating-and-managing-live-events-using-live-module.html">Creating and Managing Live Events using the Live Module</a> - Provides all the details on using the Live module</li>
+      <li><a href="/get-started/step-step-using-live-module-telestream-wirecast.html">Step-by-Step: Using the Live Module with Telestream Wirecast</a> - Provides a step by step guide on using the Live module with Telestream Wirecast</li>
+      <li><a href="/get-started/step-step-using-live-module-open-broadcaster-software-obs.html">Step-by-Step: Using the Live Module with Open Broadcaster Software (OBS)</a> - Provides a step by step guide on using the Live module with Open Broadcaster Software</li>
+      <li><a href="/get-started/live-module-guidelines-and-best-practices.html">Live Module Guidelines and Best Practices</a> - Provides a series of best practices and recommendations to help ensure a high quality, stable, live streaming experience</li>
+        {% endif %}
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="live_api">Live API</h2>
+    <p>The Live API is a REST-based API that allows you to create and manage live streaming events. Optional features include:</p>
+    <ul>
+      <li>Server-side ad insertion (SSAI)</li>
+      <li>AES-128 encryption</li>
+      <li>Create video-on-demand assets from clips taken from the live stream</li>
+      <li>DVR capability</li>
+      <li>Multiple CDNs</li>
+    </ul>
+    <p>For more information, see the <a href="https://apis.support.brightcove.com/live-api/index.html">Live API documentation</a>.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="hardware">Live streaming using a hardware-based encoder</h2>
+    <p>This option uses a hardware based encoder to encode and deliver live streams to your CDN. On the Video Cloud side, you create remote assets to host the streams and then you can publish a player for your live stream.</p>
+  </section>
+</article>

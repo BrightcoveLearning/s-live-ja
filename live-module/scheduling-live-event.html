@@ -1,0 +1,52 @@
+<article class="bcls-article">
+  <h1>Scheduling Live Events</h1>
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <p>The Live module provides the ability to schedule when recurring  events start and end. When the scheduled start time is reached, the recurring event will become activated. Note that only events that were created as recurring events can be scheduled.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/scheduling/recurring-event.png" /></figure>
+    <aside class="bcls-aside bcls-aside--information">Note: Currently, the scheduling of redundant groups is not supported.</aside>
+    <h3 id="notes">Notes on scheduled events</h3>
+    <ul>
+      <li>Six pending activations can be scheduled at a time; if more are needed, please contact Brightcove Support</li>
+      <li>Once the event is activated, the default <strong>Reconnect Time</strong> is still valid (see <a href="https://apis.support.brightcove.com/live-api/guides/live-api-static-entry-points.html" target="_blank">Live API: Static Entry Points for more information</a>)</li>
+      <li>All of the limitations associated with <a href="creating-and-managing-live-events-using-live-module.html#recurring_limitations">static entry points</a> are still valid</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="schedule">Adding a schedule to an event</h2>
+    <p>If your account is enabled for Auto Start/Stop, a <strong>Scheduling</strong> section will be available when you edit the event (on the Control Room page).</p>
+    <p>To use Auto Start/Stop, follow the instructions below:</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Open the <strong>Live</strong> module.</li>
+      <li>Create a new recurring live event or click the <strong>Standby</strong> tab and click on an existing event.</li>
+      <li>On the <strong>Control Room</strong> page, locate the <strong>Scheduling</strong> section.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/scheduling/schedule-section.png" /></figure>
+      </li>
+      <li>Click <strong>+ Add Schedule</strong> and enter the event <strong>Start Date</strong> and <strong>End Date</strong>.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/start-end-dates.png" /></figure>
+        <aside class="bcls-aside bcls-aside--information">Note: While we do not prevent multiple schedules from running at the same time, the conflicting rows will be shown with a warning. Conflicting schedules are likely to fail if not addressed prior to the activation time. To avoid the warning, simply delete one of the rows or adjust the times.</aside>
+      </li>
+      <li> To create another schedule, click <strong>+ Add Schedule</strong>. The <strong>+ Add Schedule</strong> button will become disabled when the maximum number of  pending activations is reached.</li>
+      <li><aside class="bcls-aside bcls-aside--information">Note: there is a soft limit of 6 future schedules can be shown/created in Live UI. However, If you need more, you can reach out to Brightcove Support to increase this limit. 
+	  </aside>
+  <p>To delete a schedule, click the delete (<img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/trash-icon.png" />) icon next to the schedule.</p>
+        
+        <aside class="bcls-aside bcls-aside--information">Notes:
+          <ul>
+            <li>Scheduled events will turn yellow as a warning when there are conflicting schedules</li>
+            <li>Scheduled events will turn red when streaming fails for any reason</li>
+            <li>Failed schedules will remain visible for 7 days</li>
+          </ul>
+        </aside>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="upcoming">Viewing upcoming activations</h2>
+    <p>To view all scheduled events, click the <strong>Standby</strong> tab. The next upcoming <strong>Start</strong> and <strong>Stop</strong> dates are shown under the <strong>Upcoming</strong> title.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/upcoming-events.png" /></figure>
+    <p>The <strong>Show</strong> dropdown at the top of the page can be used to  display only scheduled events.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/show-events.png" /></figure>
+    <p>Once an event starts, it will be displayed on the <strong>Live</strong> tab, and the start time will be disabled.</p>
+  </section>
+</article>

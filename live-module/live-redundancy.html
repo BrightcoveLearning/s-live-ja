@@ -1,0 +1,77 @@
+<article class="bcls-article">
+  <h1>{{ page.title }}</h1>
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="create">Enabling live redundancy</h2>
+    <p>The Live Redundancy feature is enabled by adding two or more streams to a live event in the Live module.</p>
+    <aside class="bcls-aside bcls-aside--information">Notes:
+      <ul>
+        <li>Every account has a Static Entry Point (SEP) limit of 3, with the exception of us-west-2 which will have a limit of 10. If you need more SEPs, contact Brightcove support.</li>
+        <li>If you are using live redundancy with SSAI, you must insert ads into all jobs in the group at the same time.</li>
+        <li>Live redundancy <strong>cannot</strong> be used with DRM-protected live streams at this time.</li>
+        <li>The primary stream should be published in the region closest to the encoder. The backup stream should be published in the region next closest to the encoder.</li>
+        <li>Backup streams cannot be deleted.</li>
+      </ul>
+    </aside>
+    <aside class="bcls-aside bcls-aside--warning language-editable">Note that for live redundancy to actually work, <strong>you need to publish with the new video ID that is generated when you add a backup stream</strong>.</aside>
+    <ol class="bcls-tasklist-restart">
+      <li>Create a live event using the Live module. For complete information on creating a live event, see <a href="creating-and-managing-live-events-using-live-module.html">Creating and Managing Live Events using the Live Module</a>.</li>
+      <li>In the <strong>Stream Options</strong> section, name and select the region of your streams. Click <strong>+ Add a Backup Stream </strong>to add additional backup streams.
+        <aside class="bcls-aside bcls-aside--information">Note: If you don't see the Add a Backup Stream button then live redundancy has not been enabled for your account.</aside>
+      </li>
+      <li>Click <strong>+ Add a Backup Stream</strong> to add a backup (redundant) stream  to the live event. You can add as many backup streams as your account  supports.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt=""  src="/assets/images/s-live-img/live-module/redundancy/stream-options.png" /></figure>
+      </li>
+      <li>Name your primary and backup streams, and select a <strong>Region</strong> that is closest to where your encoder is located. By default, the <strong>Region</strong> is set to Oregon (US West) which may result in degraded performance if you are streaming from another continent. The <strong>Reference ID </strong> is an optional identifier for internal use and must be unique (max 150 characters).
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/redundant-stream-options.png" /></figure>
+      </li>
+      <li>Complete the live event setup.</li>
+      <li>Alternatively, you can also add a backup stream from the Control Room page by clicking <span class="button-blue">Add a Backup Stream</span>.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/backup-stream-control-room.png" /></figure>
+      </li>
+      <li>Enter the <strong>Stream Name</strong> and <strong>Region</strong>.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/add-backup-stream-dialog.png" /></figure>
+      </li>
+      <li>The Control Room will display  the <strong>Endpoint</strong> and <strong>Stream Name</strong> details for each stream.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/stream-info.png" /></figure>
+      </li>
+      <li>Stream information is displayed in the <strong>Control Room</strong> while the event is streaming.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/stream-info-streaming.png" /></figure>
+      </li>
+    </ol>
+    <aside class="bcls-aside bcls-aside--information"> Notes:
+      <li>If you created a single stream event and you add a backup stream in the Control Room page, you will need to <strong>republish your player embed code</strong> with the new video ID to benefit from redundancy.</li>
+      <li>If you do not republish the player, you will also <strong>not</strong> see the analytics data from the reporting tab.</li>
+    </aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="clipping">Clipping</h2>
+    <p>Video clipping will be available for each stream by selecting the desired stream from the drop-down menu above the preview player. For information on creating a clip, see <a target="_blank" href="creating-video-clip-using-live-module.html">Creating a Video Clip Using the Live Module</a>.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt=""  src="/assets/images/s-live-img/live-module/redundancy/select-stream-clip.png" /></figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="monitoring">Monitoring</h2>
+    <p>Click the <strong>Monitoring</strong> tab below the preview player to view monitoring information. Monitoring is available for each  stream by selecting the desired stream from the dropdown list.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/monitoring.png" /></figure>
+    <p>Monitoring information is available while an event is in progress and for up to 1 hour after the event ends.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="stop-stream">Stopping a stream</h2>
+    <p>To stop a backup stream, on the Control Room page, select the stream from the dropdown list and then click <strong>Stop This Stream</strong>. Stopping a stream will immediately remove that stream from the group.</p>
+    <p>
+      <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/stop-stream.png" /></figure>
+    </p>
+    <p>To stop all streams, select the event name from the dropdown list and then click <strong>Stop All Streams</strong>.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Deleting_a_Redundant_Group">Removing idle events</h2>
+    <p>When a redundant event ends, it will appear on the <strong>Completed</strong> events page with a status of <strong>Idle</strong>. Idle events will count against your redundant group account limit. To not have the redundant event count against your account limit, change the event status from <strong>Idle</strong> to <strong>Closed</strong> by closing the event.</p>
+    <ol class="bcls-tasklist-restart">
+      <li>On the <strong>Manage Events</strong> page, click the <strong>Completed</strong> tab. </li>
+      <li>The redundant event should be in an <strong>Idle</strong> state.</li>
+      <li>Click on the event group and then click <strong>Close</strong> to move the redundant event to a <strong>Completed</strong> state.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/completed-events.png" /></figure>
+      </li>
+    </ol>
+  </section>
+</article>

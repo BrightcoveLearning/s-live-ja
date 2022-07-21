@@ -1,0 +1,82 @@
+<article class="bcls-article">
+<h1>Reviewing Live Analytics</h1>
+<summary>In this topic you will learn about the live analytics that are provided by the Live module.</summary>
+<section class="bcls-section">
+  <h2 id="Overview">Overview</h2>
+  <p>The Live module provides reports on live streaming event or channel performance. Information including real-time concurrent viewers and aggregated post-event data about the viewer's stream time, geography, and devices are available.</p>
+  <p>To view live analytics, follow these steps:</p>
+  <ol class="bcls-tasklist">
+    <li>Open the <strong>Live</strong> module.</li>
+    <li>Click on an event name.</li>
+    <li>Click&nbsp;<strong>Reporting</strong>&nbsp;in the left navigation.</li>
+  </ol>
+  <p>The analytics dashboard is organized into the following sections:</p>
+  <ul>
+    <li><a href="#snapshot">Snapshot</a></li>
+    <li><a href="#device">Views by Device</a></li>
+    <li><a href="#country">Views by Country</a></li>
+  </ul>
+</section>
+<section class="bcls-section">
+  <h2 id="snapshot">Snapshot</h2>
+  <p>The Snapshot section will display</p>
+  <ul>
+    <li><strong>Total Views</strong> - Total number of views over the duration of the live stream.</li>
+    <li><strong>Unique Viewers</strong> - Total number of unique viewers watching the stream. For example, if the same user connects to the live stream two separate times within an hour, they would count as 1 unique viewer.</li>
+    <li><strong>Avg View Time</strong> - Average time of consumption for any given session. For example, if User A watches one-minute of content and User B watches two minutes of content the Avg View Time is 1.5 minutes.</li>
+    <li><strong>Total Viewed Time</strong> - The total amount of time consumed over the duration of the stream displayed in <em>hours:minutes:seconds</em>.</li>
+    <li><strong>Ad Starts</strong> - Number of ad starts</li>
+  </ul>
+  <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/reporting/snapshot.png" /></figure>
+  <p>A graph displaying Concurrent Viewers will be displayed below the Snapshot. Concurrent viewers measures the number of sessions connected to the stream at any given time regardless of position. For example, if 10 users are watching the live stream at the live edge and 5 users are watching in the DVR window (10 minutes behind live) the concurrent viewers for the minute will be 15 users.</p>
+  <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/reporting/concurrent-viewers.png" /></figure>
+</section>
+<section class="bcls-section">
+  <h2 id="device">Views by Device</h2>
+  <p>The Views by Device section will display&nbsp;a graph with the number of views by device. Possible device types are:</p>
+  <ul>
+    <li><strong>Desktop</strong>&nbsp;- Includes desktop and laptop computers</li>
+    <li><strong>Tablet</strong>&nbsp;- Includes iPads, Android tablets, etc.</li>
+    <li><strong>Mobile</strong>&nbsp;- Mobile phones</li>
+    <li><strong>Connected TV/Game Console/Companion Device</strong>&nbsp;- Includes Smart TVs, set-top boxes and game consoles</li>
+    <li><strong>Other</strong>&nbsp;- For user-agents which are not mapped to any of the above</li>
+  </ul>
+  <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/reporting/views-by-device.png" /></figure>
+</section>
+<section class="bcls-section">
+  <h2 id="country">Views by Country</h2>
+  <p>The Views by Country section will display a graph with the number of views by country.</p>
+  <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/reporting/views-by-country.png" /></figure>
+</section>
+<section class="bcls-section">
+  <h2 id="export">Exporting report data</h2>
+  <p>The live event report data can be exported to a Microsoft Excel file by clicking on the <strong>XLSX</strong> button.</p>
+  <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/reporting/export.png" /></figure>
+</section>
+<section class="bcls-section">
+<h2 id="Notes">Notes</h2>
+<p>General notes related to live analytics:</p>
+<ul>
+  <li>Analytics are recorded for the default live video ID generated with a Live event. If a customer takes the m3u8 playlist for playback, or creates a remote asset with it (a new video ID), the analytics won't be collected for the new asset.
+  </li>
+  <li>Only <strong>Concurrent Viewers</strong> will be presented in real-time; other metrics will be collected and aggregated with a delay similar to standard analytics
+  </li>
+  <li><strong>Concurrent Viewers</strong> is only accurate for streams that are delivered with the Brightcove Player and SDKs (or non-Brightcove Players using the Brightcove Data Collection API)
+  </li>
+  <li>Data will be available for up to 32 days after the event
+  </li>
+  <li>Real-time is defined by the aggregated sessions over a one-minute interval
+  </li>
+  <li>With recurring events (static entry points), analytics will be provided from the start of the most recent activation
+  </li>
+  <li>At the moment, the analytics module cannot fetch the precise "unique viewer" data and has a discrepancy between LIVE module analytics. Please use the LIVE Analytics UI to confirm the number of viewers.
+  </li>
+  <li>Certain ad blockers will prevent Live analytics data from loading properly, as shown below:
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/s-live-img/live-module/ad-blocker-blocks-live-analytics.png" alt="Ad Blocker Blocks Analytics Data">
+      <figcaption class="bcls-caption--image">Ad Blocker Blocks Analytics Data</figcaption>
+    </figure>
+    <p>Disabling the ad blocker should resolve the issue.</p>
+  </li>
+</ul>
+    </section>
+</article>

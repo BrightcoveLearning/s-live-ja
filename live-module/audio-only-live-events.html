@@ -1,0 +1,419 @@
+<article class="bcls-article">
+    <h1>{{ page.title }}</h1>
+  <summary>{{ page.description }}</summary>
+  <br/>
+  <aside class="bcls-aside bcls-aside--warning"><strong>This feature is available for a specific set of customers with access to the Limited Availability phase of Live Audio Only.</strong></aside>
+
+<section class="bcls-section">
+<h2 id="Introduction">Introduction</h2>
+  <p>
+    Audio-only live streams allow you to tap into the sizeable audio entertainment ecosystem, including podcasts and radio. With Brightcove, you can ingest and live stream audio-specific content without a video component. Brightcove's player technology has been optimized for audio to mobile, web, and connected home devices. You will even get relevant analytics for audio-only playback.
+  </p>
+  <h3>Audio only player</h3>
+  <figure class="bcls-figure">
+    <img class="bcls-image--no-border" alt="Audio-only player" src="/assets/images/s-live-img/live-module/audio-only/audio-only-player.png" />
+  </figure>
+
+  <h3>Constraints</h3>
+  <p>The following functions are not available with audio-only streams:</p>
+  <ul>
+    <li>Streaming to social media</li>
+    <li>Low latency</li>
+    <li>Live ingest profile selection</li>
+    <li>Redundancy (backup streams)</li>
+    <li>Audio tracks</li>
+    <li>Server-Side Ad Insertion (SSAI)</li>
+    <li>Clip creation</li>
+    <li>Zoom integration</li>
+  </ul>
+
+  <aside class="bcls-aside bcls-aside--information">Audio-only live events can only be defined for new live jobs. You cannot update an existing live event to make it audio-only.</aside>
+</section>
+
+<!-- <section class="bcls-section">
+  <h2 id="Requirements">Requirements</h2>
+  <p>This feature is a paid add-on for your account. Contact your account manager to enable the following:</p>
+  <ul>
+    <li>Enable your account for either DRM or AES-128 (HLSe) encryption.</li>
+    <li>
+      <p>Enable your account for Playback Rights (EPA).</p>
+      <aside class="bcls-aside bcls-aside--warning">Currently, enabling your account for Playback Rights (EPA) will impact your ability to do live clipping.</aside>
+    </li>
+  </ul>
+</section> -->
+
+<section class="bcls-section">
+<h2 id="Workflow">Workflow</h2>
+<p>To create an audio-only live stream, follow these steps:</p>
+<ol class="bcls-tasklist">
+  <li><a href="#Create_a_live_event">Create a live event</a></li>
+  <li><a href="#Configure_your_encoder">Configure your encoder</a></li>
+  <li><a href="#Publish_the_live_event">Publish the live event</a></li>
+</ol>
+<!-- <p>Alternatively, you can use the Brightcove APis to create the live event and associate Playback Restrictions. For details, see the <a href="https://apis.support.brightcove.com/live-api/guides/live-playback-restrictions.html">Playback Restrictions with Live Streams</a> document.</p> -->
+</section>
+
+<section class="bcls-section">
+<h2 id="Create_a_live_event">Create a live event</h2>
+<p>Create an audio-only live event.</p>
+<ol class="bcls-tasklist-restart">
+  <li>In Studio, open the <strong>Live</strong> module.</li>
+  <li>Click <span class="button-blue">Create Event</span>.</li>
+  <li>Enter values for your live stream event.
+    <figure class="bcls-figure">
+      <img class="bcls-image--no-border" alt="Create live event" src="/assets/images/s-live-img/live-module/audio-only/create-event1.png" />
+    </figure> 
+    <ul>
+      <li><strong>Event Name</strong> - Name for the event; this name will also appear in the Media module if the video is saved as a video asset (max 255 characters)</li>
+      <li><strong>Short Description</strong> - Description of the event (max 250 characters)</li>
+      <li><strong>Tags</strong> - Tags to associate with the event; tags will be assigned to the video if the video is saved as a video asset (max 128 characters and 1200 tags)</li>
+      <li><strong>Reference ID</strong> - Reference ID for the event; must be unique (max 150 characters)</li>
+    </ul>
+  </li>
+  <li>Any required custom fields for the account will be displayed. Assign values to the custom fields.</li>
+  <li>Select <strong>Create an audio only event</strong>. Notice the following options are grayed out:
+    <ul>
+      <li><strong>Streaming to Social Media</strong></li>
+      <!-- <li><strong>Streaming Latency</strong></li> -->
+      <li><strong>Live Ingest Profile</strong></li>
+    </ul>
+    <figure class="bcls-figure">
+      <img class="bcls-image--no-border" alt="Create audio only event" src="/assets/images/s-live-img/live-module/audio-only/create-event2.png" />
+    </figure>
+  </li>
+  <li>In the <strong>Advanced</strong> section, the following option is grayed out:
+    <ul>
+      <li><strong>Enable Server-Side Ad Insertion (SSAI)</strong></li>
+    </ul>
+    <figure class="bcls-figure">
+      <img class="bcls-image--no-border" alt="Advanced options" src="/assets/images/s-live-img/live-module/audio-only/advanced-options.png" />
+    </figure>
+  </li>
+  <li>Complete the rest of the options for your live stream.
+    <p>For details about these options, see the <a href="/live-module/creating-and-managing-live-events-using-live-module.html#create">Creating and Managing Live Events</a> document.</p>
+  </li>
+  <li>Click <span class="button-blue">Create Event</span>.</li>
+</ol>
+</section>
+
+<section class="bcls-section">
+<h2 id="Configure_your_encoder">Configure your encoder</h2>
+<p>Use the encoder of your choice to stream your audio-only event.</p>
+
+<p>To stream your Live event, follow these steps:</p>
+<ol class="bcls-tasklist-restart">
+	<li>
+    <p>In Studio, return to the <strong>Control Room</strong> for your audio stream.</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image--no-border" alt="Live control room" src="/assets/images/s-live-img/live-module/audio-only/control-room.png" />
+    </figure> 
+  </li>
+  <li>Copy the following:
+    <ul>
+      <li>Stream Endpoint (RTMP URL)</li>
+      <li>Sream Name</li>
+    </ul>
+  </li>
+  <li>Paste the values above into the settings for your encoder and start streaming.</li>
+</ol>
+</section>
+
+<section class="bcls-section">
+<h2 id="Publish_the_live_event">Publish the live event</h2>
+<p>To publish a live stream, follow these steps:</p>
+
+<ol class="bcls-tasklist-restart">
+  <li>In Studio, return to the <strong>Live</strong> module.</li>
+  <li>In the left navigation, select <strong>Publish and Embed</strong>.</li>
+  <li>In the <strong>Live Player Options</strong> section, select your player.</li>
+  <li>
+    <p>Copy either the <strong>Standard</strong> or <strong>Advanced</strong> embed code, and paste it into your HTML page.</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image--no-border" alt="Player embed code" src="/assets/images/s-live-img/live-module/playback-restrictions/embed-code.png" />
+    </figure>
+  </li>
+  <li>Confirm playback in your web page.</li>
+</ol>
+</section>
+
+<section class="bcls-section">
+  <h2 id="Create_a_live_event_using_the_API">Create a live event using the API</h2>
+  <p>Optionally, you can use the Live API to create an audio-only live event.</p>
+  <p>Review the following documents:</p>
+  <ul>
+    <li><a href="https://apis.support.brightcove.com/live-api/getting-started/quick-start-create-live-stream-using-brightcove-live-api.html">Create a Live Stream Using the Brightcove Live API</a></li>
+    <li><a href="https://apis.support.brightcove.com/live-api/references/reference.html">Live API Reference</a></li>
+  </ul>
+
+  <details>
+    <summary><h3 id="Sample_request_body">Sample request body</h3></summary> 
+    <pre class="line-numbers"><code class="language-json" translate="No">{
+  &quot;live_stream&quot;: true,
+  &quot;region&quot;:&quot;us-west-2&quot;,
+  &quot;reconnect_time&quot;: 1800,
+  &quot;live_dvr_sliding_window_duration&quot;:600,
+  &quot;audio_only&quot;: true,
+  &quot;audio_only_storage_format&quot;: &quot;mpeg-ts&quot;,    //or &quot;aac&quot;
+  &quot;outputs&quot;: [
+    {
+      &quot;live_stream&quot;: true,
+      &quot;segment_seconds&quot;: 6,
+      &quot;audio_bitrate&quot;: 196
+    },
+    {
+      &quot;live_stream&quot;: true,
+      &quot;segment_seconds&quot;: 6,
+      &quot;audio_bitrate&quot;: 128
+    },
+    {
+      &quot;live_stream&quot;: true,
+      &quot;segment_seconds&quot;: 6,
+      &quot;audio_bitrate&quot;: 96
+    },
+    {
+      &quot;live_stream&quot;: true,
+      &quot;segment_seconds&quot;: 6,
+      &quot;audio_bitrate&quot;: 64
+    },
+    {
+      &quot;live_stream&quot;: true,
+      &quot;segment_seconds&quot;: 6,
+      &quot;audio_bitrate&quot;: 32
+    }
+  ]
+}</code></pre>
+  </details>  
+
+  <details>
+    <summary><h3 id="Sample_response_body">Sample response body</h3></summary> 
+    <pre class="line-numbers"><code class="language-json" translate="No">{
+      &quot;job&quot;: {
+        &quot;created_at&quot;: &quot;2022-02-21T13:49:30.512Z&quot;,
+        &quot;finished_at&quot;: null,
+        &quot;id&quot;: &quot;d123456789a123456789b1&quot;,
+        &quot;privacy&quot;: false,
+        &quot;state&quot;: &quot;standby&quot;,
+        &quot;ssai_state&quot;: &quot;none&quot;,
+        &quot;sep_state&quot;: &quot;waiting&quot;,
+        &quot;submitted_at&quot;: &quot;2022-02-21T13:49:30.512Z&quot;,
+        &quot;test&quot;: false,
+        &quot;updated_at&quot;: &quot;2022-02-21T13:59:37.826Z&quot;,
+        &quot;region&quot;: &quot;us-west-2&quot;,
+        &quot;stream_key&quot;: &quot;alive&quot;,
+        &quot;protocol&quot;: &quot;rtmp&quot;,
+        &quot;reconnect_time&quot;: 600,
+        &quot;live_stream&quot;: true,
+        &quot;low_latency&quot;: false,
+        &quot;static&quot;: true,
+        &quot;ad_insertion&quot;: false,
+        &quot;metadata_passthrough&quot;: false,
+        &quot;out_worker_bytes&quot;: 21010938,
+        &quot;out_worker_bytes_rate&quot;: 0,
+        &quot;channel_type&quot;: &quot;event&quot;,
+        &quot;state_history&quot;: [
+            {
+                &quot;state&quot;: &quot;standby&quot;,
+                &quot;transition_timestamp&quot;: 1645451977826
+            },
+            {
+                &quot;state&quot;: &quot;disconnected&quot;,
+                &quot;transition_timestamp&quot;: 1645451748246
+            },
+            {
+                &quot;state&quot;: &quot;processing&quot;,
+                &quot;transition_timestamp&quot;: 1645451498407
+            },
+            {
+                &quot;state&quot;: &quot;waiting&quot;,
+                &quot;transition_timestamp&quot;: 1645451386677
+            },
+            {
+                &quot;state&quot;: &quot;standby&quot;,
+                &quot;transition_timestamp&quot;: 1645451370512
+            }
+        ],
+        &quot;state_history_is_truncated&quot;: false,
+        &quot;account_id&quot;: &quot;11a1234556789b1111ef&quot;,
+        &quot;user_id&quot;: &quot;bfe56cc6084f4136b168980010eaca39&quot;,
+        &quot;pass_through&quot;: {
+            &quot;stream_to_social_media&quot;: true,
+            &quot;dvr&quot;: false
+        },
+        &quot;job_videocloud_asset_id&quot;: &quot;6298381216001&quot;,
+        &quot;live_dvr_sliding_window_duration_ms&quot;: 0,
+        &quot;live_sliding_window_duration_ms&quot;: 0,
+        &quot;outputs&quot;: [
+            {
+                &quot;live_stream&quot;: true,
+                &quot;audio_bitrate&quot;: 196,
+                &quot;label&quot;: &quot;hls1080p&quot;,
+                &quot;segment_seconds&quot;: 6
+            },
+            {
+                &quot;live_stream&quot;: true,
+                &quot;audio_bitrate&quot;: 128,
+                &quot;label&quot;: &quot;hls720p&quot;,
+                &quot;segment_seconds&quot;: 6
+            }
+        ],
+        &quot;videocloud&quot;: {
+            &quot;video&quot;: {
+                &quot;name&quot;: &quot;audio-only test&quot;,
+                &quot;link&quot;: {},
+                &quot;schedule&quot;: {},
+                &quot;state&quot;: &quot;ACTIVE&quot;,
+                &quot;custom_fields&quot;: {}
+            }
+        },
+        &quot;randomize_chunk_url&quot;: true,
+        &quot;rtmp_outputs&quot;: [],
+        &quot;playback_url&quot;: &quot;https://bcovlive-a.akamaihd.net/d123456789a123456789b1/us-west-2/6243585733001/playlist.m3u8&quot;,
+        &quot;playback_url_dvr&quot;: &quot;https://bcovlive-a.akamaihd.net/d123456789a123456789b1/us-west-2/6243585733001/playlist_dvr.m3u8&quot;,
+        &quot;playback_added_cdns&quot;: [],
+        &quot;encryption&quot;: {},
+        &quot;audio_only&quot;: true,
+        &quot;audio_only_storage_format&quot;: &quot;mpeg-ts&quot;,
+        &quot;input_media_file&quot;: {
+            &quot;audio_bitrate_in_kbps&quot;: null,
+            &quot;audio_codec&quot;: null,
+            &quot;audio_sample_rate&quot;: null,
+            &quot;audio_tracks&quot;: null,
+            &quot;channels&quot;: null,
+            &quot;created_at&quot;: &quot;2022-02-21T13:49:30.512Z&quot;,
+            &quot;duration_in_ms&quot;: null,
+            &quot;error_class&quot;: null,
+            &quot;error_message&quot;: null,
+            &quot;file_size_bytes&quot;: null,
+            &quot;finished_at&quot;: null,
+            &quot;format&quot;: null,
+            &quot;frame_rate&quot;: null,
+            &quot;height&quot;: null,
+            &quot;id&quot;: &quot;input-d123456789a123456789b1&quot;,
+            &quot;md5_checksum&quot;: null,
+            &quot;privacy&quot;: false,
+            &quot;state&quot;: &quot;standby&quot;,
+            &quot;test&quot;: false,
+            &quot;updated_at&quot;: &quot;2022-02-21T13:59:37.826Z&quot;,
+            &quot;video_bitrate_in_kbps&quot;: null,
+            &quot;video_codec&quot;: null,
+            &quot;width&quot;: null,
+            &quot;total_bitrate_in_kbps&quot;: null,
+            &quot;url&quot;: null
+        },
+        &quot;stream&quot;: {
+            &quot;created_at&quot;: &quot;2022-02-21T13:51:38.407Z&quot;,
+            &quot;finished_at&quot;: null,
+            &quot;height&quot;: null,
+            &quot;id&quot;: &quot;stream-d123456789a123456789b1&quot;,
+            &quot;name&quot;: &quot;alive&quot;,
+            &quot;protocol&quot;: null,
+            &quot;state&quot;: null,
+            &quot;test&quot;: false,
+            &quot;updated_at&quot;: &quot;2022-02-21T13:59:37.826Z&quot;,
+            &quot;width&quot;: null,
+            &quot;total_bitrate_in_kbps&quot;: null,
+            &quot;duration&quot;: null,
+            &quot;region&quot;: &quot;us-west-2&quot;,
+            &quot;url&quot;: &quot;rtmp://d123456789a123456789b1.sep.bcovlive.io:1935/d123456789a123456789b1&quot;,
+            &quot;location&quot;: {
+                &quot;source&quot;: {
+                    &quot;latitude&quot;: null,
+                    &quot;longitude&quot;: null,
+                    &quot;location&quot;: null
+                },
+                &quot;destination&quot;: {
+                    &quot;latitude&quot;: null,
+                    &quot;longitude&quot;: null,
+                    &quot;location&quot;: null
+                },
+                &quot;distance&quot;: null
+            },
+            &quot;in_worker_bytes&quot;: 12058775,
+            &quot;in_worker_bytes_rate&quot;: 0
+        },
+        &quot;output_media_files&quot;: [
+            {
+                &quot;audio_bitrate_in_kbps&quot;: 196,
+                &quot;audio_codec&quot;: &quot;AAC&quot;,
+                &quot;audio_sample_rate&quot;: null,
+                &quot;channels&quot;: null,
+                &quot;created_at&quot;: &quot;2022-02-21T13:49:30.512Z&quot;,
+                &quot;duration_in_ms&quot;: null,
+                &quot;error_class&quot;: null,
+                &quot;error_message&quot;: null,
+                &quot;file_size_bytes&quot;: null,
+                &quot;finished_at&quot;: null,
+                &quot;format&quot;: null,
+                &quot;fragment_duration_in_ms&quot;: null,
+                &quot;frame_rate&quot;: null,
+                &quot;height&quot;: null,
+                &quot;id&quot;: &quot;0-d123456789a123456789b1&quot;,
+                &quot;md5_checksum&quot;: null,
+                &quot;privacy&quot;: false,
+                &quot;rfc_6381_audio_codec&quot;: null,
+                &quot;rfc_6381_video_codec&quot;: null,
+                &quot;state&quot;: &quot;standby&quot;,
+                &quot;test&quot;: false,
+                &quot;updated_at&quot;: &quot;2022-02-21T13:59:37.826Z&quot;,
+                &quot;video_bitrate_in_kbps&quot;: null,
+                &quot;video_codec&quot;: null,
+                &quot;video_codec_profile&quot;: null,
+                &quot;width&quot;: null,
+                &quot;label&quot;: &quot;hls1080p&quot;,
+                &quot;total_bitrate_in_kbps&quot;: 196,
+                &quot;keyframe_interval&quot;: null,
+                &quot;keyframe_interval_follow_source&quot;: null,
+                &quot;segment_seconds&quot;: 6,
+                &quot;live_stream&quot;: true
+            },
+            {
+                &quot;audio_bitrate_in_kbps&quot;: 128,
+                &quot;audio_codec&quot;: &quot;AAC&quot;,
+                &quot;audio_sample_rate&quot;: null,
+                &quot;channels&quot;: null,
+                &quot;created_at&quot;: &quot;2022-02-21T13:49:30.512Z&quot;,
+                &quot;duration_in_ms&quot;: null,
+                &quot;error_class&quot;: null,
+                &quot;error_message&quot;: null,
+                &quot;file_size_bytes&quot;: null,
+                &quot;finished_at&quot;: null,
+                &quot;format&quot;: null,
+                &quot;fragment_duration_in_ms&quot;: null,
+                &quot;frame_rate&quot;: null,
+                &quot;height&quot;: null,
+                &quot;id&quot;: &quot;1-d123456789a123456789b1&quot;,
+                &quot;md5_checksum&quot;: null,
+                &quot;privacy&quot;: false,
+                &quot;rfc_6381_audio_codec&quot;: null,
+                &quot;rfc_6381_video_codec&quot;: null,
+                &quot;state&quot;: &quot;standby&quot;,
+                &quot;test&quot;: false,
+                &quot;updated_at&quot;: &quot;2022-02-21T13:59:37.826Z&quot;,
+                &quot;video_bitrate_in_kbps&quot;: null,
+                &quot;video_codec&quot;: null,
+                &quot;video_codec_profile&quot;: null,
+                &quot;width&quot;: null,
+                &quot;label&quot;: &quot;hls720p&quot;,
+                &quot;total_bitrate_in_kbps&quot;: 128,
+                &quot;keyframe_interval&quot;: null,
+                &quot;keyframe_interval_follow_source&quot;: null,
+                &quot;segment_seconds&quot;: 6,
+                &quot;live_stream&quot;: true
+            },
+            {
+                &quot;playlist_type&quot;: &quot;defaultS3&quot;,
+                &quot;type&quot;: &quot;playlist&quot;,
+                &quot;filename&quot;: &quot;playlist.m3u8&quot;,
+                &quot;dvr_filename&quot;: &quot;playlist_dvr.m3u8&quot;,
+                &quot;playback_url&quot;: &quot;https://bcovlive-a.akamaihd.net/d123456789a123456789b1/us-west-2/6243585733001/playlist.m3u8&quot;,
+                &quot;playback_url_dvr&quot;: &quot;https://bcovlive-a.akamaihd.net/d123456789a123456789b1/us-west-2/6243585733001/playlist_dvr.m3u8&quot;,
+                &quot;playback_added_cdns&quot;: []
+            }
+        ]
+    }
+  }</code></pre>
+  </details>
+  
+  </section>
+
+</article>

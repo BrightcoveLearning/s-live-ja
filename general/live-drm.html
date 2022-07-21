@@ -1,0 +1,121 @@
+<article class="bcls-article">
+  <h1>Live DRM</h1>
+  <summary>In this topic, you will learn how to enable content protection for your live stream.</summary>
+  <section class="bcls-section">
+    <h2 id="create">Enabling DRM for Live content</h2>
+    <aside class="bcls-aside bcls-aside--information">
+      <p>Note:</p>
+      <p>By default DRM is applied to outputs as follows:</p>
+      <ul>
+        <li>Your Live account must be enabled first&nbsp;by Brightcove Support in order to use DRM.</li>
+        <li>To publish a DRM-enabled event, use any of the following:
+          <ul>
+            <li>A DRM-enabled Brightcove Player v6.37.1 or later</li>
+            <li>The Brightcove Native SDK for iOS v6.5.0 or later</li>
+            <li>
+              <p>The Brightcove Native SDK for Android v6.11.0 or later</p>
+            </li>
+          </ul>
+        </li>
+        <li>If you want to override the DRM default settings you can do it via API or please contact Brightcove support to change them in the Live Platform.
+          <ul>
+            <li>FairPlay: applied to HLS outputs</li>
+            <li>PlayReady: applied to DASH outputs</li>
+            <li>Widevine: applied to HLS outputs<sup><strong><a href="#note1-1">[1-1]</a></strong></sup></li>
+          </ul>
+        </li>
+      </ul>
+      <p><strong>Notes</strong></p>
+      <ul>
+        <li id="note1-1"><sup><strong>[1-1]</strong></sup> Widevine can be applied to DASH outputs instead of HLS. To make Widevine with DASH the default requires an account-level override. Contact Support if you want this override applied to your account. Using the <a href="https://apis.support.brightcove.com/live-api/guides/live-drm-live-api.html#create_live_job_example">Live API</a> you can also specify <code translate="No">widevine:hls</code> or <code translate="No">widevine:dash</code> for particular jobs, regardless of the default for your account. <strong><em>Note that depending on how your account/job is configured, the API response (like the one shown below) will include either <code translate="No">widevine:hls</code> or <code translate="No">widevine:dash</code> outputs, but not both.</em></strong></li>
+      </ul>
+    </aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Playback_technologies_used">Playback technologies used</h2>
+    <p>The Brightcove Player utilizes different DRM playback technologies with different browsers. The DRM technologies used with Brightcove Player are:</p>
+    <ul>
+      <li><strong>FairPlay</strong>: Apple's DRM system</li>
+      <li><strong>PlayReady</strong>: Microsoft's DRM system</li>
+      <li><strong>Widevine</strong>: Google's DRM system</li>
+    </ul>
+    <p>The following table details the relationship between the browser (latest version), format and playback technology used in Brightcove Player:</p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Browser</th>
+          <th>Format</th>
+          <th>Playback Technology</th>
+          <th>Rendition Type Used<br />
+            to Deliver DRM Content</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>Chrome Desktop</td>
+          <td>HLS with Widevine</td>
+          <td>Native HLS</td>
+          <td>HLS</td>
+        </tr>
+        <tr>
+          <td>Chrome Mobile<sup>1</sup></td>
+          <td>HLS with Widevine</td>
+          <td>Native HLS</td>
+          <td>HLS</td>
+        </tr>
+        <tr>
+          <td>Internet Explorer</td>
+          <td colspan="3">No versions of IE are supported by Brightcove</td>
+        </tr>
+        <tr>
+          <td>Edge</td>
+          <td>DASH with PlayReady</td>
+          <td>Native/EME</td>
+          <td>MPEG-DASH</td>
+        </tr>
+        <tr>
+          <td>Safari</td>
+          <td>HLS with FairPlay</td>
+          <td>Native HLS</td>
+          <td>HLS</td>
+        </tr>
+        <tr>
+          <td>Firefox</td>
+          <td>HLS with Widevine</td>
+          <td>Native HLS</td>
+          <td>HLS</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><em><sup>1</sup>DRM playback using Chrome Mobile on iOS is not supported.</em></p>
+    <aside class="bcls-aside bcls-aside--information">Widevine can be applied to DASH outputs instead of HLS. To make Widevine with DASH the default requires an account-level override. Contact Support if you want this override applied to your account.</aside>
+    <p>To enable DRM for your Live content follow these steps:</p>
+    <ol class="bcls-tasklist-restart">
+      <li>When creating a live event, in Advanced Options &gt; Content Encryption. Select <strong> Digital Rights Management(DRM) </strong> from the Encryption dropdown.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/general/live-drm-adv-options.png" /></figure>
+        <strong>Digital Rights Management (DRM)</strong> - Secure Premium content stream with Digital Rights Management technologies.
+        <ul>
+          <li>HLS + <a href="https://developer.apple.com/streaming/fps/">FairPlay</a></li>
+          <li>HLS (fMP4) + Widevine Modular</li>
+        </ul>
+        <aside class="bcls-aside bcls-aside--information"> Your Live account must be enabled first by Brightcove Support in order to use DRM. To publish a DRM-enabled event, it is necessary to create and use a DRM enabled player v6.37.1 or greater.</aside>
+      </li>
+      <li>An additional <strong>Token Expiration</strong> option will appear, allowing you to select the time in seconds with a minimum expiration time frame of 900 seconds and a maximum of 2592000 seconds (the last equal to 30 days).
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt=""  src="/assets/images/s-live-img/general/live-drm-adv-options-token.png" /></figure>
+      </li>
+      <li>When the event is created, in the event information panel, you will be able to see the DRM URLs for Fairplay and Widevine.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/general/live-drm-urls.png" /></figure>
+      </li>
+      <li>To publish a DRM-enabled event, click Publish and Embed  in the left navigation.
+        <ul>
+          <li>In <strong>Live Player Options</strong> section, select a DRM enabled player. (For Live DRM playback you will need to select or create a <a target="_blank" href="https://studio.support.brightcove.com/players/configuring-player-playback-properties.html#drm">DRM enabled player v6.37.1 or greater).</a></li>
+          <li>If you don’t have a DRM player available, create one using the <strong>Players</strong> module. In the Playback settings, make sure that  the <strong> Enable DRM </strong>option is selected. (The Player for Live DRM playback has to be v6.37.1 or greater).</li>
+        </ul>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/general/live-drm-player-drm-setting.png" /></figure>
+      </li>
+      <li>Back in the <strong>Live</strong> module, you will be able to select your DRM enabled player and publish the event.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/general/live-drm-select-player.png" /></figure>
+      </li>
+    </ol>
+  </section>
+</article>
