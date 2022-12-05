@@ -1,17 +1,9 @@
 <article class="bcls-article">
-  <h1>{{ page.title }}</h1>
-  <summary>{{ page.description }}</summary>
-  <section class="bcls-section">
-    <h2 id="Overview">Overview</h2>
-    <p>Closed captioning provides text for the audio component of a live stream. This extends the reach of your content by including viewers who are deaf or hard-of-hearing as well as viewers who are not proficient in the spoken language.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Details">Details</h2>
-    <p>Brightcove Live currently supports 608 captions in-band (inside h.264 headers). If captions are inside the h.264 input signal (correctly signaled in the user_data packet) those are passed through to the h.264 outputs.</p>
-    <aside class="bcls-aside bcls-aside--information">You can provide two 608 captions for two languages within the same live job. Brightcove players should show both languages as options, but some players may offer only one of the two.</aside>
-    <p>If you are using a broadcast Elemental live encoder you can get captions from SDI (EIA-608/CEA-608) or other sources (SCTE-20, SCC, Teletext, DVB-Sub, Ancillary, ARIB, TTML, SCTE-27, STL, SRT, SMI) and put them into the h.264 stream that you send to us. Other broadcast grade encoders probably can do the same, but we have not formally tested them.</p>
-    <p>WebVTT captions are <strong>not</strong> supported for Live streams.</p>
-    <p>The Brightcove Player has support for in-band captions.</p>
-    <aside class="bcls-aside bcls-aside--information">Note: As a current limitation, Safari will display the CC controls for Live streams even when there are no captions to display.</aside>
-  </section>
-</article>
+  <h1>{{page.title}}</h1> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>クローズドキャプションは、ライブストリームのオーディオコンポーネントのテキストを提供します。これにより、耳が聞こえない視聴者や聞き取りにくい視聴者、話し言葉に堪能でない視聴者を含めることで、コンテンツの到達範囲を広げることができます。</p>  </section><section class="bcls-section">
+    <h2 id="Details">詳細</h2>
+    <p>Brightcoveライブは現在、608 キャプションをインバンドでサポートしています (h.264 ヘッダー内)。キャプションが h.264 入力信号（user_data パケットで正しくシグナル）内にある場合、キャプションは h.264 出力に渡されます。</p> <aside class="bcls-aside bcls-aside--information">同じライブジョブ内の2つの言語に対して2つの608キャプションを提供できます。Brightcoveプレーヤーは両方の言語をオプションとして表示する必要がありますが、一部のプレーヤーは2つの言語のうち1つだけを提供する場合があります。</aside>
+    <p>ブロードキャストElemental ライブエンコーダーを使用している場合は、SDI (EIA-608/CEA-608) または他のソース (SCTE-20、SCC、文字放送、DVB-Sub、付属、ARB、TTML、SCTE-27、STL、SRT、SMI) からキャプションを取得して、送信した h.264 ストリームに入れることができます。他の放送グレードのエンコーダでも同じことができるかもしれませんが、正式にテストされていません。</p>
+    <p>WebVTT キャプションは<strong>いいえ</strong>ライブ ストリームでサポートされています。</p>
+    <p>Brightcove Player では、インバンドキャプションがサポートされています。</p> <aside class="bcls-aside bcls-aside--information">注:現在の制限として、Safariは、表示するキャプションがない場合でも、ライブストリームのCCコントロールを表示します。</aside> </section> </article> 

@@ -1,124 +1,91 @@
 <article class="bcls-article">
-  <h1>Integrating a Zoom meeting into Brightcove Live</h1>
-  <summary>
-    <p>The Brightcove Live Zoom integration allows to you to broadcast Zoom meetings easily using Brightcove Live.</p>
-  </summary>
-  <section class="bcls-section">
-    <h2 id="prerequisites">Prerequisites</h2>
-    <h3>In the Zoom Marketplace</h3>
-    <p>Zoom integration with Brightcove Live is managed by the <strong>Brightcove Live Connect</strong> app in the Zoom Marketplace. It is an account-level app intended for use by licensed Owner or Admin-level Zoom accounts. Please ensure your Zoom account has the correct privileges to support the integration.</p>
-    <h3>In Brightcove Video Cloud</h3>
-    <p>Before starting an integration, you must have a custom metadata field to track whether an event is streaming from Zoom. This will track the state of the integration between sessions, i.e., if an event is currently linked to a Zoom meeting. 
-      {% if site.product_short == "Video Cloud" or site.product_short == "Beacon" or site.product_short == "CorpTV" %}    
-      For specific details on how to add the custom metadata field, please review the <a href="/admin/creating-custom-metadata-fields.html" target="_blank">following documentation</a>. 
-      {% endif %}
-      {% if site.product_short == "Live" %}
-      For specific details on how to add the custom metadata field, please review the <a href="https://studio.support.brightcove.com/admin/creating-custom-metadata-fields.html" target="_blank">following documentation</a>. 
-      {% endif %} </p>
+  <h1>ズーム会議をBrightcoveLiveに統合する</h1> <summary>
+    <p>Brightcove Live Zoomの統合により、BrightcoveLiveを使用してZoom会議を簡単にブロードキャストできます。</p>  </summary><section class="bcls-section">
+    <h2 id="prerequisites">前提条件</h2>
+    <h3>ズームマーケットプレイス</h3>
+    <p>Zoom と Brightcove Live の統合は、<strong>ブライトコーブ ライブ コネクト</strong>Zoomマーケットプレイスのアプリ。これは、ライセンスされた所有者または管理者レベルのZoomアカウントでの使用を目的としたアカウントレベルのアプリです。Zoomアカウントに、統合をサポートするための適切な権限があることを確認してください。</p>
+    <h3>Brightcove VideoCloudで</h3>
+    <p>統合を開始する前に、イベントがZoomからストリーミングされているかどうかを追跡するためのカスタムメタデータフィールドが必要です。これは、セッション間の統合の状態を追跡します。つまり、イベントが現在 Zoom ミーティングにリンクされているかどうかです。 {% if site.product_short == &quot;Video Cloud&quot; または site.product_short == "Beacon" または site.product_short == "CorpTV" %} カスタム メタデータ フィールドを追加する方法の具体的な詳細については、<a href="/admin/creating-custom-metadata-fields.html" target="_blank">次のドキュメント</a>. {% endif %} {% if site.product_short == &quot;Live&quot; %} カスタム メタデータ フィールドを追加する方法の具体的な詳細については、<a href="https://studio.support.brightcove.com/admin/creating-custom-metadata-fields.html" target="_blank">次のドキュメント</a>. {% endif %} </p>
     <ol class="bcls-tasklist-restart">
-      <li>Login to Studio.</li>
-      <li>In the primary navigation, click <strong>Admin</strong> &gt; <strong>Video Fields</strong>.</li>
-      <li>Click <span class="button-blue">Add Custom Field</span>.</li>
-      <li>Enter a <strong>Display Name</strong> for your custom metadata field.</li>
-      <li>For the <strong>Internal Name</strong> field, you should use: <strong>bc_meeting_id</strong>
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/live-zoom-integration/id-meeting-field.png" /></figure>
-        <aside class="bcls-aside bcls-aside--information">Don't add any external Zoom Id or data into the custom field.</aside>
+      <li>Studioにログインします。</li>
+      <li>プライマリ ナビゲーションで、<strong>管理者</strong>&gt;<strong>ビデオ フィールド</strong>.</li>
+      <li>クリック<span class="button-blue">カスタム フィールドを追加</span>.</li>
+      <li>入力します<strong>表示名</strong>カスタム メタデータ フィールド用。</li>
+      <li>のために<strong>内部名</strong>フィールドでは、次を使用する必要があります。<strong> bc_meeting_id</strong> <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/live-zoom-integration/id-meeting-field.png" /></figure> <aside class="bcls-aside bcls-aside--information">外部ズーム ID またはデータをカスタム フィールドに追加しないでください。</aside>
       </li>
-      <li>For the <strong>Type</strong>, selecrt <strong>Text</strong>.</li>
-      <li>(Optional) Enter a <strong>Description</strong> for the custom  field.</li>
-      <li>Click <span class="button-blue">Save field</span>.</li>
+      <li>のために<strong>タイプ</strong>、選択<strong>文章</strong>.</li>
+      <li>(オプション)<strong>説明</strong>カスタムフィールド用。</li>
+      <li>クリック<span class="button-blue">フィールドを保存</span>.</li>
     </ol>
-    <h3>Best Practices</h3>
-    <p>For best results, please follow the directions below.</p>
+    <h3>ベストプラクティス</h3>
+    <p>最良の結果を得るには、以下の指示に従ってください。</p>
     <ol class="bcls-tasklist-restart">
-      <li>Use the <strong>Start</strong> and <strong>Stop</strong> Broadcasting buttons in the control room rather than the host Zoom player.</li>
-      <li>Avoid streaming multiple Zoom meetings at the same time under a single account.</li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="create">Creating a Zoom meeting</h2>
+      <li>使用<strong>始める</strong>と<strong>止まる</strong>ホストの Zoom プレーヤーではなく、コントロール ルームでボタンをブロードキャストします。</li>
+      <li>1つのアカウントで複数のZoomミーティングを同時にストリーミングすることは避けてください。</li>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="create">ズーム会議の作成</h2>
     <ol class="bcls-tasklist-restart">
-      <li>First, access your <a href="https://zoom.us/" target="_blank">Zoom account</a>, and create a Zoom meeting. For information on how to create a Zoom meeting, please follow the <a href="https://support.zoom.us/hc/en-us/articles/201362413-Scheduling-meetings" target= "_blank">Zoom documentation</a>. </li>
-      <li>In Zoom, go to <strong>Settings</strong> > <strong>Meeting (Advanced)</strong> > <strong>live streaming meetings</strong>. </li>
-      <li>Make sure your Zoom account settings have the <strong>Custom Live Streaming Service</strong> enabled.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/live-zoom-integration/zoom-service-enabled.png" /></figure>
+      <li>まず、<a href="https://zoom.us/" target="_blank">ズームアカウント</a>、Zoom ミーティングを作成します。Zoom ミーティングの作成方法については、<a href="https://support.zoom.us/hc/en-us/articles/201362413-Scheduling-meetings" target= "_blank">ズームのドキュメント</a>. </li>
+      <li>ズームで、に移動します<strong>設定</strong>&gt;<strong>会議（上級）</strong> &gt;<strong>ライブ ストリーミング ミーティング</strong>. </li>
+      <li>Zoomアカウント設定に<strong>カスタム ライブ ストリーミング サービス</strong>有効にします。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/live-zoom-integration/zoom-service-enabled.png" /></figure>
       </li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="integrate">Integrating a Zoom account with Brightcove Live</h2>
-    <p>To integrate a Zoom account with Brightcove Live, follow these steps:</p>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="integrate">ZoomアカウントとBrightcoveLiveの統合</h2>
+    <p>ZoomアカウントをBrightcoveLiveと統合するには、次の手順に従います。</p>
     <ol class="bcls-tasklist-restart">
-      <li>Login to Studio.</li>
-      <li>In the primary navigation, click <strong>Admin &gt; Integrations</strong>.</li>
-      <li>Select the <strong>Integrations</strong> option from the dropdown menu.</li>
-      <li>Click the <strong>Add Integration</strong> button to link one or more Zoom accounts to your Brightcove account.</li>
-      <li>A pop-up window requesting access to your Zoom account will appear. Click the <strong>Authorize</strong> button.</li>
-      <li>Provide your Zoom credentials to integrate the account.</li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="adding">Adding the Zoom integration to a Brightcove Live event</h2>
-    <p>To add the Zoom integration to Brightcove Live event, follow these steps:</p>
+      <li>Studioにログインします。</li>
+      <li>プライマリ ナビゲーションで、<strong>管理者 &gt; 統合</strong>.</li>
+      <li>を選択<strong>統合</strong>ドロップダウン メニューからオプションを選択します。</li>
+      <li>クリック<strong>統合を追加</strong>ボタンをクリックして、1 つ以上の Zoom アカウントを Brightcove アカウントにリンクします。</li>
+      <li>Zoomアカウントへのアクセスを要求するポップアップウィンドウが表示されます。クリック<strong>承認する</strong>ボタン。</li>
+      <li>アカウントを統合するためのZoomクレデンシャルを提供します。</li>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="adding">BrightcoveLiveイベントへのズーム統合の追加</h2>
+    <p>ズーム統合をBrightcoveLiveイベントに追加するには、次の手順に従います。</p>
     <ol class="bcls-tasklist-restart">
-      <li>In Studio, open the <strong>Live</strong> module.</li>
-      <li>Click the <strong>Create Event</strong> button on the Live <strong>Manage Events</strong> page. For complete information on how to create a Live event please review the <a href="creating-and-managing-live-events-using-live-module.html#create" target="_blank">Creating and Managing Live Events using the Live Module</a> documentation.</li>
-      <li>Fill in the Live event details as normal, until you reach the <strong>Integrations</strong> section.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/live-zoom-integration/add_integration_button.png" /></figure>
+      <li>Studio で、<strong>ライブ</strong>モジュール。</li>
+      <li>クリック<strong>イベントを作成</strong>ライブのボタン<strong>イベントの管理</strong>ページ。ライブ イベントの作成方法の詳細については、<a href="creating-and-managing-live-events-using-live-module.html#create" target="_blank"> Live モジュールを使用したライブ イベントの作成と管理</a>ドキュメンテーション。</li>
+      <li>に到達するまで、通常どおりライブ イベントの詳細を入力します。<strong>統合</strong>セクション。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/live-zoom-integration/add_integration_button.png" /></figure>
       </li>
-      <li>Click the <strong>Add Integration</strong> button.</li>
-      <li>You will be able to see a list of your active and scheduled Zoom meetings.</li>
-      <li>Click the dropdown menu.</li>
-      <li>Select your meeting. In this example, I am choosing the <strong>Test Docs Meeting</strong>.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/live-zoom-integration/added-integration.png" /></figure>
-        <aside class="bcls-aside bcls-aside--information">Note: Only one integration can be added to an event at a time. To clear the integration click on the <strong>Remove Integration</strong> button. If you want to have more than one account, you will be able to do so in the <strong>Admin</strong> &gt; <strong>Integrations</strong> panel. </aside>
+      <li>クリック<strong>統合を追加</strong>ボタン。</li>
+      <li>アクティブでスケジュールされているZoomミーティングのリストを表示できます。</li>
+      <li>ドロップダウンメニューをクリックします。</li>
+      <li>会議を選択します。この例では、<strong>テスト ドキュメント ミーティング</strong>. <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/live-zoom-integration/added-integration.png" /></figure> <aside class="bcls-aside bcls-aside--information">注:イベントに一度に追加できる統合は1つだけです。統合をクリアするには、<strong>統合を削除</strong>ボタン。複数のアカウントを持ちたい場合は、<strong>管理者</strong>&gt;<strong>統合</strong>パネル。 </aside>
       </li>
-      <li>Once ready to create the Live event, click on the <strong>Create Event</strong> button.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/live-zoom-integration/create-event-button.png" /></figure>
+      <li>ライブ イベントを作成する準備ができたら、<strong>イベントを作成</strong>ボタン。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/live-zoom-integration/create-event-button.png" /></figure>
       </li>
-      <li>In the <strong>Control Room</strong>, there will be a tabbed option to stream your meeting from Zoom. If you prefer not to use the integration source, switch back to the Ingest URL tab in the top left part.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/live-zoom-integration/control_room.png" /></figure>
+      <li>の中に<strong>制御室</strong>、Zoom から会議をストリーミングするためのタブ付きオプションがあります。統合ソースを使用したくない場合は、左上の[URLの取り込み]タブに戻ります。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/live-zoom-integration/control_room.png" /></figure>
       </li>
-      <li>If your Zoom meeting was recently created, try syncing with Zoom again using the <strong>Sync</strong> button.
-        <aside class="bcls-aside bcls-aside--information">If your meeting is still not showing up after syncing, try verifying that your meeting is <strong>Scheduled</strong> in Zoom and that you have fewer than 30 meetings scheduled.</aside>
+      <li>Zoom ミーティングが最近作成された場合は、Zoom との同期をもう一度試してください。<strong>同期</strong>ボタン。 <aside class="bcls-aside bcls-aside--information">同期後もミーティングが表示されない場合は、ミーティングが<strong>予定</strong>ズームで、予定されているミーティングが 30 未満であること。</aside>
       </li>
-      <li>Return to your <a href="https://zoom.us/meeting" target="_blank">Zoom meeting</a> account.</li>
-      <li>Click the blue <strong>Start</strong> button to start your meeting.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/live-zoom-integration/zoom-start-event.png" /></figure>
-        <aside class="bcls-aside bcls-aside--information">Note: Due to a Zoom limitation, before starting to broadcast the Zoom meeting to Brightcove Live, the Zoom meeting has to be started.</aside>
+      <li>あなたに戻る<a href="https://zoom.us/meeting" target="_blank">ズーム会議</a>アカウント。</li>
+      <li>青色をクリック<strong>始める</strong>ボタンをクリックしてミーティングを開始します。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/live-zoom-integration/zoom-start-event.png" /></figure> <aside class="bcls-aside bcls-aside--information">注:ズームの制限により、ズーム会議をBrightcove Liveにブロードキャストする前に、ズーム会議を開始する必要があります。</aside>
       </li>
-      <li>Back in the  Live <strong>Control Room</strong>, click the <strong>Start Broadcasting</strong> button.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/live-zoom-integration/start_broadcasting_button.png" /></figure>
+      <li>ライブに戻る<strong>制御室</strong>、 クリック<strong>放送開始</strong>ボタン。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/live-zoom-integration/start_broadcasting_button.png" /></figure>
       </li>
-      <li>After the last step, you will be able to see your Zoom Meeting in the <strong>Control Room</strong>.
-        <aside class="bcls-aside bcls-aside--warning">
+      <li>最後の手順の後、Zoom ミーティングを<strong>制御室</strong>. <aside class="bcls-aside bcls-aside--warning">
           <ul>
-            <li>At any time during the Zoom Meeting, you can stop and restart broadcasting. However, if you are not actively broadcasting the event may time out if the gap exceeds the Event reconnect time.</li>
-            <li>Zoom broadcast over Brightcove will be delayed by approximately 20 seconds.</li>
-            <li>If the Zoom meeting does not start streaming after 20 seconds you can click <strong>Stop Broadcasting</strong> and then <strong>Start Broadcasting</strong> again.</li>
-            <li>Because the Zoom stream is a third-party service, some advanced Live features may not be supported, including SSAI.</li>
-          </ul>
-        </aside>
+            <li>ズームミーティング中はいつでも、ブロードキャストを停止および再開できます。ただし、アクティブにブロードキャストしていない場合、ギャップがイベントの再接続時間を超えると、イベントがタイムアウトする可能性があります。</li>
+            <li>ブライトコーブでのズーム放送は約20秒遅れます。</li>
+            <li>Zoom ミーティングが 20 秒経ってもストリーミングを開始しない場合は、<strong>配信停止</strong>その後<strong>放送開始</strong>また。</li>
+            <li>Zoomストリームはサードパーティのサービスであるため、SSAIなどの一部の高度なライブ機能がサポートされていない場合があります。</li>
+          </ul> </aside>
       </li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Uninstalling_the_Zoom_Integration">Uninstalling the Zoom Integration</h2>
-    <h3>Removing the integration</h3>
-    <p>To remove the Zoom integrations from your account:</p>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Uninstalling_the_Zoom_Integration">ズーム統合のアンインストール</h2>
+    <h3>連動の削除</h3>
+    <p>アカウントからZoom連動を削除するには、次の手順に従います。</p>
     <ol class="bcls-tasklist-restart">
-      <li>Log in to Studio.</li>
-      <li>In the primary navigation, click <strong>Admin &gt; Integrations</strong>.</li>
-      <li>Click the <strong>Trash</strong> icon.</li>
-      <li>When asked to confirm, click the <strong>Confirm</strong> button.</li>
+      <li>Studioにログインします。</li>
+      <li>プライマリ ナビゲーションで、<strong>管理者 &gt; 統合</strong>.</li>
+      <li>クリック<strong>ごみ</strong>アイコン。</li>
+      <li>確認を求められたら、<strong>確認</strong>ボタン。</li>
     </ol>
-    <h3>To remove Brightcove Live Connect from your Zoom account</h3>
-    <p>You can completely remove the <strong>Brightcove Live Connect</strong> app from your Zoom account by connecting to Zoom:</p>
+    <h3>ZoomアカウントからBrightcoveLiveConnectを削除するには</h3>
+    <p>完全に取り除くことができます<strong>ブライトコーブ ライブ コネクト</strong>Zoomに接続して、Zoomアカウントからアプリ：</p>
     <ol class="bcls-tasklist">
-      <li>Login to your Zoom Account and navigate to the <strong>Zoom App Marketplace</strong>.</li>
-      <li>Click <strong>Manage &gt; Installed Apps</strong> or search for the <strong>Brightcove</strong> app.</li>
-      <li>Click the <strong>Brightcove</strong> app.</li>
-      <li>Click <strong>Uninstall</strong>.</li>
-    </ol>
-  </section>
-</article>
+      <li>Zoom アカウントにログインし、<strong> Zoomアプリマーケットプレイス</strong>.</li>
+      <li>クリック<strong>管理 &gt; インストール済みアプリ</strong>または検索<strong>ブライトコーブ</strong>アプリ。</li>
+      <li>クリック<strong>ブライトコーブ</strong>アプリ。</li>
+      <li>クリック<strong>アンインストール</strong>.</li>
+    </ol>   </section></article>

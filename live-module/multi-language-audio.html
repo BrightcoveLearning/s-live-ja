@@ -1,115 +1,84 @@
-<h1>{{ page.title }}</h1>
-<article class="bcls-article">
-  <summary>{{ page.description }}</summary>
-  <section class="bcls-section">
-    <h2 id="Introduction">Introduction</h2>
-    <p>This feature allows ingesting multiple audio languages, descriptive or ambient audio experience tracks to be available for live playback. You can follow the steps here using Studio. You can also use the Live API. For details, see the <a href="https://apis.support.brightcove.com/live-api/guides/live-multi-language-audio.html">Multi Language Audio with the Live API</a> document.</p>
-    <aside class="bcls-aside bcls-aside--information">Note: Currently, the input formats supported include Real-Time Transport Protocol (RTP) and Secure Reliable Transport (SRT).</aside>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Prerequisites">Prerequisites</h2>
-    <p>There are a few prerequisites for multiple language audio tracks.</p>
-    <h3>Enable your account</h3>
-    <p>Contact customer support to enable this feature for your account</p>
-    <h3>Get encoder values</h3>
-    <p>Get the following values from your encoder: For details, refer to your encoder documentation.</p>
+<h1>{{page.title}}</h1> <article class="bcls-article"> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>この機能により、複数のオーディオ言語、記述的またはアンビエントオーディオエクスペリエンストラックを取り込んで、ライブ再生に利用できるようになります。Studioを使用して、ここの手順に従うことができます。LiveAPIも使用できます。詳細については、<a href="https://apis.support.brightcove.com/live-api/guides/live-multi-language-audio.html"> Live API による多言語オーディオ</a>資料。</p> <aside class="bcls-aside bcls-aside--information">注:現在サポートされている入力形式には、Real-TimeTransportProtocol（RTP;リアルタイム転送プロトコル）とSecureReliableTransport（SRT;セキュア信頼性トランスポート）があります。</aside> </section> <section class="bcls-section">
+    <h2 id="Prerequisites">前提条件</h2>
+    <p>複数言語のオーディオトラックには、いくつかの前提条件があります。</p>
+    <h3>アカウントを有効にする</h3>
+    <p>お客様のアカウントでこの機能を有効にするには、カスタマーサポートにお問い合わせください。</p>
+    <h3>エンコーダ値の取得</h3>
+    <p>エンコーダから次の値を取得します。詳細については、エンコーダのマニュアルを参照してください。</p>
     <ul>
-      <li>Define the <strong>PID (Packet Identifier)</strong> for each audio track in your encoder</li>
-      <li>Define the <strong>Video PID</strong> asscociated with the video in your encoder</li>
+      <li>定義する<strong>PID (パケット識別子)</strong>エンコーダーの各オーディオ トラックに対して</li>
+      <li>定義する<strong>ビデオ PID</strong>エンコーダーのビデオに関連付けられています</li>
     </ul>
-    <p>If you don't know the PID values from your encoder, see the <a href="#Getting_encoder_values">Getting encoder values</a> section.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Adding_Audio_Tracks">Adding Audio Tracks</h2>
-    <p>When creating a new Live event or channel:</p>
+    <p>エンコーダからの PID 値がわからない場合は、<a href="#Getting_encoder_values">エンコーダ値の取得</a>セクション。</p>  </section><section class="bcls-section">
+    <h2 id="Adding_Audio_Tracks">オーディオトラックの追加</h2>
+    <p>新しいライブイベントまたはチャネルを作成する場合:</p>
     <ol class="bcls-tasklist">
-      <li>In Studio, open the <strong>Live</strong> module.</li>
-      <li>Click either <strong>Create Channel</strong> or <strong>Create Event</strong>.
-        <figure class="bcls-figure"> <img class="bcls-image" alt="Manage events" src="/assets/images/s-live-img/live-module/multi-language-audio/manage-events.png" /> </figure>
+      <li>Studio で、<strong>ライブ</strong>モジュール。</li>
+      <li>どちらかをクリック<strong>チャンネルを作成</strong>また<strong>イベントを作成</strong>. <figure class="bcls-figure"> <img class="bcls-image" alt="イベントの管理" src="/assets/images/s-live-img/live-module/multi-language-audio/manage-events.png" /> </figure>
       </li>
-      <li>Expand the <strong>Audio Tracks</strong> section. You may see that the <strong>Add Audio Tracks</strong> button is grayed out. This is because multiple audio tracks are only supported for RTP and SRT input formats.
-        <figure class="bcls-figure"> <img class="bcls-image" alt="Expand audio tracks" src="/assets/images/s-live-img/live-module/multi-language-audio/expand-audio-tracks.png" /> </figure>
+      <li>拡大する<strong>オーディオトラック</strong>セクション。あなたはそれを見るかもしれません<strong>オーディオ トラックを追加する</strong>ボタンがグレー表示されます。これは、複数のオーディオトラックがRTPおよびSRT入力フォーマットでだけサポートされているためです。 <figure class="bcls-figure"> <img class="bcls-image" alt="オーディオトラックの拡張" src="/assets/images/s-live-img/live-module/multi-language-audio/expand-audio-tracks.png" /> </figure>
       </li>
-      <li>Expand the <strong>Advanced Options</strong> section and change the <strong>Input Format</strong> to either <strong>RTP</strong> or <strong>SRT</strong>. Now, the <strong>Add Audio Tracks</strong> button will be enabled.
-        <figure class="bcls-figure"> <img class="bcls-image" alt="Select input format" src="/assets/images/s-live-img/live-module/multi-language-audio/input-format.png" /> </figure>
+      <li>拡大する<strong>高度なオプション</strong>セクションを変更して<strong>入力フォーマット</strong>どちらかに<strong>RTP</strong>また<strong>SRT</strong> .今、<strong>オーディオ トラックを追加する</strong>ボタンが有効になります。 <figure class="bcls-figure"> <img class="bcls-image" alt="入力形式の選択" src="/assets/images/s-live-img/live-module/multi-language-audio/input-format.png" /> </figure>
       </li>
-      <li>For <strong>CIDR Whitelist</strong>, enter either <strong>0.0.0.0/0</strong> to connect to the RTP endpoint to allow all networks, or a specific value. This controls who can connect to the RTP or SRT endpoints.
-        <figure class="bcls-figure"> <img class="bcls-image" alt="CIDR Whitelist" src="/assets/images/s-live-img/live-module/multi-language-audio/cidr-whitelist.png" /> </figure>
+      <li>為に<strong>CIDR ホワイトリスト</strong>、いずれかを入力<strong>0.0.0.0/0</strong> RTP エンドポイントに接続して、すべてのネットワークまたは特定の値を許可します。これにより、RTP または SRT エンドポイントに接続できるユーザーを制御します。 <figure class="bcls-figure"> <img class="bcls-image" alt="CIDRホワイトリスト" src="/assets/images/s-live-img/live-module/multi-language-audio/cidr-whitelist.png" /> </figure>
       </li>
-      <li>For more information about advanced input formats, see the <a href="creating-and-managing-live-events-using-live-module.html#advanced">Configuring advanced options</a> document. </li>
-      <li>Click <strong>Add Audio Tracks</strong>.
-        <figure class="bcls-figure"> <img class="bcls-image" alt="Add Audio Tracks" src="/assets/images/s-live-img/live-module/multi-language-audio/add-audio-tracks.png" /> </figure>
+      <li>高度な入力形式の詳細については、<a href="creating-and-managing-live-events-using-live-module.html#advanced">詳細オプションの構成</a>資料。 </li>
+      <li>クリック<strong>オーディオ トラックを追加する</strong>. <figure class="bcls-figure"> <img class="bcls-image" alt="オーディオトラックの追加" src="/assets/images/s-live-img/live-module/multi-language-audio/add-audio-tracks.png" /> </figure>
       </li>
-      <li>Enter field values for each audio track. Fields with an asterisk (*) are required.
-        <figure class="bcls-figure"> <img class="bcls-image" alt="Enter audio track data" src="/assets/images/s-live-img/live-module/multi-language-audio/enter-audio-tracks.png" /> </figure>
+      <li>各オーディオトラックのフィールド値を入力します。アスタリスク（*）の付いたフィールドは必須です。 <figure class="bcls-figure"> <img class="bcls-image" alt="オーディオトラックデータの入力" src="/assets/images/s-live-img/live-module/multi-language-audio/enter-audio-tracks.png" /> </figure>
         <ul>
-          <li><strong>Default</strong> - Select the default audio track</li>
-          <li><strong>Language*</strong> - The language code for the audio track; Example: en, es, cy-GB, etc.</li>
-          <li><strong>PID*</strong> - The Packet Identifier (PID) code defined in your encoder to sync audio tracks in your incoming stream to the correct language and variant
-            <aside class="bcls-aside bcls-aside--information">Unique PID values are required for each audio track.</aside>
+          <li><strong>デフォルト</strong>- デフォルトのオーディオトラックを選択</li>
+          <li><strong>言語*</strong> - オーディオ トラックの言語コード。例：en、es、cy-GBなど</li>
+          <li><strong>PID*</strong> - 受信ストリームのオーディオ トラックを正しい言語とバリアントに同期するためにエンコーダで定義されたパケット識別子 (PID) コード<aside class="bcls-aside bcls-aside--information">オーディオ トラックごとに一意の PID 値が必要です。</aside>
           </li>
-          <li><strong>Video PID*</strong> - The Packet Identifier (PID) code associated with the video; this value is the same for all audio tracks </li>
-          <li><strong>Variant</strong> - The variant of the audio track; values are:
+          <li><strong>ビデオ PID*</strong> - ビデオに関連付けられたパケット識別子 (PID) コード。この値は、すべてのオーディオ トラックで同じです </li>
+          <li><strong>変異体</strong>- オーディオ トラックのバリアント。値は次のとおりです。
             <ul>
-              <li><strong>main</strong></li>
-              <li><strong>alternate</strong></li>
-              <li><strong>caption</strong></li>
-              <li><strong>subtitle</strong></li>
-              <li><strong>supplementary</strong></li>
-              <li><strong>commentary</strong></li>
-              <li><strong>dub</strong></li>
+              <li><strong>メイン</strong></li>
+              <li><strong>交互に行う</strong></li>
+              <li><strong>キャプション</strong></li>
+              <li><strong>副題</strong></li>
+              <li><strong>補足的な</strong></li>
+              <li><strong>解説の</strong></li>
+              <li><strong>吹き替え</strong></li>
             </ul>
           </li>
-          <li><strong>Label</strong> - It is highly recommended to enter a label value (example: English, Spanish, etc.); if the label field is blank, the language code will be used as the label </li>
+          <li><strong>ラベル</strong>- ラベル値を入力することを強くお勧めします (例:英語、スペイン語など）;ラベルフィールドが空白の場合、言語コードがラベルとして使用されます。 </li>
         </ul>
       </li>
-      <li>Click the <strong>+</strong> and <strong>-</strong> buttons, to add or remove audio tracks.
-        <aside class="bcls-aside bcls-aside--information">Note: You can add up to six Audio Tracks. If there is a need to add more tracks, please contact support.</aside>
+      <li>クリック<strong>+</strong>と<strong>-</strong>ボタンを使用して、オーディオ トラックを追加または削除します。 <aside class="bcls-aside bcls-aside--information">注:最大6つのオーディオトラックを追加できます。さらにトラックを追加する必要がある場合は、サポートに連絡してください。</aside>
       </li>
-      <li>Fill in the rest of the fields for a new channel or event. For details, see the <a href="creating-and-managing-live-events-using-live-module.html">Creating and Managing Live Events</a> document. </li>
-      <li>Click either <strong>Create Event</strong> or <strong>Create Channel</strong>.</li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Switching_Audio_Track">Switching Audio Track</h2>
+      <li>新しいチャネルまたはイベントの残りのフィールドに入力します。詳細については、<a href="creating-and-managing-live-events-using-live-module.html">ライブ イベントの作成と管理</a>資料。 </li>
+      <li>どちらかをクリック<strong>イベントを作成</strong>また<strong>チャンネルを作成</strong>.</li>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Switching_Audio_Track">オーディオトラックの切り替え</h2>
     <ol class="bcls-tasklist-restart">
       <li>
-        <p>If the multi-audio tracks were set up correctly, the player will have a headphone icon that can be used to switch between tracks.</p>
-        <figure class="bcls-figure"> <img class="bcls-image" alt="Switch audio track" src="/assets/images/s-live-img/live-module/multi-language-audio/player-multi-language.png" /> </figure>
+        <p>マルチオーディオトラックが正しく設定されている場合、プレーヤーには、トラックを切り替えるために使用できるヘッドフォンアイコンが表示されます。</p> <figure class="bcls-figure"> <img class="bcls-image" alt="オーディオトラックの切り替え" src="/assets/images/s-live-img/live-module/multi-language-audio/player-multi-language.png" /> </figure>
       </li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Getting_encoder_values">Getting encoder values</h2>
-    <p>For the following fields, you will provide values from your encoder:</p>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Getting_encoder_values">エンコーダ値の取得</h2>
+    <p>次のフィールドには、エンコーダから値を入力します。</p>
     <ul>
-      <li><strong>PID</strong> - The packet idenifier from the MPEG-TS that refers to a specific audio track</li>
-      <li><strong>Video PID</strong> - The packet idenifier from the MPEG-TS input stream to select the video track</li>
+      <li><strong>PID</strong> - 特定のオーディオ トラックを参照する MPEG-TS からのパケット識別子</li>
+      <li><strong>ビデオ PID</strong> - ビデオ トラックを選択するための MPEG-TS 入力ストリームからのパケット識別子</li>
     </ul>
-    <p>If you don't know the PIDs from your encoder, you can use a tool such as ffprobe (included with ffmpeg) to inspect the PIDs in the stream. For details, see the <a href="https://apis.support.brightcove.com/live-api/guides/live-multi-language-audio.html#Configure_your_encoder">Multi Language Audio with the Live API</a> document.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Viewing_live_event_info">Viewing live event info</h2>
-    <p>Once you have created your live event, you will see event information in the control room, including your audio tracks.</p>
+    <p>エンコーダのPIDがわからない場合は、ffprobe（ffmpegに付属）などのツールを使用してストリーム内のPIDを検査できます。詳細については、<a href="https://apis.support.brightcove.com/live-api/guides/live-multi-language-audio.html#Configure_your_encoder"> Live API による多言語オーディオ</a>資料。</p>  </section><section class="bcls-section">
+    <h2 id="Viewing_live_event_info">ライブイベント情報の表示</h2>
+    <p>ライブイベントを作成すると、オーディオトラックを含むイベント情報がコントロールルームに表示されます。</p>
     <ol class="bcls-tasklist-restart">
-      <li>Return to  Studio.</li>
-      <li>In the left navigation, click <strong>Live</strong>. Then, select <strong>Control Room</strong>. Here, you will find detailed information about your live event.
-        <figure class="bcls-figure"> <img class="bcls-image" alt="Control room" src="/assets/images/s-live-img/live-module/multi-language-audio/control-room.png" /> </figure>
+      <li>Studioに戻ります。</li>
+      <li>左側のナビゲーションで、<strong>ライブ</strong>.次に、選択します<strong>制御室</strong>.ライブイベントに関する詳細情報はこちらの詳細情報をご覧ください。 <figure class="bcls-figure"> <img class="bcls-image" alt="制御室" src="/assets/images/s-live-img/live-module/multi-language-audio/control-room.png" /> </figure>
       </li>
-      <li>Scroll down to find the <strong>Audio Tracks</strong> section. This information include Program ID (<strong>PID</strong>) and Video Program ID (<strong>Video PID</strong>).
-        <figure class="bcls-figure"> <img class="bcls-image" alt="Audio Tracks information" src="/assets/images/s-live-img/live-module/multi-language-audio/audio-tracks-control-room.png" /> </figure>
+      <li>下にスクロールして<strong>オーディオトラック</strong>セクション。この情報には、プログラム ID (<strong> PID</strong> ) およびビデオ プログラム ID (<strong>ビデオ PID</strong> ）。 <figure class="bcls-figure"> <img class="bcls-image" alt="オーディオトラック情報" src="/assets/images/s-live-img/live-module/multi-language-audio/audio-tracks-control-room.png" /> </figure>
       </li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Using_the_Live_API">Using the Live API</h2>
-    <p>You can also use the <a href="https://apis.support.brightcove.com/live-api/references/reference.html">Live API</a> to manage multiple language audio tracks with your live streams.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Limitations">Limitations</h2>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Using_the_Live_API">ライブ API の使用</h2>
+    <p>また、<a href="https://apis.support.brightcove.com/live-api/references/reference.html">ライブ API</a>ライブ ストリームで複数言語のオーディオ トラックを管理します。</p>  </section><section class="bcls-section">
+    <h2 id="Limitations">制約事項</h2>
     <ul>
-      <li>Multi language audio is currently not supported for Live jobs using SSAI or Redundancy Groups.</li>
-      <li>If you are using Live-to-VOD, the VOD assets will not have multiple audio tracks.</li>
-    </ul>
-  </section>
-</article>
+      <li>現在、SSAIまたは冗長グループを使用したライブジョブでは、多言語オーディオはサポートされていません。</li>
+      <li>Live-to-VODを使用している場合、VODアセットには複数のオーディオトラックはありません。</li>
+    </ul>   </section></article>

@@ -1,67 +1,53 @@
 <article class="bcls-article">
-  <h1>{{ page.title }}</h1>
-  <summary>{{ page.description }}</summary>
-  <section class="bcls-section">
-    <p>Brightcove's live streaming video feature enables you to deliver high-quality live streaming broadcasts to any device or browser. You can deliver live streams without any custom development or complex integration, however, APIs are available if you have custom needs or require custom integrations.</p>
-    <aside class="bcls-aside bcls-aside--information">Note: Live streaming support is available only for Enterprise publishers.</aside>
-    <p>Brightcove also supports live streaming with DVR. When a Brightcove Player is configured with the <a href="https://player.support.brightcove.com/plugins/live-dvrux-plugin.html">DVRUX plugin</a>, live streams act like they are being played through the viewer's digital video recorder.</p>
-    <p>Brightcove offers several options for delivering live streams. This topic contains the following sections:</p>
+  <h1>{{page.title}}</h1> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <p>Brightcoveのライブストリーミングビデオ機能により、どのデバイスやブラウザにも高品質のライブストリーミングブロードキャストを配信できます。ライブストリームの配信には、カスタム開発または複雑な統合は必要ありません、独自のニーズがある、カスタム統合が必要な場合には、APIを利用できます。</p> <aside class="bcls-aside bcls-aside--information">注:ライブストリーミングのサポートは、Enterpriseパブリッシャーでのみ利用できます。</aside>
+    <p>BrightcoveはDVRによるライブストリーミングもサポートしています。Brightcove Player が<a href="https://player.support.brightcove.com/plugins/live-dvrux-plugin.html">DVRUX プラグイン</a>、ライブ ストリームは、視聴者のデジタル ビデオ レコーダーで再生されているかのように機能します。</p>
+    <p>Brightcoveは、ライブストリーム配信用のオプションを複数提供しています。このトピックでは次の項目について説明します。</p>
     <ul>
-      <li><a href="#compare">Hardware vs. cloud-based encoding</a></li>
-      <li><a href="#livemodule">Live streaming using the Live module</a></li>
-      <li><a href="#hardware">Live streaming using a hardware-based encoder</a></li>
+      <li><a href="#compare">ハードウェアとクラウドベースのエンコーディング</a></li>
+      <li><a href="#livemodule">ライブモジュールを使用したライブストリーミング</a></li>
+      <li><a href="#hardware">ハードウェアベースのエンコーダーを使用したライブストリーミング</a></li>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="compare">ハードウェアとクラウドベースのエンコーディング</h2>
+    <p>Brightcoveは、ハードウェアベースとクラウドベースの両方のエンコーディングをサポートしています。イベントにハードウェアベースとクラウドベースのどちらのエンコーディングが適しているかは、さまざまな要因で決まります。</p>
+    <h3>ハードウェアエンコーディング使用</h3>
+    <ul>
+      <li>最大容量が明確な24x7のリニアフィード</li>
+      <li>ロケーションが1つのアーキテクチャー</li>
+      <li>ブロードキャストフォーマットのサポート</li>
     </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="compare">Hardware vs. cloud-based encoding</h2>
-    <p>Brightcove supports both hardware and cloud-based encoding. Various factors may determine whether hardware or cloud-based encoding is best for an event.</p>
-    <h3>When to use hardware encoding</h3>
+    <h3>クラウドエンコーディング使用</h3>
     <ul>
-      <li>24x7 linear feeds where capacity is known</li>
-      <li>An architecture based on a single location</li>
-      <li>Broadcast format support</li>
-    </ul>
-    <h3>When to use cloud encoding</h3>
+      <li>イベント用</li>
+      <li>容量の要件が分からないとき</li>
+      <li>分散型の組織向け</li>
+      <li>イベントのタイミングが不明で、配信開始までのスピードが重要なとき</li>
+      <li>帯域幅ボトルネックがある場合</li>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="livemodule">ライブモジュールを使用したライブストリーミング</h2>
+    <p>ライブモジュールは、デスクトップデバイスとモバイルデバイスの両方にライブイベントをブロードキャストするのに役立つ使いやすいインターフェイスを提供します。プログラミングは必要ありません。Liveモジュールにお客様のイベント情報を入力した後に、現場のエンコーダーに使用するエンコーダー設定が提供されます。トランスコーディングはすべてクラウドで行われます。したがって、ハードウェアベースのトランスコーダーは必要ありません。詳細は、以下のドキュメントのいずれかを参照してください。</p>
     <ul>
-      <li>For events</li>
-      <li>When capacity requirements are unknown</li>
-      <li>For de-centralized organizations</li>
-      <li>When event timing is unknown and speed is important</li>
-      <li>If there are bandwidth bottlenecks</li>
-    </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="livemodule">Live streaming using the Live module</h2>
-    <p>The Live module provides an easy to use interface to help you broadcast a live event to both desktop and mobile devices. No programming is required. After entering your event information into the Live module, you will be provided with a set of encoder settings that you plug into your on-site encoder. All transcoding is done in the cloud so you don't need a hardware based transcoder. For more information, see one of these documents.</p>
-    <ul>
-    {% if site.product_short == "Video Cloud" or site.product_short == "Beacon" or site.product_short == "CorpTV" %}
-      <li><a href="/live/live-module/creating-and-managing-live-events-using-live-module.html">Creating and Managing Live Events using the Live Module</a> - Provides all the details on using the Live module</li>
-      <li><a href="/live/get-started/step-step-using-live-module-telestream-wirecast.html">Step-by-Step: Using the Live Module with Telestream Wirecast</a> - Provides a step by step guide on using the Live module with Telestream Wirecast</li>
-      <li><a href="/live/get-started/step-step-using-live-module-open-broadcaster-software-obs.html">Step-by-Step: Using the Live Module with Open Broadcaster Software (OBS)</a> - Provides a step by step guide on using the Live module with Open Broadcaster Software</li>
-      <li><a href="/live/get-started/live-module-guidelines-and-best-practices.html">Live Module Guidelines and Best Practices</a> - Provides a series of best practices and recommendations to help ensure a high quality, stable, live streaming experience</li>
+    {% if site.product_short==&quot;VideoCloud&quot;またはsite.product_short=="Beacon"またはsite.product_short=="CorpTV"%}
+      <li><a href="/live/live-module/creating-and-managing-live-events-using-live-module.html">Live モジュールを使用したライブ イベントの作成と管理</a>- Live モジュールの使用に関するすべての詳細を提供します</li>
+      <li><a href="/live/get-started/step-step-using-live-module-telestream-wirecast.html">ステップバイステップ:Telestream Wirecast で Live モジュールを使用する</a>- Telestream Wirecast で Live モジュールを使用するためのステップ バイ ステップ ガイドを提供します</li>
+      <li><a href="/live/get-started/step-step-using-live-module-open-broadcaster-software-obs.html">ステップバイステップ:Open Broadcaster Software (OBS) で Live モジュールを使用する</a>- Open Broadcaster Software で Live モジュールを使用するためのステップ バイ ステップ ガイドを提供します。</li>
+      <li><a href="/live/get-started/live-module-guidelines-and-best-practices.html">ライブ モジュールのガイドラインとベスト プラクティス</a>- 高品質で安定したライブ ストリーミング エクスペリエンスを確保するための一連のベスト プラクティスと推奨事項を提供します。</li>
+        {% endif%}{%if site.product_short==&quot;Live&quot;%}
+      <li><a href="/live-module/creating-and-managing-live-events-using-live-module.html">Live モジュールを使用したライブ イベントの作成と管理</a>- Live モジュールの使用に関するすべての詳細を提供します</li>
+      <li><a href="/get-started/step-step-using-live-module-telestream-wirecast.html">ステップバイステップ:Telestream Wirecast で Live モジュールを使用する</a>- Telestream Wirecast で Live モジュールを使用するためのステップ バイ ステップ ガイドを提供します</li>
+      <li><a href="/get-started/step-step-using-live-module-open-broadcaster-software-obs.html">ステップバイステップ:Open Broadcaster Software (OBS) で Live モジュールを使用する</a>- Open Broadcaster Software で Live モジュールを使用するためのステップ バイ ステップ ガイドを提供します。</li>
+      <li><a href="/get-started/live-module-guidelines-and-best-practices.html">ライブ モジュールのガイドラインとベスト プラクティス</a>- 高品質で安定したライブ ストリーミング エクスペリエンスを確保するための一連のベスト プラクティスと推奨事項を提供します。</li>
         {% endif %}
-    {% if site.product_short == "Live" %}
-      <li><a href="/live-module/creating-and-managing-live-events-using-live-module.html">Creating and Managing Live Events using the Live Module</a> - Provides all the details on using the Live module</li>
-      <li><a href="/get-started/step-step-using-live-module-telestream-wirecast.html">Step-by-Step: Using the Live Module with Telestream Wirecast</a> - Provides a step by step guide on using the Live module with Telestream Wirecast</li>
-      <li><a href="/get-started/step-step-using-live-module-open-broadcaster-software-obs.html">Step-by-Step: Using the Live Module with Open Broadcaster Software (OBS)</a> - Provides a step by step guide on using the Live module with Open Broadcaster Software</li>
-      <li><a href="/get-started/live-module-guidelines-and-best-practices.html">Live Module Guidelines and Best Practices</a> - Provides a series of best practices and recommendations to help ensure a high quality, stable, live streaming experience</li>
-        {% endif %}
-    </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="live_api">Live API</h2>
-    <p>The Live API is a REST-based API that allows you to create and manage live streaming events. Optional features include:</p>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="live_api">ライブ API </h2>
+    <p>ライブ API は、ライブストリーミングイベントを作成および管理できる REST ベースの API です。オプション機能は次のとおりです。</p>
     <ul>
-      <li>Server-side ad insertion (SSAI)</li>
-      <li>AES-128 encryption</li>
-      <li>Create video-on-demand assets from clips taken from the live stream</li>
-      <li>DVR capability</li>
-      <li>Multiple CDNs</li>
+      <li>サーバー側広告挿入 (SSAI)</li>
+      <li>AES-128暗号化</li>
+      <li>ライブストリームから取得したクリップからビデオオンデマンドアセットを作成する</li>
+      <li>DVR機能</li>
+      <li>複数の CDN</li>
     </ul>
-    <p>For more information, see the <a href="https://apis.support.brightcove.com/live-api/index.html">Live API documentation</a>.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="hardware">Live streaming using a hardware-based encoder</h2>
-    <p>This option uses a hardware based encoder to encode and deliver live streams to your CDN. On the Video Cloud side, you create remote assets to host the streams and then you can publish a player for your live stream.</p>
-  </section>
-</article>
+    <p>詳細については、<a href="https://apis.support.brightcove.com/live-api/index.html">ライブ API ドキュメント</a>.</p>  </section><section class="bcls-section">
+    <h2 id="hardware">ハードウェアベースのエンコーダーを使用したライブストリーミング</h2>
+    <p>このオプションでは、ハードウェアベースのエンコーダーを使用して、ライブストリームをエンコードし、お客様のCDNへ配信します。Video Cloud側では、ストリームをホストするためのリモートアセットを作成します。その後、ライブストリーム用のプレーヤーを公開できます。</p>   </section></article>

@@ -1,43 +1,31 @@
 <article class="bcls-article">
-    <h1>{{ page.title }}</h1>
-    <summary>{{ page.description }}</summary>
+    <h1>{{page.title}}</h1> <summary>{{page.description}}</summary> <section class="bcls-section">
 
-    <section class="bcls-section">
+        <h2 id="Introduction">はじめに</h2>
 
-        <h2 id="Introduction">Introduction</h2>
+        <p>ライブモジュールは、デスクトップデバイスとモバイルデバイスの両方にライブイベントをブロードキャストするのに役立ちます。BrightcoveLiveを使用すると、ストリームコンテンツを他のホスティングプラットフォームに公開して、より多くの視聴者に提供できます。</p>  </section><section class="bcls-section">
 
-        <p>The Live module can help you broadcast a live event to both desktop and mobile devices. You can use Brightcove Live to publish your stream content to other hosting platforms to reach a larger audience.</p>
+        <h2 id="Hosting_platforms">ホスティングプラットフォーム</h2>
 
-    </section>
-
-    <section class="bcls-section">
-
-        <h2 id="Hosting_platforms">Hosting platforms</h2>
-
-        <p>Here is the list of the Brightcove Live supported hosting platforms:</p>
-              {% if site.product_short == "Video Cloud" or site.product_short == "Beacon" or site.product_short == "CorpTV" %}
+        <p>BrightcoveLiveがサポートするホスティングプラットフォームのリストを次に示します。</p>
+              {% if site.product_short==&quot;VideoCloud&quot;またはsite.product_short=="Beacon"またはsite.product_short=="CorpTV"%}
         <ul>
-            <li><a href="/live/web-conferencing/host-avaya-conference-brightcove-live.html">Avaya Conference</a></li>
-            <li><a href="/live/web-conferencing/host-cisco-webex-conference-brightcove-live.html">Cisco Webex</a></li>
-            <li><a href="/live/web-conferencing/host-zoom-conference-brightcove-live.html">Zoom</a></li>
-            <li><a href="/live/web-conferencing/host-inxpo-live.html">INXPO Events</a></li>
-            <li><a href="/live/live-module/zoom-live-integration.html">Zoom Meetings</a></li>
+            <li><a href="/live/web-conferencing/host-avaya-conference-brightcove-live.html">アバヤ会議</a></li>
+            <li><a href="/live/web-conferencing/host-cisco-webex-conference-brightcove-live.html">CiscoWebex</a></li>
+            <li><a href="/live/web-conferencing/host-zoom-conference-brightcove-live.html">ズーム</a></li>
+            <li><a href="/live/web-conferencing/host-inxpo-live.html">INXPOイベント</a></li>
+            <li><a href="/live/live-module/zoom-live-integration.html">会議のズーム</a></li>
             <li><a href="https://studio.support.brightcove.com/social/publishing-live-event-facebook.html">Facebook</a></li>
-            <li><a href="https://studio.support.brightcove.com/social/publishing-live-event-youtube.html">Youtube</a></li>
+            <li><a href="https://studio.support.brightcove.com/social/publishing-live-event-youtube.html">ユーチューブ</a></li>
         </ul>
-        {% endif %}
-        {% if site.product_short == "Live" %}
+        {% endif%}{%if site.product_short==&quot;Live&quot;%}
 <ul>
-            <li><a href="/web-conferencing/host-avaya-conference-brightcove-live.html">Avaya Conference</a></li>
-            <li><a href="/web-conferencing/host-cisco-webex-conference-brightcove-live.html">Cisco Webex</a></li>
-            <li><a href="/web-conferencing/host-zoom-conference-brightcove-live.html">Zoom</a></li>
-            <li><a href="/web-conferencing/host-inxpo-live.html">INXPO Events</a></li>
-            <li><a href="/live-module/zoom-live-integration.html">Zoom Meetings</a></li>
+            <li><a href="/web-conferencing/host-avaya-conference-brightcove-live.html">アバヤ会議</a></li>
+            <li><a href="/web-conferencing/host-cisco-webex-conference-brightcove-live.html">CiscoWebex</a></li>
+            <li><a href="/web-conferencing/host-zoom-conference-brightcove-live.html">ズーム</a></li>
+            <li><a href="/web-conferencing/host-inxpo-live.html">INXPOイベント</a></li>
+            <li><a href="/live-module/zoom-live-integration.html">会議のズーム</a></li>
             <li><a href="https://studio.support.brightcove.com/social/publishing-live-event-facebook.html">Facebook</a></li>
-            <li><a href="https://studio.support.brightcove.com/social/publishing-live-event-youtube.html">Youtube</a></li>
+            <li><a href="https://studio.support.brightcove.com/social/publishing-live-event-youtube.html">ユーチューブ</a></li>
         </ul>
-              {% endif %}
-        <aside class="bcls-aside bcls-aside--information">Note: If you want to publish your live stream to other platforms such as Telegram, contact your account manager. </aside>
-    </section>
-
-</article>
+              {% endif %}<aside class="bcls-aside bcls-aside--information">ノート：Telegramなどの他のプラットフォームにライブストリームを公開する場合は、アカウントマネージャに連絡してください。 </aside> </section> </article>

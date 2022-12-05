@@ -1,77 +1,49 @@
 <article class="bcls-article">
-  <h1>{{ page.title }}</h1>
-  <summary>{{ page.description }}</summary>
-  <section class="bcls-section">
-    <h2 id="create">Enabling live redundancy</h2>
-    <p>The Live Redundancy feature is enabled by adding two or more streams to a live event in the Live module.</p>
-    <aside class="bcls-aside bcls-aside--information">Notes:
+  <h1>{{page.title}}</h1> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <h2 id="create">ライブ冗長性のイネーブル化</h2>
+    <p>ライブ冗長性機能は、ライブモジュールのライブイベントに2つ以上のストリームを追加することによってイネーブルにします。</p> <aside class="bcls-aside bcls-aside--information">注意:
       <ul>
-        <li>Every account has a Static Entry Point (SEP) limit of 3, with the exception of us-west-2 which will have a limit of 10. If you need more SEPs, contact Brightcove support.</li>
-        <li>If you are using live redundancy with SSAI, you must insert ads into all jobs in the group at the same time.</li>
-        <li>Live redundancy <strong>cannot</strong> be used with DRM-protected live streams at this time.</li>
-        <li>The primary stream should be published in the region closest to the encoder. The backup stream should be published in the region next closest to the encoder.</li>
-        <li>Backup streams cannot be deleted.</li>
-      </ul>
-    </aside>
-    <aside class="bcls-aside bcls-aside--warning language-editable">Note that for live redundancy to actually work, <strong>you need to publish with the new video ID that is generated when you add a backup stream</strong>.</aside>
+        <li>すべてのアカウントのStaticEntryPoint（SEP;静的エントリポイント）の制限は3ですが、us-west-2は10に制限されます。SEPがさらに必要な場合は、Brightcoveサポートにお問い合わせください。</li>
+        <li>SSAIでライブ冗長性を使用している場合は、グループ内のすべてのジョブに同時に広告を挿入する必要があります。</li>
+        <li>ライブ冗長性<strong>できない</strong>現時点では、DRM で保護されたライブ ストリームで使用できます。</li>
+        <li>プライマリストリームは、エンコーダに最も近いリージョンでパブリッシュする必要があります。バックアップストリームは、エンコーダに最も近い領域で公開する必要があります。</li>
+        <li>バックアップストリームは削除できません。</li>
+      </ul> </aside> <aside class="bcls-aside bcls-aside--warning language-editable">ライブ冗長性が実際に機能するためには、<strong>バックアップ ストリームを追加するときに生成される新しい動画 ID を使用して公開する必要があります</strong>.</aside>
     <ol class="bcls-tasklist-restart">
-      <li>Create a live event using the Live module. For complete information on creating a live event, see <a href="creating-and-managing-live-events-using-live-module.html">Creating and Managing Live Events using the Live Module</a>.</li>
-      <li>In the <strong>Stream Options</strong> section, name and select the region of your streams. Click <strong>+ Add a Backup Stream </strong>to add additional backup streams.
-        <aside class="bcls-aside bcls-aside--information">Note: If you don't see the Add a Backup Stream button then live redundancy has not been enabled for your account.</aside>
+      <li>Liveモジュールを使用してライブイベントを作成します。ライブ イベントの作成の詳細については、次を参照してください。<a href="creating-and-managing-live-events-using-live-module.html"> Live モジュールを使用したライブ イベントの作成と管理</a>.</li>
+      <li>の中に<strong>ストリーム オプション</strong>セクションで、ストリームのリージョンに名前を付けて選択します。クリック<strong>+ バックアップ ストリームを追加</strong>追加のバックアップ ストリームを追加します。 <aside class="bcls-aside bcls-aside--information">注:[AddaBackupStream]ボタンが表示されない場合は、アカウントのライブ冗長性がイネーブルになっていません。</aside>
       </li>
-      <li>Click <strong>+ Add a Backup Stream</strong> to add a backup (redundant) stream  to the live event. You can add as many backup streams as your account  supports.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt=""  src="/assets/images/s-live-img/live-module/redundancy/stream-options.png" /></figure>
+      <li>クリック<strong>+ バックアップ ストリームを追加</strong>ライブ イベントにバックアップ (冗長) ストリームを追加します。バックアップストリームは、アカウントがサポートする数だけ追加できます。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt=""  src="/assets/images/s-live-img/live-module/redundancy/stream-options.png" /></figure>
       </li>
-      <li>Name your primary and backup streams, and select a <strong>Region</strong> that is closest to where your encoder is located. By default, the <strong>Region</strong> is set to Oregon (US West) which may result in degraded performance if you are streaming from another continent. The <strong>Reference ID </strong> is an optional identifier for internal use and must be unique (max 150 characters).
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/redundant-stream-options.png" /></figure>
+      <li>プライマリ ストリームとバックアップ ストリームに名前を付けて、<strong>領域</strong>これは、エンコーダーが配置されている場所に最も近い場所です。デフォルトでは、<strong>領域</strong>オレゴン (米国西部) に設定されているため、別の大陸からストリーミングしている場合、パフォーマンスが低下する可能性があります。の<strong>参照ID</strong>内部使用のためのオプションの識別子であり、一意である必要があります (最大 150 文字)。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/redundant-stream-options.png" /></figure>
       </li>
-      <li>Complete the live event setup.</li>
-      <li>Alternatively, you can also add a backup stream from the Control Room page by clicking <span class="button-blue">Add a Backup Stream</span>.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/backup-stream-control-room.png" /></figure>
+      <li>ライブイベントのセットアップを完了します。</li>
+      <li>または、コントロール ルーム ページからバックアップ ストリームを追加することもできます。<span class="button-blue">バックアップ ストリームを追加する</span>. <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/backup-stream-control-room.png" /></figure>
       </li>
-      <li>Enter the <strong>Stream Name</strong> and <strong>Region</strong>.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/add-backup-stream-dialog.png" /></figure>
+      <li>入力します<strong>ストリーム名</strong>と<strong>領域</strong>. <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/add-backup-stream-dialog.png" /></figure>
       </li>
-      <li>The Control Room will display  the <strong>Endpoint</strong> and <strong>Stream Name</strong> details for each stream.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/stream-info.png" /></figure>
+      <li>コントロールルームには、<strong>終点</strong>と<strong>ストリーム名</strong>各ストリームの詳細。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/stream-info.png" /></figure>
       </li>
-      <li>Stream information is displayed in the <strong>Control Room</strong> while the event is streaming.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/stream-info-streaming.png" /></figure>
+      <li>ストリーム情報は<strong>制御室</strong>イベントのストリーミング中。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/stream-info-streaming.png" /></figure>
       </li>
-    </ol>
-    <aside class="bcls-aside bcls-aside--information"> Notes:
-      <li>If you created a single stream event and you add a backup stream in the Control Room page, you will need to <strong>republish your player embed code</strong> with the new video ID to benefit from redundancy.</li>
-      <li>If you do not republish the player, you will also <strong>not</strong> see the analytics data from the reporting tab.</li>
-    </aside>
-  </section>
-  <section class="bcls-section">
-    <h2 id="clipping">Clipping</h2>
-    <p>Video clipping will be available for each stream by selecting the desired stream from the drop-down menu above the preview player. For information on creating a clip, see <a target="_blank" href="creating-video-clip-using-live-module.html">Creating a Video Clip Using the Live Module</a>.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt=""  src="/assets/images/s-live-img/live-module/redundancy/select-stream-clip.png" /></figure>
-  </section>
-  <section class="bcls-section">
-    <h2 id="monitoring">Monitoring</h2>
-    <p>Click the <strong>Monitoring</strong> tab below the preview player to view monitoring information. Monitoring is available for each  stream by selecting the desired stream from the dropdown list.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/monitoring.png" /></figure>
-    <p>Monitoring information is available while an event is in progress and for up to 1 hour after the event ends.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="stop-stream">Stopping a stream</h2>
-    <p>To stop a backup stream, on the Control Room page, select the stream from the dropdown list and then click <strong>Stop This Stream</strong>. Stopping a stream will immediately remove that stream from the group.</p>
-    <p>
-      <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/stop-stream.png" /></figure>
+    </ol> <aside class="bcls-aside bcls-aside--information"> 注意:
+      <li>単一のストリーム イベントを作成し、[コントロール ルーム] ページでバックアップ ストリームを追加する場合は、次のことを行う必要があります。<strong>プレーヤーの埋め込みコードを再公開する</strong>冗長性の恩恵を受けるために、新しいビデオ ID を使用します。</li>
+      <li>プレーヤーを再公開しない場合は、<strong>いいえ</strong>レポート タブから分析データを参照してください。</li>   </aside></section><section class="bcls-section">
+    <h2 id="clipping">クリッピング中</h2>
+    <p>プレビュープレーヤーの上にあるドロップダウンメニューから目的のストリームを選択すると、ストリームごとにビデオクリップを使用できます。クリップの作成については、を参照してください。<a target="_blank" href="creating-video-clip-using-live-module.html"> Live モジュールを使用してビデオ クリップを作成する</a>.</p>   <figure class="bcls-figure"><img class="bcls-image--no-border" alt=""  src="/assets/images/s-live-img/live-module/redundancy/select-stream-clip.png" /></figure></section><section class="bcls-section">
+    <h2 id="monitoring">監視</h2>
+    <p>クリック<strong>モニタリング</strong>タブをクリックして、監視情報を表示します。各ストリームのモニタリングは、ドロップダウンリストから目的のストリームを選択することによって使用できます。</p> <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/monitoring.png" /></figure>
+    <p>監視情報は、イベントの進行中およびイベント終了後最大1時間使用できます。</p>  </section><section class="bcls-section">
+    <h2 id="stop-stream">ストリームの停止</h2>
+    <p>バックアップ ストリームを停止するには、[コントロール ルーム] ページで、ドロップダウン リストからストリームを選択し、<strong>このストリームを停止</strong>.ストリームを停止すると、そのストリームがただちにグループから削除されます。</p>
+    <p> <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/stop-stream.png" /></figure>
     </p>
-    <p>To stop all streams, select the event name from the dropdown list and then click <strong>Stop All Streams</strong>.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Deleting_a_Redundant_Group">Removing idle events</h2>
-    <p>When a redundant event ends, it will appear on the <strong>Completed</strong> events page with a status of <strong>Idle</strong>. Idle events will count against your redundant group account limit. To not have the redundant event count against your account limit, change the event status from <strong>Idle</strong> to <strong>Closed</strong> by closing the event.</p>
+    <p>すべてのストリームを停止するには、ドロップダウン リストからイベント名を選択し、<strong>すべてのストリームを停止</strong>.</p>  </section><section class="bcls-section">
+    <h2 id="Deleting_a_Redundant_Group">アイドルイベントの削除</h2>
+    <p>冗長イベントが終了すると、<strong>完了</strong>ステータスのイベントページ<strong>アイドル</strong>.アイドルイベントは、冗長グループアカウントの制限に対してカウントされます。アカウントの制限に対して冗長なイベント カウントを行わないようにするには、イベント ステータスを次のように変更します。<strong>アイドル</strong>に<strong>閉まっている</strong>イベントを閉じることによって。</p>
     <ol class="bcls-tasklist-restart">
-      <li>On the <strong>Manage Events</strong> page, click the <strong>Completed</strong> tab. </li>
-      <li>The redundant event should be in an <strong>Idle</strong> state.</li>
-      <li>Click on the event group and then click <strong>Close</strong> to move the redundant event to a <strong>Completed</strong> state.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/completed-events.png" /></figure>
+      <li>上で<strong>イベントの管理</strong>ページで、<strong>完了</strong>タブ。 </li>
+      <li>冗長イベントは<strong>アイドル</strong>州。</li>
+      <li>イベント グループをクリックしてから、<strong>近い</strong>冗長なイベントを<strong>完了</strong>州。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/redundancy/completed-events.png" /></figure>
       </li>
-    </ol>
-  </section>
-</article>
+    </ol>   </section></article>

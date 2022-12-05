@@ -1,52 +1,33 @@
 <article class="bcls-article">
-  <h1>Scheduling Live Events</h1>
-  <summary>{{ page.description }}</summary>
-  <section class="bcls-section">
-    <p>The Live module provides the ability to schedule when recurring  events start and end. When the scheduled start time is reached, the recurring event will become activated. Note that only events that were created as recurring events can be scheduled.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/scheduling/recurring-event.png" /></figure>
-    <aside class="bcls-aside bcls-aside--information">Note: Currently, the scheduling of redundant groups is not supported.</aside>
-    <h3 id="notes">Notes on scheduled events</h3>
+  <h1>ライブイベントのスケジューリング</h1> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <p>ライブモジュールは、繰り返しイベントが開始および終了するタイミングをスケジューリングする機能を提供します。スケジュールされた開始時刻に達すると、繰り返しイベントがアクティブになります。スケジュールできるのは、繰り返しイベントとして作成されたイベントだけです。</p> <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/scheduling/recurring-event.png" /></figure> <aside class="bcls-aside bcls-aside--information">注:現在、冗長グループのスケジューリングはサポートされていません。</aside>
+    <h3 id="notes">スケジュールされたイベントに関する注意事項</h3>
     <ul>
-      <li>Six pending activations can be scheduled at a time; if more are needed, please contact Brightcove Support</li>
-      <li>Once the event is activated, the default <strong>Reconnect Time</strong> is still valid (see <a href="https://apis.support.brightcove.com/live-api/guides/live-api-static-entry-points.html" target="_blank">Live API: Static Entry Points for more information</a>)</li>
-      <li>All of the limitations associated with <a href="creating-and-managing-live-events-using-live-module.html#recurring_limitations">static entry points</a> are still valid</li>
-    </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="schedule">Adding a schedule to an event</h2>
-    <p>If your account is enabled for Auto Start/Stop, a <strong>Scheduling</strong> section will be available when you edit the event (on the Control Room page).</p>
-    <p>To use Auto Start/Stop, follow the instructions below:</p>
+      <li>一度に6つの保留中のアクティベーションをスケジュールできます。さらに必要な場合は、Brightcoveサポートにお問い合わせください。</li>
+      <li>イベントがアクティブ化されると、デフォルト<strong>再接続時間</strong>は引き続き有効です (参照<a href="https://apis.support.brightcove.com/live-api/guides/live-api-static-entry-points.html" target="_blank">ライブ API:詳細については、静的エントリ ポイント</a>)</li>
+      <li>関連するすべての制限<a href="creating-and-managing-live-events-using-live-module.html#recurring_limitations">静的エントリ ポイント</a>まだ有効です</li>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="schedule">イベントへのスケジュールの追加</h2>
+    <p>アカウントで自動開始/停止が有効になっている場合、<strong>スケジューリング</strong>このセクションは、イベントを編集するときに使用できます ([コントロール ルーム] ページで)。</p>
+    <p>自動開始/停止を使用するには、以下の手順に従ってください。</p>
     <ol class="bcls-tasklist-restart">
-      <li>Open the <strong>Live</strong> module.</li>
-      <li>Create a new recurring live event or click the <strong>Standby</strong> tab and click on an existing event.</li>
-      <li>On the <strong>Control Room</strong> page, locate the <strong>Scheduling</strong> section.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/scheduling/schedule-section.png" /></figure>
+      <li>を開きます<strong>ライブ</strong>モジュール。</li>
+      <li>新しい定期的なライブ イベントを作成するか、<strong>待機する</strong>タブをクリックし、既存のイベントをクリックします。</li>
+      <li>上で<strong>制御室</strong>ページで、<strong>スケジューリング</strong>セクション。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="" height="" src="/assets/images/s-live-img/live-module/scheduling/schedule-section.png" /></figure>
       </li>
-      <li>Click <strong>+ Add Schedule</strong> and enter the event <strong>Start Date</strong> and <strong>End Date</strong>.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/start-end-dates.png" /></figure>
-        <aside class="bcls-aside bcls-aside--information">Note: While we do not prevent multiple schedules from running at the same time, the conflicting rows will be shown with a warning. Conflicting schedules are likely to fail if not addressed prior to the activation time. To avoid the warning, simply delete one of the rows or adjust the times.</aside>
+      <li>クリック<strong>+ スケジュールを追加</strong>そしてイベントに入る<strong>開始日</strong>と<strong>終了日</strong>. <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/start-end-dates.png" /></figure> <aside class="bcls-aside bcls-aside--information">注:複数のスケジュールが同時に実行されるのを防ぐことはできませんが、競合する行には警告が表示されます。競合するスケジュールは、アクティベーション時間より前に対処しないと失敗する可能性があります。警告を回避するには、行の1つを削除するか、時間を調整します。</aside>
       </li>
-      <li> To create another schedule, click <strong>+ Add Schedule</strong>. The <strong>+ Add Schedule</strong> button will become disabled when the maximum number of  pending activations is reached.</li>
-      <li><aside class="bcls-aside bcls-aside--information">Note: there is a soft limit of 6 future schedules can be shown/created in Live UI. However, If you need more, you can reach out to Brightcove Support to increase this limit. 
-	  </aside>
-  <p>To delete a schedule, click the delete (<img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/trash-icon.png" />) icon next to the schedule.</p>
-        
-        <aside class="bcls-aside bcls-aside--information">Notes:
+      <li> 別のスケジュールを作成するには、<strong> + スケジュールを追加</strong>.の<strong>+ スケジュールを追加</strong>保留中のアクティブ化の最大数に達すると、ボタンは無効になります。</li>
+      <li><aside class="bcls-aside bcls-aside--information">注意:ライブUIで表示/作成できるスケジュールには、6つのソフト制限があります。ただし、さらに必要な場合は、BrightcoveSupportに連絡してこの制限を増やすことができます。 </aside>
+  <p>スケジュールを削除するには、削除 (<img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/trash-icon.png" /> ) アイコンをクリックします。</p> <aside class="bcls-aside bcls-aside--information">注意:
           <ul>
-            <li>Scheduled events will turn yellow as a warning when there are conflicting schedules</li>
-            <li>Scheduled events will turn red when streaming fails for any reason</li>
-            <li>Failed schedules will remain visible for 7 days</li>
-          </ul>
-        </aside>
+            <li>スケジュールが衝突すると、スケジュールされたイベントが警告として黄色に変わります。</li>
+            <li>何らかの理由でストリーミングに失敗すると、スケジュールされたイベントが赤に変わります。</li>
+            <li>失敗したスケジュールは7日間表示されます。</li>
+          </ul> </aside>
       </li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="upcoming">Viewing upcoming activations</h2>
-    <p>To view all scheduled events, click the <strong>Standby</strong> tab. The next upcoming <strong>Start</strong> and <strong>Stop</strong> dates are shown under the <strong>Upcoming</strong> title.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/upcoming-events.png" /></figure>
-    <p>The <strong>Show</strong> dropdown at the top of the page can be used to  display only scheduled events.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/show-events.png" /></figure>
-    <p>Once an event starts, it will be displayed on the <strong>Live</strong> tab, and the start time will be disabled.</p>
-  </section>
-</article>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="upcoming">今後のアクティベーションの表示</h2>
+    <p>スケジュールされたすべてのイベントを表示するには、<strong>待機する</strong>タブ。次の予定<strong>始める</strong>と<strong>止まる</strong>日付は<strong>今後</strong>題名。</p> <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/upcoming-events.png" /></figure>
+    <p>の<strong>見せる</strong>ページ上部のドロップダウンを使用して、スケジュールされたイベントのみを表示できます。</p> <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/scheduling/show-events.png" /></figure>
+    <p>イベントが開始されると、<strong>ライブ</strong>タブ、および開始時間は無効になります。</p>   </section></article>

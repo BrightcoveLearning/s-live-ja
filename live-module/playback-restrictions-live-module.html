@@ -1,139 +1,105 @@
-<h1>{{ page.title }}</h1>
-<article class="bcls-article">
-  <summary>{{ page.description }}</summary>
-  <section class="bcls-section">
-    <h2 id="Introduction">Introduction</h2>
-    <p> By default, live streams talk to the Brightcove Live API to stream your event. A new system to manage Playback Rights and Restrictions sits in front of the Live API and provides playback authorization using DRM licenses DRM licenses or AES-128 (HLSe) encryption. </p>
-    <p>Live streams use <a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html#Runtime_restrictions">runtime restrictions</a>, so you will need a JSON Web Token (JWT) with specific permissions (claims) for your stream request.</p>
-    <p>The token is used when requesting the video license, once the video has been loaded to the player and the source has been selected.</p>
-    <p>To use Playback Restrictions with live streams, your account must be enabled for either studio-grade DRM or AES-128 (HLSe) encryption.</p>
-    <aside class="bcls-aside bcls-aside--information">With HLSe content, when the player changes rendition, due to improved connectivity or after the first segment is loaded, a new license request is made.</aside>
-    <p>If you are not familiar with this feature, see the <a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html">Overview: Brightcove Playback Restrictions</a> document.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Requirements">Requirements</h2>
-    <p>This feature is a paid add-on for your account. Contact your account manager to enable the following:</p>
+<h1>{{page.title}}</h1> <article class="bcls-article"> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p> デフォルトでは、ライブストリームはBrightcoveLiveAPIと通信してイベントをストリーミングします。再生権限と制限を管理する新しいシステムがLiveAPIの前に配置され、DRMライセンスDRMライセンスまたはAES-128（HLSe）暗号化を使用して再生許可を提供します。 </p>
+    <p>ライブ ストリームの使用<a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html#Runtime_restrictions">ランタイムの制限</a>であるため、ストリーム リクエストには特定のアクセス許可 (クレーム) を持つ JSON Web トークン (JWT) が必要です。</p>
+    <p>トークンは、ビデオがプレーヤーにロードされ、ソースが選択されると、ビデオライセンスを要求するときに使用されます。</p>
+    <p>ライブストリームで再生制限を使用するには、Studio-gradeDRMまたはAES-128（HLSe）暗号化のいずれかでアカウントを有効にする必要があります。</p> <aside class="bcls-aside bcls-aside--information">HLSeコンテンツでは、接続性の向上のため、または最初のセグメントがロードされた後、プレーヤーがレンディションを変更すると、新しいライセンス要求が行われます。</aside>
+    <p>この機能に慣れていない場合は、<a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html">概要：ブライトコーブの再生制限</a>資料。</p>  </section><section class="bcls-section">
+    <h2 id="Requirements">要件</h2>
+    <p>この機能は、お客様のアカウントの有料アドオンです。アカウントマネージャに問い合せて、次のことを有効にします。</p>
     <ul>
-      <li>Enable your account for either DRM or AES-128 (HLSe) encryption.</li>
+      <li>DRMまたはAES-128（HLSe）暗号化のいずれかのアカウントを有効にします。</li>
       <li>
-        <p>Enable your account for Playback Rights (EPA).</p>
-        <aside class="bcls-aside bcls-aside--warning">Currently, enabling your account for Playback Rights (EPA) will impact your ability to do live clipping.</aside>
+        <p>再生権限(EPA)のアカウントを有効にします。</p> <aside class="bcls-aside bcls-aside--warning">現在、再生権限(EPA)のアカウントを有効にすると、ライブクリッピング機能に影響を与えます。</aside>
       </li>
-    </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Workflow">Workflow</h2>
-    <p>To use Playback Restrictions with a live event, follow these steps:</p>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="Workflow">ワークフロー</h2>
+    <p>ライブイベントで再生制限を使用する手順は、次のとおりです。</p>
     <ol class="bcls-tasklist">
-      <li><a href="#Define_Playback_Rights">Define Playback Rights</a></li>
-      <li><a href="#Create_a_live_event_with_Playback_Restrictions">Create a live event with Playback Restrictions</a></li>
-      <li><a href="#Publish_the_live_event">Publish the live event</a></li>
+      <li><a href="#Define_Playback_Rights">再生権限の定義</a></li>
+      <li><a href="#Create_a_live_event_with_Playback_Restrictions">再生制限付きライブイベントの作成</a></li>
+      <li><a href="#Publish_the_live_event">ライブイベントを公開する</a></li>
     </ol>
-    <p>Alternatively, you can use the Brightcove APis to create the live event and associate Playback Restrictions. For details, see the <a href="https://apis.support.brightcove.com/live-api/guides/live-playback-restrictions.html">Playback Restrictions with Live Streams</a> document.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Define_Playback_Rights">Define Playback Rights</h2>
-    <p>Brightcove's Playback Rights Management Service allows you to manage video playback based on the following:</p>
+    <p>または、BrightcoveAPisを使用してライブイベントを作成し、再生制限を関連付けることもできます。詳細については、<a href="https://apis.support.brightcove.com/live-api/guides/live-playback-restrictions.html">ライブ ストリームでの再生制限</a>資料。</p>  </section><section class="bcls-section">
+    <h2 id="Define_Playback_Rights">再生権限の定義</h2>
+    <p>BrightcoveのPlaybackRightsManagementServiceでは、次の項目に基づいてビデオ再生を管理できます。</p>
     <ul>
-      <li>Geography</li>
-      <li>Domain</li>
-      <li>Proxy</li>
-      <li>Schedule dates</li>
+      <li>地理学</li>
+      <li>ドメイン</li>
+      <li>プロキシー</li>
+      <li>スケジュール日</li>
     </ul>
-    <p>Here are the steps to define Playback Rights in Studio:</p>
+    <p>Studioで再生権限を定義する手順は次のとおりです。</p>
     <ol class="bcls-tasklist-restart">
-      <li>Review the validation diagrams for Playback Rights in the <a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/implementing-playback-rights.html">Implementing Playback Rights</a> document.</li>
-      <li>In  Studio, in the primary navigation click <strong>Admin &gt; Playback Rights</strong>. </li>
-      <li>To create a new right, click <span class="button-blue">New Playback Rights</span>.
-        <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="Manage playback rights" src="/assets/images/s-live-img/live-module/playback-restrictions/manage-playback-rights.png" /> </figure>
+      <li>の再生権の検証図を確認してください。<a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/implementing-playback-rights.html">再生権の実装</a>資料。</li>
+      <li>Studio のプライマリ ナビゲーションで、<strong>管理者 &gt; 再生権</strong>. </li>
+      <li>新しい権限を作成するには、<span class="button-blue">新しい再生権</span>. <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="再生権限の管理" src="/assets/images/s-live-img/live-module/playback-restrictions/manage-playback-rights.png" /> </figure>
       </li>
-      <li>Add a <strong>Playback Rights Name</strong> and click <span class="button-blue">Save</span>.</li>
-      <li>In the left navigation, select each category and edit changes.
-        <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="Playback rights detail" src="/assets/images/s-live-img/live-module/playback-restrictions/playback-rights-detail.png" /> </figure>
+      <li>を追加<strong>再生権名</strong>そしてクリック<span class="button-blue">保存</span>.</li>
+      <li>左側のナビゲーションで、各カテゴリを選択し、変更を編集します。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="再生権限の詳細" src="/assets/images/s-live-img/live-module/playback-restrictions/playback-rights-detail.png" /> </figure>
       </li>
-      <li>Click <span class="button-blue">Save</span>.</li>
-      <li>To edit a Playback Right, click on the <strong>Name</strong> link.</li>
-      {% if site.product_short == "Video Cloud" or site.product_short == "Beacon" or site.product_short == "CorpTV" %}
-      <li>For details, see the <a href="/admin/managing-playback-rights.html">Managing Playback Rights</a> document.</li>
-      {% endif %}            
-      {% if site.product_short == "Live" %}
-      <li>For details, see the <a href="https://studio.support.brightcove.com/admin/managing-playback-rights.html">Managing Playback Rights</a> document.</li>
+      <li>クリック<span class="button-blue">保存</span>.</li>
+      <li>再生権を編集するには、<strong>名前</strong>リンク。</li>
+      {% if site.product_short==&quot;VideoCloud&quot;またはsite.product_short=="Beacon"またはsite.product_short=="CorpTV"%}
+      <li>詳細については、<a href="/admin/managing-playback-rights.html">再生権の管理</a>資料。</li>
+      {% endif%}{%if site.product_short==&quot;Live&quot;%}
+      <li>詳細については、<a href="https://studio.support.brightcove.com/admin/managing-playback-rights.html">再生権の管理</a>資料。</li>
       {% endif %}
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Create_a_live_event_with_Playback_Restrictions">Create a live event with Playback Restrictions</h2>
-    <p>First, use the <strong>Live</strong> module to create a live event with Playback Restrictions. Then, associate a defined Playback Right with the live event using the <strong>Media</strong> module and the Video ID generated during the live job creation.</p>
-    <p>To create a Live Event, follow these steps:</p>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Create_a_live_event_with_Playback_Restrictions">再生制限付きライブイベントの作成</h2>
+    <p>まず、<strong>ライブ</strong>モジュールを使用して、再生制限付きのライブ イベントを作成します。次に、定義済みの再生権をライブ イベントに関連付けます。<strong>メディア</strong>モジュールと、ライブ ジョブの作成中に生成されたビデオ ID。</p>
+    <p>ライブイベントを作成するには、次の手順を実行します。</p>
     <ol class="bcls-tasklist-restart">
-      <li>Open the <strong>Live</strong> module.</li>
-      <li>From the <strong>Manage Events</strong> page click <span class="button-blue">Create Event</span>.</li>
-      <li>Enter the event data as needed. For details, see the <a href="creating-and-managing-live-events-using-live-module.html">Creating and Managing Live Events using the Live Module</a> document.</li>
-      <li>Expand the <strong>Advanced Options</strong> section.</li>
-      <li>For <strong>Content Encryption</strong>, select either <strong>AES-128</strong> or <strong>Digital Rights Management (DRM)</strong>.
+      <li>開く<strong>ライブ</strong>モジュール。</li>
+      <li>から<strong>イベントの管理</strong>ページクリック<span class="button-blue">イベントを作成</span>.</li>
+      <li>必要に応じてイベントデータを入力します。詳細については、<a href="creating-and-managing-live-events-using-live-module.html"> Live モジュールを使用したライブ イベントの作成と管理</a>資料。</li>
+      <li>拡大する<strong>高度なオプション</strong>セクション。</li>
+      <li>為に<strong>コンテンツの暗号化</strong>、いずれかを選択<strong>AES-128</strong>また<strong>デジタル著作権管理 (DRM)</strong> .
         <ul>
-          <li><strong>AES-128</strong> - Secures the live HLS outputs using AES-128 encryption. If this option is selected, you must enter your <strong>Encryption Key</strong>. The key must be 32 hexadecimal characters. For best results, use a <a href="https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx">key generator</a>, choosing the <code translate="No">128-bit</code> and <code translate="No">Hex</code> options.  The encryption key value is only entered in the Live module, it is not used as part of your encoder settings.
-            <aside class="bcls-aside bcls-aside--information">Note: When using this option, you should not send an encrypted stream to Brightcove. Configure your encoder as you normally would. Selecting this option will encrypt the HLS output streams sent from Brightcove Live.</aside>
-            <aside class="bcls-aside bcls-aside--information">Note: Clips can't be created from encrypted live streams.</aside>
+          <li><strong>AES-128</strong> - AES-128 暗号化を使用してライブ HLS 出力を保護します。このオプションを選択した場合は、<strong>暗号化キー</strong>.キーは、32個の16進数文字であることが必要です。最良の結果を得るには、<a href="https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx">キージェネレーター</a>、選択<code translate="No">128ビット</code>と<code translate="No">16 進数</code>オプション。暗号キー値はLiveモジュールにだけ入力され、エンコーダ設定の一部としては使用されません。 <aside class="bcls-aside bcls-aside--information">注:このオプションを使用する場合は、暗号化ストリームをBrightcoveに送信しないでください。通常どおりにエンコーダを設定します。このオプションを選択すると、BrightcoveLiveから送信されるHLS出力ストリームが暗号化されます。</aside> <aside class="bcls-aside bcls-aside--information">注:暗号化されたライブストリームからクリップを作成することはできません。</aside>
           </li>
-          <li><strong>Digital Rights Management (DRM)</strong> - Secure Premium content stream with Digital Rights Management technologies.
-            {% if site.product_short == "Video Cloud" or site.product_short == "Beacon" or site.product_short == "CorpTV" %}}        
-            For details, see the <a href="/live/general/live-drm.html">Live DRM</a> document.
-            {% endif %}
-            {% if site.product_short == "Live" %}
-            For details, see the <a href="/general/live-drm.html">Live DRM</a> document.
-            {% endif %}
+          <li><strong>デジタル著作権管理 (DRM)</strong> - デジタル著作権管理テクノロジを使用して、プレミアム コンテンツ ストリームを保護します。 {% if site.product_short == &quot;Video Cloud&quot; or site.product_short == "Beacon" or site.product_short == "CorpTV" %}} 詳細については、<a href="/live/general/live-drm.html">ライブ DRM</a>資料。 {% endif %} {% if site.product_short == &quot;ライブ&quot; %} 詳細については、<a href="/general/live-drm.html">ライブ DRM</a>資料。 {% endif %}
             <ul>
-              <li>HLS + <a href="https://developer.apple.com/streaming/fps/">FairPlay</a></li>
-              <li>HLS (fMP4) + Widevine Modular</li>
-            </ul>
-            <aside class="bcls-aside bcls-aside--information"> Your Live account must be enabled first by Brightcove Support in order to use DRM. To publish a DRM-enabled event, it is necessary to create and use a DRM enabled player v6.37.1 or greater.</aside>
+              <li>HLS +<a href="https://developer.apple.com/streaming/fps/">フェアプレー</a></li>
+              <li>HLS (FMP4) + Widevine モジュラー</li>
+            </ul> <aside class="bcls-aside bcls-aside--information"> DRM を使用するには、まずBrightcoveサポートが Live アカウントを有効にする必要があります。DRM 対応イベントを公開するには、DRM 対応プレーヤー v6.37.1 以降を作成して使用する必要があります。</aside>
           </li>
         </ul>
       </li>
-      <li>To use Playback Restrictions, select <strong>Enable Playback Restrictions</strong>. For details, see the <a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html">Overview: Brightcove Playback Restrictions</a> document.
-        <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="Enable Playback Restrictions" src="/assets/images/s-live-img/live-module/playback-restrictions/enable-restrictions.png" /> </figure>
+      <li>再生制限を使用するには、<strong>再生制限を有効にする</strong>.詳細については、<a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html">概要：ブライトコーブの再生制限</a>資料。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="再生制限の有効化" src="/assets/images/s-live-img/live-module/playback-restrictions/enable-restrictions.png" /> </figure>
       </li>
-      <li>Enter any additional event details.</li>
-      <li>Click <strong>Create Event</strong>.</li>
-      <li>In the Live <strong>Control Room</strong>, click the <strong>Video ID</strong> associated with the event.
-        <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="Event Video ID" src="/assets/images/s-live-img/live-module/playback-restrictions/event-video-id.png" /> </figure>
+      <li>その他のイベントの詳細を入力します。</li>
+      <li>クリック<strong>イベントを作成</strong>.</li>
+      <li>ライブで<strong>制御室</strong>、 クリック<strong>動画ID</strong>イベントに関連付けられています。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="イベントビデオID" src="/assets/images/s-live-img/live-module/playback-restrictions/event-video-id.png" /> </figure>
       </li>
-      <li>You will be redirected to the <strong>Media</strong> module for this video ID.</li>
-      <li>In the <strong>Playback Restrictions</strong> section, select the Playback Restriction that you defined in the <a href="#Define_playback_rights">Define Playback Rights</a> section.
-        <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="Assign Playback Restriction" src="/assets/images/s-live-img/live-module/playback-restrictions/assign-playback-right.png" /> </figure>
+      <li>にリダイレクトされます。<strong>メディア</strong>この動画 ID のモジュール。</li>
+      <li>の中に<strong>再生制限</strong>セクションで、で定義した再生制限を選択します。<a href="#Define_playback_rights">再生権の定義</a>セクション。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="再生制限の割り当て" src="/assets/images/s-live-img/live-module/playback-restrictions/assign-playback-right.png" /> </figure>
       </li>
-      <li>In the Admin module, you can edit the Playback Right after it has been assigned to an event.</li>
-      {% if site.product_short == "Video Cloud" or site.product_short == "Beacon" or site.product_short == "CorpTV" %}
-      <li>Start streaming your live event. For details, see the <a href="/live/get-started/index.html">Getting Started</a> index page.</li>
+      <li>Adminモジュールでは、イベントに割り当てられた直後に再生を編集できます。</li>
+      {% if site.product_short==&quot;VideoCloud&quot;またはsite.product_short=="Beacon"またはsite.product_short=="CorpTV"%}
+      <li>ライブイベントのストリーミングを開始します。詳細については、<a href="/live/get-started/index.html">入門</a>インデックスページ。</li>
+      {% endif%}{%if site.product_short==&quot;Live&quot;%}
+      <li>ライブイベントのストリーミングを開始します。詳細については、<a href="/get-started/index.html">入門</a>インデックスページ。</li>
       {% endif %}
-      {% if site.product_short == "Live" %}
-      <li>Start streaming your live event. For details, see the <a href="/get-started/index.html">Getting Started</a> index page.</li>
-      {% endif %}
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Publish_the_live_event">Publish the live event</h2>
-    <p>Live streams with Playback Restrictions require a JSON Web Token (JWT) with specific permissions (claims) for your stream request.</p>
-    <p>To publish a live stream with Playback Restrictions, follow these steps:</p>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Publish_the_live_event">ライブイベントを公開する</h2>
+    <p>再生制限付きライブストリームには、ストリーム要求に特定の権限（クレーム）を持つJSONWebToken（JWT）が必要です。</p>
+    <p>再生制限付きライブストリームをパブリッシュする手順は、次のとおりです。</p>
     <ol class="bcls-tasklist-restart">
       <li>
-        <p>Create a JSON Web Token (JWT) and register the public key with Brightcove.</p>
-        <p>For details, see the <a href="https://general.support.brightcove.com/developer/create-json-web-token.html">Creating a JSON Web Token (JWT)</a> document.</p>
+        <p>JSONWebToken（JWT）を作成し、公開キーをBrightcoveに登録します。</p>
+        <p>詳細については、<a href="https://general.support.brightcove.com/developer/create-json-web-token.html"> JSON Web トークン (JWT) の作成</a>資料。</p>
       </li>
-      <li>In  Studio, return to the <strong>Live</strong> module.</li>
-      <li>In the left navigation, select <strong>Publish and Embed</strong>.</li>
-      <li>In the <strong>Live Player Options</strong> section, select your player configured in the previous step. </li>
+      <li>Studio で、<strong>ライブ</strong>モジュール。</li>
+      <li>左側のナビゲーションで、<strong>公開して埋め込む</strong>.</li>
+      <li>の中に<strong>ライブ プレーヤーのオプション</strong>セクションで、前の手順で構成したプレーヤーを選択します。 </li>
       <li>
-        <p>Copy the <strong>Advanced Embed Code</strong> and paste it into your HTML page.</p>
-        <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="Player embed code" src="/assets/images/s-live-img/live-module/playback-restrictions/embed-code.png" /> </figure>
+        <p>コピー<strong>高度な埋め込みコード</strong>HTML ページに貼り付けます。</p> <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="プレーヤーの埋め込みコード" src="/assets/images/s-live-img/live-module/playback-restrictions/embed-code.png" /> </figure>
       </li>
-      <li>Create a custom script with the Advanced embed code.
-        <p>The JWT token is passed with the playback request. If the token is invalid or expired, access to the content will be restricted. The player must be configured to use the token.</p>
-        <p> To configure the Brightcove web player, see the <a href="https://player.support.brightcove.com/playback/playback-restrictions-with-bcp.html#Using_Playback_Rights">Playback Restrictions with Brightcove Player</a> document. </p>
+      <li>高度な埋め込みコードを使用してカスタムスクリプトを作成します。
+        <p>JWTトークンは再生要求とともに渡されます。トークンが無効または期限切れの場合、コンテンツへのアクセスは制限されます。プレイヤーは、トークンを使用するように構成する必要があります。</p>
+        <p> Brightcove Web プレーヤーを設定するには、<a href="https://player.support.brightcove.com/playback/playback-restrictions-with-bcp.html#Using_Playback_Rights"> Brightcove Player での再生制限</a>資料。 </p>
       </li>
-      <li>Confirm playback in your web page.</li>
-      <li>Confirm that playback can be blocked by changing the settings for the Playback Right assigned to the video (live event).</li>
-    </ol>
-  </section>
-</article>
+      <li>Webページで再生を確認します。</li>
+      <li>ビデオ（ライブイベント）に割り当てられたPlaybackRightの設定を変更して、再生をブロックできることを確認します。</li>
+    </ol>   </section></article>

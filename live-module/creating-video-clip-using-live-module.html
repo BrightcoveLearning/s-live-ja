@@ -1,308 +1,252 @@
-<h1>{{ page.title }}</h1>
-<article class="bcls-article">
-  <summary>{{ page.description }}</summary>
-  <section id="top" class="bcls-section">
-    <div class="training-video-player-ipx" data-experience="5a73630f7afd7a00101bc1b5" data-video-ids="5810384996001">&nbsp;</div>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Overview">Overview</h2>
-    <p>The Live module provides the ability to create video clips from completed events. Clips can also be created while a live event is in progress. There are several reasons you might want to create a clip:</p>
+<h1>{{page.title}}</h1> <article class="bcls-article"> <summary>{{page.description}}</summary> <section id="top" class="bcls-section">
+    <div class="training-video-player-ipx" data-experience="5a73630f7afd7a00101bc1b5" data-video-ids="5810384996001">&nbsp;</div>  </section><section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>ライブモジュールは、完了したイベントからビデオクリップを作成する機能を提供します。ライブイベントの進行中にクリップを作成することもできます。クリップを作成したい理由はいくつかあります。</p>
     <ul>
-      <li>To create a short, teaser clip that can be posted to social media</li>
-      <li>To limit the length of a video that you want to post (most platforms limit the length of videos)</li>
-      <li>You have found that shorter videos perform better on social media</li>
+      <li>ソーシャルメディアに投稿できる短いティーザークリップを作成するには</li>
+      <li>投稿する動画の長さを制限するには（ほとんどのプラットフォームでは動画の長さが制限されています）</li>
+      <li>ソーシャルメディアで短い動画のパフォーマンスが向上することがわかりました</li>
     </ul>
-    <p>Clipping can be done with all types of live events and it can also be done <em>during</em> and <em>after</em> the live stream using the Live API or the Live Module.</p>
-    <p>Both the Live Module and the <a href="https://apis.support.brightcove.com/live-api/guides/live-api-creating-vod-clips.html">Live API</a> support creating clips from encrypted or DRM-protected jobs.</p>
-    <h3>Notes</h3>
+    <p>クリッピングはあらゆる種類のライブ イベントで実行でき、それも実行できます。<em>その間</em>と<em>後</em>Live API または Live Module を使用したライブ ストリーム。</p>
+    <p>Live モジュールと<a href="https://apis.support.brightcove.com/live-api/guides/live-api-creating-vod-clips.html">ライブ API</a>暗号化されたジョブまたは DRM で保護されたジョブからのクリップの作成をサポートします。</p>
+    <h3>注</h3>
     <ul>
-      <li>Legacy ingest profiles no longer support live clipping. To create a video clip from a live stream, make sure your account is enabled for Dynamic Delivery and use a Dynamic Delivery ingest profile.</li>
-      <li>VOD clips are incompatible with Context Aware Encoding (CAE) ingest profiles. Clips are automatically processed using the account default ingest profile, so if the default is a CAE profile, the clip creation will fail.</li>
-      <li>Clips can only be created within 7 days of the event end. Afterwards, the <strong>Create Clip</strong> button will be disabled. If the event is longer than 24 hours, only the last 24 hours are clippable.</li>
-      <li>For recurring events: If during the 7 days after an event the event is reactivated, the clipping will only be available for the content of the most recent event. There will be no way to create clips from the prior event, even if it's under 7 days after the last event was deactivated.</li>
-      <li>If you stop and restart a channel for a new live stream, the previous live stream information for clipping may be overwritten.</li>
-      <li>Clips will be frame-accurate <strong>provided that the encoder is sending SMPTE timecodes for the stream</strong> - otherwise, they will be accurate within a couple of frames. Note that to provide clips as quickly as possible, a segment-accurate clip is first created, and replaced by a frame-accurate clip as soon as it is available.</li>
-      <li>Clips with a start time less than 10 seconds into the stream cannot be created.</li>
-      <li>Clipping is not supported when using the Safari browser.</li>
-    </ul>
-    <aside class="bcls-aside bcls-aside--information">Note:  When you create a recurring event, a video is automatically created for it in the Media module. Do <strong>not</strong> delete this video, as it will be needed every time the event reactivated.</aside>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Navigating_the_clip_editor">Navigating the clip editor</h2>
-    <p>To open the clip editor, open the Live module, click on an event name and then click <strong>Create Clip</strong> in the left navigation. The clip editor will open.</p>
-    <p>Note that all times in the clipping interface are based around the UTC time that the video data was received by Brightcove. This is a necessary adjustment to account for streams that have exceeded the VOD window (run more than 24 hours). When a video has exceeded that window, the time we get back from the player can no longer reliably be used to generate clips.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-clip-editor-numbered.png" /></figure>
-    <p>The clip editor is organized as follows:</p>
+      <li>従来の取り込みプロファイルは、ライブクリッピングをサポートしなくなりました。ライブストリームからビデオクリップを作成するには、アカウントが動的配信が有効になっていることを確認し、動的配信インジェストプロファイルを使用します。</li>
+      <li>VODクリップは、ContextAwareEncoding（CAE）取り込みプロファイルと互換性がありません。クリップはアカウントのデフォルト取り込みプロファイルを使用して自動的に処理されるため、デフォルトがCAEプロファイルの場合、クリップの作成は失敗します。</li>
+      <li>クリップは、イベント終了から7日以内にしか作成できません。その後、<strong>クリップを作成</strong>ボタンが無効になります。イベントが 24 時間よりも長い場合は、最後の 24 時間だけがクリップ可能です。</li>
+      <li>定期的なイベントの場合:イベントの 7 日後にイベントが再度アクティブ化された場合、クリップは最新のイベントの内容に対してのみ使用できます。前回のイベントが無効になってから 7 日以内であっても、前のイベントからクリップを作成することはできません。</li>
+      <li>新しいライブストリームのチャネルを停止して再起動すると、以前のクリップ用のライブストリーム情報が上書きされる場合があります。</li>
+      <li>クリップは正確なフレームになります<strong>エンコーダーがストリームの SMPTE タイムコードを送信している場合</strong>- それ以外の場合は、数フレーム以内で正確になります。クリップをできるだけ早く提供するために、セグメント精度が高いクリップが最初に作成され、使用可能になり次第、フレーム精度のクリップに置き換えられます。</li>
+      <li>ストリームへの開始時間が 10 秒未満のクリップは作成できません。</li>
+      <li>Safariブラウザを使用する場合、クリッピングはサポートされていません。</li>
+    </ul> <aside class="bcls-aside bcls-aside--information">注:繰り返しイベントを作成すると、メディアモジュールにビデオが自動的に作成されます。行う<strong>いいえ</strong>イベントが再開されるたびに必要になるため、このビデオを削除してください。</aside> </section> <section class="bcls-section">
+    <h2 id="Navigating_the_clip_editor">クリップエディタのナビゲート</h2>
+    <p>クリップ エディターを開くには、Live モジュールを開き、イベント名をクリックしてから、<strong>クリップを作成</strong>左のナビゲーションにあります。クリップエディタが開きます。</p>
+    <p>クリッピングインターフェイスのすべての時間は、動画データが Brightcove によって受信された UTC 時刻を基準にしています。これは、VOD ウィンドウを超過した（24 時間以上実行）ストリームを考慮するために必要な調整です。ビデオがそのウィンドウを超過すると、プレーヤーから戻った時間は確実にクリップを生成するために使用できなくなります。</p> <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-clip-editor-numbered.png" /></figure>
+    <p>クリップエディタは、次のように構成されています。</p>
     <ul>
-      <li>A - <a href="#preview">Preview player</a></li>
-      <li>B - <a href="#playback_control">Playback control buttons</a></li>
-      <li>C - <a href="#clip_time">Clip time</a></li>
-      <li>D - <a href="#clipping">Clipping buttons</a></li>
-      <li>E - <a href="#preview_clip">Preview clip button</a></li>
-      <li>F - Save button</li>
-      <li>G - <a href="#playhead">Playhead</a></li>
-      <li>H - <a href="#focus_timeline">Focus timeline</a></li>
-      <li>I - <a href="#context_timeline">Context timeline</a></li>
-      <li>J - <a href="#zoom_buttons">Zoom buttons</a></li>
-      <li>K - <a href="#list_of_clips">List of clips</a></li>
-    </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Creating_a_clip">Creating a clip</h2>
-    <p>When creating clips, the highest quality rendition from the selected <strong>Live Ingest Profile</strong> is used as the source for the clip. The default uploading ingest profile for the account is used when creating renditions for the clip.</p>
-    <p>Follow these steps to create a clip.</p>
+      <li>あ -<a href="#preview">プレビュー プレーヤー</a></li>
+      <li>B -<a href="#playback_control">再生コントロールボタン</a></li>
+      <li>C -<a href="#clip_time">クリップタイム</a></li>
+      <li>D -<a href="#clipping">クリッピング ボタン</a></li>
+      <li>えー<a href="#preview_clip">プレビュー クリップ ボタン</a></li>
+      <li>F- 保存ボタン</li>
+      <li>G -<a href="#playhead">プレイヘッド</a></li>
+      <li>ひ -<a href="#focus_timeline">フォーカス タイムライン</a></li>
+      <li>私 -<a href="#context_timeline">コンテキスト タイムライン</a></li>
+      <li>J -<a href="#zoom_buttons">ズームボタン</a></li>
+      <li>K -<a href="#list_of_clips">クリップのリスト</a></li>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="Creating_a_clip">クリップの作成</h2>
+    <p>クリップを作成するとき、選択したクリップから最高品質のレンディション<strong>ライブ取り込みプロファイル</strong>クリップのソースとして使用されます。アカウントのデフォルトのアップロードインジェストプロファイルは、クリップのレンディションを作成するときに使用されます。</p>
+    <p>クリップを作成するには、次の手順に従います。</p>
     <ol class="bcls-tasklist-restart">
-      <li>Using the clipping buttons or shortcut keys, set the start and end points for the clip.
-        <figure><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-clip-portion.png" /></figure>
+      <li>クリップボタンまたはショートカットキーを使用して、クリップの開始点と終了点を設定します。 <figure><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-clip-portion.png" /></figure>
       </li>
-      <li>Click <strong>Save</strong>.</li>
-      <li>Enter the clip video properties.
+      <li>クリック<strong>保存</strong>.</li>
+      <li>クリップビデオのプロパティを入力します。
         <ul>
-          <li><strong>Clip Name</strong> - Name of the clip</li>
-          <li><strong>Short Description</strong> - Description of the clip</li>
-          <li><strong>Tags</strong> - Tags to associate with the clip</li>
-          <li><strong>Reference ID</strong> - Reference ID to assign to the clip</li>
+          <li><strong>クリップ名</strong>- クリップの名前</li>
+          <li><strong>簡単な説明</strong>- クリップの説明</li>
+          <li><strong>タグ</strong>- クリップに関連付けるタグ</li>
+          <li><strong>参照ID</strong> - クリップに割り当てる参照 ID</li>
         </ul>
       </li>
-      <li>Enter any required custom field values.</li>
-      <li>Check <strong>Remove Source Ad Break Content</strong> to remove ad breaks triggered within the clip, keeping only program content.  This option will only appear when the stream is SSAI enabled.</li>
-      <li>Check <strong>Create clip using fast VOD pipeline</strong> to generate the clip more quickly. This option speeds up the turn around time by creating a single <strong>segment-accurate</strong> rendition..  The system will then replace this clip with a <strong>frame-accurate</strong> clip  with the full rendition set when it is available.
-        <figure><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-create-clip-dialog.png" /></figure>
+      <li>必要なカスタムフィールド値を入力します。</li>
+      <li>小切手<strong>ソースの広告ブレーク コンテンツを削除する</strong>クリップ内でトリガーされた広告ブレークを削除し、プログラム コンテンツのみを保持します。このオプションは、ストリームがSSAIを有効にしている場合にだけ表示されます。</li>
+      <li>小切手<strong>高速 VOD パイプラインを使用してクリップを作成する</strong>クリップをより迅速に生成します。このオプションは、単一の<strong>セグメント精度</strong>レンディション..システムは、このクリップを別のクリップに置き換えます。<strong>フレーム精度</strong>可能な場合は、フル レンディション セットのクリップ。 <figure><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-create-clip-dialog.png" /></figure>
       </li>
-      <li>Enter any required custom fields that are displayed.</li>
-      <li>Click <span class="button-blue">Create Clip</span>. The transcoding process for the clip will begin. Clips are transcoded using the default ingest profile for the account.</li>
+      <li>表示される必要なカスタムフィールドを入力します。</li>
+      <li>クリック<span class="button-blue">クリップを作成</span>.クリップのトランスコーディングプロセスが開始されます。クリップは、アカウントのデフォルトの取り込みプロファイルを使用してトランスコードされます。</li>
     </ol>
-    <p>A list of all clips will appear below the clip editor. Clicking the <strong>Clip Name</strong> will open the clip in the Media module in another browser tab. Click <strong>Publish to Social</strong> to open the clip in the social module to publish it to a social media account. 
-      {% if site.product_short == "Video Cloud" or site.product_short == "Beacon" or site.product_short == "CorpTV" %}
-      For information on publishing videos using the Social module, see <a href="/social/publishing-videos-social-media-platforms.html">Publishing Videos to Social Media Platforms</a>.
-      {% endif %}
-      {% if site.product_short == "Live" %}
-      For information on publishing videos using the Social module, see <a href="https://studio.support.brightcove.com/social/publishing-videos-social-media-platforms.html">Publishing Videos to Social Media Platforms</a>.
-      {% endif %} </p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="preview">Preview player</h2>
-    <p>The preview player is used to preview the clip. When the event is in progress and the clip editor is opened, the clip will begin to play from the "safe live point" which is approximately 3 segments before the end. Note that not all browsers support autoplay.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="playback_control">Playback control buttons</h2>
-    <p>The playback control buttons are used to control to playback of the clip inside of the preview player.</p>
+    <p>クリップエディタの下に、すべてのクリップのリストが表示されます。をクリックすると<strong>クリップ名</strong>Media モジュールのクリップを別のブラウザー タブで開きます。クリック<strong>ソーシャルに公開</strong>ソーシャル モジュールでクリップを開き、ソーシャル メディア アカウントに公開します。 {% if site.product_short == &quot;Video Cloud&quot; または site.product_short == "Beacon" または site.product_short == "CorpTV" %} ソーシャル モジュールを使用して動画を公開する方法については、<a href="/social/publishing-videos-social-media-platforms.html">動画をソーシャル メディア プラットフォームに公開する</a>. {% endif %} {% if site.product_short == &quot;Live&quot; %} ソーシャル モジュールを使用して動画を公開する方法については、<a href="https://studio.support.brightcove.com/social/publishing-videos-social-media-platforms.html">動画をソーシャル メディア プラットフォームに公開する</a>. {% endif %} </p>  </section><section class="bcls-section">
+    <h2 id="preview">プレビュープレーヤー</h2>
+    <p>プレビュープレーヤーは、クリップをプレビューするために使用されます。イベントが進行中でクリップエディタを開くと、クリップの再生は約 3 セグメント前のセーフライブポイントから開始されます。すべてのブラウザが自動再生をサポートしているわけではありません。</p>  </section><section class="bcls-section">
+    <h2 id="playback_control">再生コントロールボタン</h2>
+    <p>再生コントロールボタンは、プレビュープレーヤー内のクリップの再生を制御するために使用されます。</p>
     <table class="bcls-table">
       <thead class="bcls-table__head">
         <tr>
           <th width="107">Button</th>
-          <th width="430">Description</th>
+          <th width="430">説明</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-start-button.png" /></td>
-          <td>Jumps to start of video</td>
+          <td>ビデオの開始にジャンプします。</td>
         </tr>
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-back15-button.png" /></td>
-          <td>Jumps the playhead back 15 seconds</td>
+          <td>再生ヘッドを15秒後ろにジャンプします</td>
         </tr>
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-play-button.png" /></td>
-          <td>Starts video playback from the playhead position</td>
+          <td>再生ヘッドの位置からビデオの再生を開始します。</td>
         </tr>
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-forward15-button.png" /></td>
-          <td>Jumps the playhead forward 15 seconds</td>
+          <td>再生ヘッドを 15 秒前にジャンプします。</td>
         </tr>
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-end-button.png" /></td>
-          <td>Jumps to end of video</td>
+          <td>ビデオの最後にジャンプします。</td>
         </tr>
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-live-button.png" /></td>
-          <td>Jumps to live point in the video (only available when the live stream is active)</td>
+          <td>ビデオのライブポイントにジャンプします（ライブストリームがアクティブな場合のみ使用可能）。</td>
         </tr>
       </tbody>
-    </table>
-  </section>
-  <section class="bcls-section">
-    <h2 id="clip_time">Clip time</h2>
-    <p>The clip time displays the current UTC time for the playhead and the clippable time. Clicking on the UTC link will switch to the local time display.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-clip-time.png" /></figure>
-  </section>
-  <section class="bcls-section">
-    <h2 id="clipping">Clipping buttons</h2>
-    <p>The clipping buttons are used to clip the desired portion of the source video.</p>
+    </table>  </section><section class="bcls-section">
+    <h2 id="clip_time">クリップ時間</h2>
+    <p>クリップ時間には、再生ヘッドの現在の UTC 時刻とクリップ可能な時間が表示されます。UTCリンクをクリックすると、現地時間表示に切り替わります。</p>   <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-clip-time.png" /></figure></section><section class="bcls-section">
+    <h2 id="clipping">クリッピングボタン</h2>
+    <p>クリップボタンは、ソースビデオの目的の部分をクリップするために使用されます。</p>
     <table class="bcls-table">
       <thead class="bcls-table__head">
         <tr>
           <th width="124">Button</th>
-          <th width="709">Description</th>
+          <th width="709">説明</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-go-cue-in-button.png" /></td>
-          <td>Jumps to cue in point of the video</td>
+          <td>ビデオのポイントでキューにジャンプします</td>
         </tr>
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-set-cue-in-button.png" /></td>
-          <td>Sets the starting point of the clip. The start point can also be set by dragging the handle at the beginning of the focus timeline.</td>
+          <td>クリップの開始点を設定します。開始点は、フォーカスタイムラインの先頭にあるハンドルをドラッグして設定することもできます。</td>
         </tr>
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-set-cue-out-button.png" /></td>
-          <td>Sets the ending point of the clip. The end point can also be set by dragging the handle at the end of the focus timeline.</td>
+          <td>クリップの終了点を設定します。終了点は、フォーカスタイムラインの末尾にあるハンドルをドラッグして設定することもできます。</td>
         </tr>
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-go-cue-out-button.png" /></td>
-          <td>Jumps to the cue out point of the video</td>
+          <td>ビデオのキューアウトポイントにジャンプします</td>
         </tr>
       </tbody>
     </table>
-    <p>The cue in and cue out points are the start and end of a clip. Each of these points is represented on the focus timeline with a draggable handle, and the time between the points is filled-in green. The points are also represented in the context timeline as the left and right edges of the green rectangle indicating the clip space.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-cue-in-out-example.png" /></figure>
-  </section>
-  <section class="bcls-section">
-    <h2 id="preview_clip">Preview clip</h2>
-    <p>Click the preview clip button to play the clip.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-preview-clip-button.png" /></figure>
-  </section>
-  <section class="bcls-section">
+    <p>キューインポイントとキューアウトポイントは、クリップの開始ポイントと終了ポイントです。これらの各ポイントは、フォーカスタイムラインのドラッグ可能なハンドルで表され、ポイント間の時間は緑色で塗りつぶされます。ポイントは、クリップスペースを示す緑色の四角形の左右の端として、コンテキストタイムラインでも表されます。</p>   <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-cue-in-out-example.png" /></figure></section><section class="bcls-section">
+    <h2 id="preview_clip">クリップをプレビュー</h2>
+    <p>[クリップのプレビュー] ボタンをクリックして、クリップを再生します。</p>   <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-preview-clip-button.png" /></figure></section><section class="bcls-section">
     <h2 id="playhead">Playhead</h2>
-    <p>The playhead is an indicator of where in time the player is playing. The playhead is represented in the focus timeline by a red line with a red circle on top and with a red vertical line in the context timeline.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-playhead.png" /></figure>
-    <p>On the focus timeline, the playhead may be dragged to scrub through the video. Double-clicking on the focus timeline will move the playhead to that point. The playhead can also be used to set cue in and cue out points using the cue-in/cue-out buttons or by using the keyboard shortcuts.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="focus_timeline">Focus timeline</h2>
-    <p>The focus timeline is the top timeline in the interface.</p>
-    <p>The playhead is an indicator of where in time the player is playing. The playhead is represented in the focus timeline by a red line with a red circle on top.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-focus-timeline.png" /></figure>
-    <p>The green shaded area represents the selected clipping time, where the edges are also draggable. Please note that the UI pre-selects the clip duration according to the total available clipping time. For example, in events greater than 10 minutes, the last 10 minutes will be pre-selected, similarly, for 30 and 60 minutes.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="context_timeline">Context timeline</h2>
-    <p>The context timeline is the bottom timeline in the clip editor. The context timeline shows the entire duration of the video, regardless of zoom level, the selected area of the clip, the location of the playhead, and the current focus viewport. The timeline is indicated with a red line.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-context-timeline.png" /></figure>
-  </section>
-  <section class="bcls-section">
-    <h2 id="zoom_buttons">Zoom buttons</h2>
-    <p>The zoom buttons are used to zoom in or out on the focus timeline.</p>
+    <p>再生ヘッドは、プレイヤーがプレイしている時間の場所を示すインジケータです。再生ヘッドは、フォーカスタイムラインの赤い線で表され、コンテキストタイムラインの上部に赤い円が付いた赤い線で表示されます。</p> <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-playhead.png" /></figure>
+    <p>フォーカスタイムラインでは、再生ヘッドをドラッグしてビデオをスクラブできます。フォーカスタイムラインをダブルクリックすると、再生ヘッドがそのポイントに移動します。再生ヘッドを使用して、キューイン/キューアウトボタンまたはキーボードショートカットを使用して、キューインポイントとキューアウトポイントを設定することもできます。</p>  </section><section class="bcls-section">
+    <h2 id="focus_timeline">タイムラインをフォーカス</h2>
+    <p>フォーカスタイムラインは、インターフェイスの最上位のタイムラインです。</p>
+    <p>再生ヘッドは、プレイヤーがプレイしている時間の場所を示すインジケータです。再生ヘッドは、フォーカスタイムラインの赤い線で上に赤い丸で示されます。</p> <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-focus-timeline.png" /></figure>
+    <p>緑色のシェーディング領域は、選択したクリッピング時間を表し、エッジもドラッグ可能です。UI では、使用可能な合計クリッピング時間に応じて、クリップデュレーションが事前に選択されることに注意してください。たとえば、10 分を超えるイベントでは、30 分と 60 分でも、最後の 10 分が事前に選択されます。</p>  </section><section class="bcls-section">
+    <h2 id="context_timeline">コンテキストタイムライン</h2>
+    <p>コンテキストタイムラインは、クリップエディタの一番下のタイムラインです。コンテキストタイムラインには、ズームレベル、クリップの選択領域、再生ヘッドの位置、および現在のフォーカスビューポートに関係なく、ビデオのデュレーション全体が表示されます。タイムラインは赤い線で示されます。</p>   <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-context-timeline.png" /></figure></section><section class="bcls-section">
+    <h2 id="zoom_buttons">ズームボタン</h2>
+    <p>ズームボタンは、フォーカスタイムラインのズームインまたはズームアウトに使用します。</p>
     <table class="bcls-table">
       <thead class="bcls-table__head">
         <tr>
           <th>Button</th>
-          <th>Description</th>
+          <th>説明</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-zoom-in-button.png" /></td>
-          <td>Zooms in the focus timeline. The focus viewport (white box) in the context timeline will show the area of the clip that is being displayed in the focus timeline.</td>
+          <td>フォーカスタイムラインを拡大表示します。コンテキストタイムラインのフォーカスビューポート (白いボックス) には、フォーカスタイムラインに表示されているクリップの領域が表示されます。</td>
         </tr>
         <tr>
           <td><img alt="" src="/assets/images/s-live-img/live-module/clipping/node18551-zoom-out-button.png" /></td>
-          <td>Zooms out the focus timeline. The focus viewport (white box) in the context timeline will show the area of the clip that is being displayed in the focus timeline.</td>
+          <td>フォーカスタイムラインをズームアウトします。コンテキストタイムラインのフォーカスビューポート (白いボックス) には、フォーカスタイムラインに表示されているクリップの領域が表示されます。</td>
         </tr>
       </tbody>
-    </table>
-  </section>
-  <section class="bcls-section">
-    <h2 id="list_of_clips">List of clips</h2>
-    <p>A list of clips will appear below the clip editor. Click <strong>Publish to Social</strong> to publish the clip to one of your social destinations using Brightcove Social. 
-      {% if site.product_short == "Video Cloud" or site.product_short == "Beacon" or site.product_short == "CorpTV" %}
-      For information on publishing videos using the Social module, see <a href="/social/publishing-videos-social-media-platforms.html">Publishing Videos to Social Media Platforms</a>.
-      {% endif %}
-      {% if site.product_short == "Live" %}
-      For information on publishing videos using the Social module, see <a href="https://studio.support.brightcove.com/social/publishing-videos-social-media-platforms.html">Publishing Videos to Social Media Platforms</a>.
-      {% endif %} </p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Keyboard_shortcuts">Keyboard shortcuts</h2>
-    <p>Keyboard shortcuts can also be used to play and create a clip from the video. The following keyboard shortcuts are available.</p>
-    <h3>Playback controls</h3>
+    </table>  </section><section class="bcls-section">
+    <h2 id="list_of_clips">クリップの一覧</h2>
+    <p>クリップエディタの下に、クリップのリストが表示されます。クリック<strong>ソーシャルに公開</strong>Brightcove Social を使用して、クリップをあなたのソーシャル デスティネーションの 1 つに公開します。 {% if site.product_short == &quot;Video Cloud&quot; または site.product_short == "Beacon" または site.product_short == "CorpTV" %} ソーシャル モジュールを使用して動画を公開する方法については、<a href="/social/publishing-videos-social-media-platforms.html">動画をソーシャル メディア プラットフォームに公開する</a>. {% endif %} {% if site.product_short == &quot;Live&quot; %} ソーシャル モジュールを使用して動画を公開する方法については、<a href="https://studio.support.brightcove.com/social/publishing-videos-social-media-platforms.html">動画をソーシャル メディア プラットフォームに公開する</a>. {% endif %} </p>  </section><section class="bcls-section">
+    <h2 id="Keyboard_shortcuts">キーボードショートカット</h2>
+    <p>キーボードショートカットを使用して、ビデオからクリップを再生および作成することもできます。次のキーボードショートカットを使用できます。</p>
+    <h3>再生コントロール</h3>
     <table class="bcls-table">
       <thead class="bcls-table__head">
         <tr>
-          <th width="177">Press this key</th>
-          <th width="781">To do this</th>
+          <th width="177">このキーを押してください</th>
+          <th width="781">これを行うには</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
-          <td><code translate="No">space, k, down</code></td>
-          <td>Play / Pause</td>
+          <td><code translate="No">スペース、k、ダウン</code></td>
+          <td>再生/一時停止</td>
         </tr>
         <tr>
           <td><code translate="No">I</code></td>
-          <td>Go to cue-in</td>
+          <td>キューインに移動</td>
         </tr>
         <tr>
           <td><code translate="No">O</code></td>
-          <td>Go to cue-out</td>
+          <td>キューアウトに移動</td>
         </tr>
         <tr>
           <td><code translate="No">p</code></td>
-          <td>Play preview</td>
+          <td>プレビューを再生</td>
         </tr>
         <tr>
-          <td><code translate="No">j, left</code></td>
-          <td>Jump back 1 frame</td>
+          <td><code translate="No">j、左の</code></td>
+          <td>1フレーム戻る</td>
         </tr>
         <tr>
-          <td><code translate="No">J, shift + left</code></td>
-          <td>Jump 1 second back</td>
+          <td><code translate="No">J、シフト+左</code></td>
+          <td>1秒戻る</td>
         </tr>
         <tr>
-          <td><code translate="No">l, right</code></td>
-          <td>Jump 1 frame forward</td>
+          <td><code translate="No">l、右</code></td>
+          <td>1フレーム進む</td>
         </tr>
         <tr>
-          <td><code translate="No">L, shift + right</code></td>
-          <td>Jump 1 second forward</td>
+          <td><code translate="No">L、シフト+右</code></td>
+          <td>1秒進む</td>
         </tr>
         <tr>
           <td><code translate="No">s</code></td>
-          <td>Jump to start</td>
+          <td>スタートにジャンプ</td>
         </tr>
         <tr>
           <td><code translate="No">e</code></td>
-          <td>Jump to end / live</td>
+          <td>最後にジャンプ/ライブ</td>
         </tr>
       </tbody>
     </table>
-    <h3>Timeline controls</h3>
+    <h3>タイムラインコントロール</h3>
     <table class="bcls-table">
       <thead class="bcls-table__head">
         <tr>
-          <th width="177">Press this key</th>
-          <th width="781">To do this</th>
+          <th width="177">このキーを押してください</th>
+          <th width="781">これを行うには</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td><code translate="No">i</code></td>
-          <td>Set cue-in</td>
+          <td>キューインの設定</td>
         </tr>
         <tr>
           <td><code translate="No">o</code></td>
-          <td>Set cue-out</td>
+          <td>キューアウトの設定</td>
         </tr>
         <tr>
           <td><code translate="No">+</code></td>
-          <td>Zoom in</td>
+          <td>ズームイン</td>
         </tr>
         <tr>
           <td><code translate="No">-</code></td>
-          <td>Zoom out</td>
+          <td>ズームアウト</td>
         </tr>
         <tr>
           <td><code translate="No">u</code></td>
-          <td>Pan timeline to playhead</td>
+          <td>タイムラインを再生位置に移動する</td>
         </tr>
         <tr>
           <td><code translate="No">?</code></td>
-          <td>Open help modal</td>
+          <td>ヘルプモーダルを開く</td>
         </tr>
       </tbody>
-    </table>
-  </section>
-  <script src="https://players.brightcove.net/20318290001/experience_5a73630f7afd7a00101bc1b5/live.js"></script> 
-</article>
+    </table>    </section><script src="https://players.brightcove.net/20318290001/experience_5a73630f7afd7a00101bc1b5/live.js"></script></article>

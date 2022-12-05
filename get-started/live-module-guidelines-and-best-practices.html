@@ -1,298 +1,265 @@
 <article class="bcls-article">
-  <h1>{{ page.title }}</h1>
-  <summary>{{ page.description }}</summary>
-  <section class="bcls-section">
-    <h2 id="Overview">Overview</h2>
-    <p>Brightcove Live provides a robust service for creating live streaming events or 24/7 live streams. This guide outlines best practices for optimizing your live streams</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Content_context">Content context</h2>
-    <p>The type of content being streamed needs to be considered as it has an impact on the required settings for maintaining the quality of the input. Note that there are trade-offs and using the highest possible settings may cause issues such as skipped frames.</p>
-    <p>Based on the information below, we recommend that you test different setting combinations for quality and performance before your live event.</p>
-    <p>The key input parameters are outlined in the following table:</p>
+  <h1>{{page.title}}</h1> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>Brightcoveライブは、ライブストリーミングイベントや 24 時間 365 日のライブストリームを作成するための堅牢なサービスを提供しています。このガイドでは、ライブ配信を最適化するためのベストプラクティスを概説します</p>  </section><section class="bcls-section">
+    <h2 id="Content_context">コンテンツコンテキスト</h2>
+    <p>ストリームされるコンテンツのタイプは、入力の品質を維持するために必要な設定に影響を与えるため、考慮する必要があります。トレードオフがあり、可能な限り高い設定を使用すると、フレームのスキップなどの問題が発生する可能性があることに注意してください。</p>
+    <p>以下の情報に基づいて、ライブイベントの前に、さまざまな設定の組み合わせで品質とパフォーマンスをテストすることをお勧めします。</p>
+    <p>主な入力パラメータの概要を次の表に示します。</p>
     <table class="bcls-table">
       <caption class="bcls-caption--table">
-      Key Input Parameters for Live Streaming
+      ライブストリーミングのキー入力パラメータ
       </caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Parameter</th>
-          <th>Notes</th>
+          <th>パラメーター</th>
+          <th>注</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
-          <td>Input bitrate</td>
-          <td>The bitrate that the encoder sends. Higher rates are more susceptible to network loss so should be kept as low as practical.</td>
+          <td>入力ビットレート</td>
+          <td>エンコーダが送信するビットレート。高いレートはネットワーク損失の影響を受けやすいので、実用的なものと同じくらい低く保つ必要があります。</td>
         </tr>
         <tr>
-          <td>Input resolution</td>
-          <td>This should match the source content. There is no benefit in making this greater than the original source and the higher this value is, the higher the bitrate is required to support it.</td>
+          <td>入力解像度</td>
+          <td>ソースコンテンツと一致する必要があります。この値を元のソースよりも大きくする利点はなく、この値が大きいほど、ビットレートを高くする必要があります。</td>
         </tr>
         <tr>
-          <td>Input bitrate to top profile ratio</td>
-          <td> The input bitrate should be higher than the rate of the top profile, but too much higher may result in dropped frames or other issues - e.g. if your top rate is 1080p 30fps, the input should ideally be around 4 MBPS. Note that this is affected by the profile. We generally recommend an input bitrate that is 2x (twice) the bitrate of your highest bitrate live rendition.
-            <p>If you require a high bitrate top output it is worth testing the <code>copy_video</code> setting which will simply copy your input encode to the output.</p></td>
+          <td>最上位プロファイルに対する入力ビットレートの比率</td>
+          <td> 入力ビットレートはトッププロファイルのレートよりも高くする必要がありますが、高すぎるとフレームのドロップやその他の問題が発生する可能性があります。たとえば、トップレートが1080p30fpsの場合、理想的には入力は4Mbps程度になります。これはプロファイルの影響を受けることに注意してください。通常、最高ビットレートのライブレンダションの2倍のビットレートを入力することをお勧めします。
+            <p>高いビットレートのトップ出力が必要な場合は、テストする価値があります<code>copy_video</code>入力エンコードを出力に単純にコピーする設定。</p></td>
         </tr>
         <tr>
-          <td>Profiles</td>
-          <td> The different profiles (baseline, main, high) compress the data in ascending amounts (baseline: lowest, high: highest). Greater compression improves the rate of transmission, but also requires greater CPU resources to decode the data. Unless the encoder is highly constrained in available resources baseline profile should be avoided. On the other hand, using high profile at high bitrates is more likely to cause skipped frames due to the increased decode CPU resources required.
-            <p>Also see <a href="#gop_structure">GOP structure</a> below.</p></td>
+          <td>プロファイル</td>
+          <td> 異なるプロファイル（ベースライン、メイン、ハイ）は、データを昇順（ベースライン:最低、高:最高）で圧縮します。圧縮を大きくすると、伝送速度が向上しますが、データをデコードするためにより多くのCPUリソースが必要になります。エンコーダが使用可能なリソースベースラインプロファイルに大きく制約されていない限り、使用しないでください。一方、高いビットレートで高プロファイルを使用すると、必要なデコードCPUリソースが増加するため、フレームがスキップされる可能性が高くなります。
+            <p>こちらもご覧ください<a href="#gop_structure">GOP構造</a>下。</p></td>
         </tr>
         <tr>
-          <td>Frame rate</td>
-          <td> This should match the source.
-            <p>Higher rates will require proportionally higher input bitrates e.g. with action sport content a 60fps input stream carries substantially more data than a 30fps stream.</p>
-            <p>High rates such as 60fps are more likely to have skip frame issues on complex content at high bitrates.</p></td>
+          <td>フレームレート</td>
+          <td> これはソースと一致する必要があります。
+            <p>高いレートは比例的に高い入力ビットレートを必要とする。たとえば、アクションスポーツコンテンツでは、60fpsの入力ストリームが30fpsのストリームよりもかなり多くのデータを伝送する。</p>
+            <p>60fpsなどの高レートでは、複雑なコンテンツのスキップフレームの問題が高いビットレートで発生する可能性が高くなります。</p></td>
         </tr>
         <tr>
-          <td>Keyframe rate</td>
-          <td> The most efficient setting for this is the segment duration x frame rate - for example, if you have 6 second segments and 30fps making the keyframe rate 180 (6x30) would result in the lowest decoder load.
-            <p>However, to account for any fluctuations this is set to 2 x the frame rate - for example, 60 for a framerate of 30 fps.</p>
-            <aside class="bcls-aside bcls-aside--information language-editable">Note that the default ingest profiles for Live assume a framerate of 30 fps and therefore set the keyframe rate to 60. If your input stream has a different framerate (25 fps or 60 fps, for example) you should create a custom ingest profile by duplicating the default one and setting the keyframe rate to twice the framerate (for example, set it to 120 if the input framerate is 60 fps).</aside></td>
+          <td>キーフレームレート</td>
+          <td> このための最も効率的な設定は、セグメント期間xフレームレートです。たとえば、6秒のセグメントと30fpsのキーフレームレートを180（6x30）にすると、デコーダの負荷が最も低くなります。
+            <p>ただし、変動を考慮すると、これはフレームレートの2倍に設定されます。たとえば、フレームレートが30fpsの場合は60に設定されます。</p> <aside class="bcls-aside bcls-aside--information language-editable">Liveのデフォルトの取り込みプロファイルはフレームレート30fpsを想定しているため、キーフレームレートは60に設定されていることに注意してください。入力ストリームのフレームレートが異なる場合（たとえば、25fpsまたは60fps）、デフォルトのフレームレートを複製し、キーフレームレートをフレームレートの2倍に設定することによって、カスタム取り込みプロファイルを作成する必要があります（たとえば、入力フレームレートが60fpsの場合は120に設定します）。</aside></td>
         </tr>
         <tr>
-          <td>GOP structure</td>
-          <td>See <a href="#gop_structure">GOP structure</a> below.</td>
+          <td>GOP構造</td>
+          <td>見る<a href="#gop_structure">GOP構造</a>下。</td>
         </tr>
       </tbody>
     </table>
-    <h3>Input restrictions</h3>
-    <p>In order to ensure the highest quality, most consistent streaming experience, Brightcove Live limits input stream settings to:</p>
+    <h3>入力制限</h3>
+    <p>最高品質で一貫したストリーミング体験を実現するために、Brightcoveライブでは入力ストリーム設定を以下の項目に制限しています。</p>
     <ul>
-      <li>Protocol: <code translate="No">rtmp</code>, <code translate="No">rtp</code>, <code translate="No">rtp-fec</code>, or <code translate="No">srt</code> (all except <code translate="No">rtmp</code> are for MPEG2-TS inputs)<sup><strong><a href="#note1-1">[1-1]</a></strong></sup></li>
-      <li>Resolution: Maximum 1920x1080</li>
-      <li>Maximum 30 fps, which is typical. Brightcove supports up to 60 fps, but you will need to <a href="https://supportportal.brightcove.com/">Contact Brightcove Support</a> to have the limit increased. When using 60fps, Brightcove recommends increasing the bitrate to achieve the desired visual quality for the content and a constant frame rate.</li>
-      <li>Less than 10 Mbps</li>
-      <li>Constant Bitrate (CBR) greatly reduces the chance of problems</li>
-      <li>Video codec must be H.264</li>
-      <li>Slices: If your encoder has this option, set it to <code translate="no">1</code></li>
-      <li>Audio codec must be <code translate="No">AAC</code></li>
-      <li>Audio sampling rate: 44.1khz and 48khz are the recommended sample audio rates to use</li>
-      <li>Keyframe Rate or GOP (Group of Pictures) aligned:
+      <li>プロトコル：<code translate="No"> rtmp</code> 、<code translate="No"> rtp</code> 、<code translate="No"> rtp-fec</code> 、 また<code translate="No">srt</code> （除くすべて<code translate="No">rtmp</code>は MPEG2-TS 入力用です)<sup><strong><a href="#note1-1"> [1-1]</a></strong></sup></li>
+      <li>解像度:最大1920x1080</li>
+      <li>最大30fps、これは典型的です。Brightcove は最大 60 fps をサポートしますが、<a href="https://supportportal.brightcove.com/">ブライトコーブ サポートへのお問い合わせ</a>上限を引き上げます。60 fpsを使用する場合、Brightcoveは、コンテンツに必要な視覚品質と一定のフレームレートを実現するために、ビットレートを上げることをお勧めします。</li>
+      <li>10 Mbps未満</li>
+      <li>一定ビットレート（CBR）は、問題の発生可能性を大幅に低減</li>
+      <li>ビデオコーデックはH.264である必要があります。</li>
+      <li>スライス:エンコーダーにこのオプションがある場合は、次のように設定します。<code translate="no"> 1</code></li>
+      <li>オーディオコーデックは<code translate="No">AAC</code></li>
+      <li>オーディオサンプリングレート:44.1khz と 48khz は、推奨されるサンプルオーディオレートです。</li>
+      <li>キーフレームレートまたは GOP (ピクチャのグループ) の位置合わせ:
         <ol type="a">
-          <li>A <strong>Keyframe</strong> should always occur every 2 seconds <strong>for both inputs and outputs (including 25fps video)</strong>. Meaning a keyframe is sent to Brightcove from the encoder every two seconds of the stream itself. This process can be defined in different ways, but <strong>Keyframe Rate</strong> is the most common. </li>
-          <li>It can be calculated in different ways by different encoders. For example:
+          <li>あ<strong>キーフレーム</strong>常に 2 秒ごとに発生する必要があります<strong>入力と出力の両方に対応 (25fps ビデオを含む)</strong> .つまり、ストリーム自体の 2 秒ごとにエンコーダから Brightcove にキーフレームが送信されます。このプロセスはさまざまな方法で定義できますが、<strong>キーフレーム レート</strong>が最も一般的です。 </li>
+          <li>これは、異なるエンコーダによって異なる方法で計算することができます。例は次のとおりです。
             <ul>
-              <li>Wirecast uses the amount of frames that pass, so for a 30fps video, the setting would be 60.</li>
-              <li>Elemental encoders use seconds so that the correct setting would be '2'.</li>
-              <li>60 FPS video will only change if this setting is counted by the frames, in which case every 120 frames would equal 2 seconds.</li>
+              <li>Wirecast は通過するフレームの量を使用するため、30 fps のビデオの場合、設定は 60 になります。</li>
+              <li>エレメントエンコーダは、正しい設定が '2' になるように、秒を使用します。</li>
+              <li>60 FPS ビデオは、この設定がフレームでカウントされる場合にのみ変更されます。この場合、120 フレームごとに 2 秒になります。</li>
             </ul>
           </li>
         </ol>
-      <li>If there is an option for <strong>Keyframe Aligned</strong>, <strong>Sync GOP</strong>, <strong>Align Keyframes</strong>, or something along those lines, make sure Keyframes are aligned. When Keyframes are not aligned, it causes synchronization issues with HLS segmentation.</li>
+      <li>という選択肢があれば<strong>キーフレームの整列</strong>、<strong> GOPを同期</strong>、<strong>キーフレームを揃える</strong>、またはそれらの線に沿った何か、キーフレームが整列していることを確認してください。キーフレームが揃っていないと、HLS セグメンテーションで同期の問題が発生します。</li>
     </ul>
-    <h4>Notes</h4>
+    <h4>注</h4>
     <ul>
-      <li id="note1-1"><sup><strong>[1-1]</strong></sup> If you have multiple video/audio tracks in your TS input, we will pick the first for each. We also strongly recommend using FEC, as plain TS over UDP over the internet is very unreliable. For FEC, we could note that the <em>smaller</em> the values you use for rows/columns, the more reliable the error correction will be (at the cost of increased bandwidth.</li>
-    </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Key_issues">Key issues with streaming</h2>
-    <p>There are several issues that are generally encountered that relate to problems with the streaming experience from the encoder to Brightcove:</p>
+      <li id="note1-1"><sup><strong>[1-1]</strong></sup> TS 入力に複数のビデオ/オーディオ トラックがある場合は、それぞれの最初のトラックが選択されます。また、インターネット経由の UDP 上のプレーンなTSは非常に信頼できないため、FEC を使用することを強くお勧めします。FEC については、<em>小さい</em>行/列に使用する値が大きいほど、エラー修正の信頼性が高くなります (ただし、帯域幅が増加します。</li>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="Key_issues">ストリーミングに関する主な問題</h2>
+    <p>一般に、エンコーダからBrightcoveへのストリーミングエクスペリエンスに関する問題に関して、次のようないくつかの問題が発生する問題は次のとおりです。</p>
     <ol>
-      <li> Network instability affecting the input:
+      <li> 入力に影響するネットワークの不安定性:
         <ol>
-          <li>While the internet is generally quite reliable it is not infallible and issues do occur. Issues are more likely to be noticed on higher bitrates.</li>
-          <li>If it takes longer to upload the video than real time then this can result in input drift (the time that the video is received is substantially later than when it was sent)</li>
+          <li>インターネットは一般的に非常に信頼できますが、完全ではなく、問題が発生します。この問題は、より高いビットレートで発生する可能性が高くなります。</li>
+          <li>ビデオのアップロードにリアルタイムよりも時間がかかる場合は、入力ドリフトが発生する可能性があります（ビデオの受信時間は、ビデオが送信された時間よりもかなり遅くなります）。</li>
         </ol>
       </li>
-      <li> Transcoder overload resulting in skip frames: while we do everything to make sure our transcoders have enough overhead sometimes sudden spikes in either content complexity, network hiccups/ catchups or other interruptions to our transcoders can cause skip frames. The more complex the input is then the more likely it is that skipped frames will be encountered. There is also a known issue where changes from a still image for an extended duration e.g. longer than 5 minutes and a sudden change to action content can cause an overload. </li>
-      <li>Encoder sending variable frame durations: the frame rate should be constant and it should be such that it allows for a keyframe interval that is constant. For example, for a frame rate such as 29.97 aka 30000/1001 or 23.976 aka 24000/1001 it is not possible to set a keyframe at a regular interval and as such should be avoided.</li>
-      <li>Encoder sending keyframes that are not a consistent duration apart, the keyframe rate should be a minimum of 2x the frame rate in seconds. For example, for a frame rate of 30fps the keyframe interval should be 60 frames which is 2 seconds and should be a maximum interval of once per segment - for example, if you have a 6 second segment then the maximum interval would be 180 frames at 30 fps</li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Content_types">Content types</h2>
-    <p>Generally, more complex content will require using the higher of these settings and as such is more susceptible to skipped frames. The table below shows some examples in order of complexity. Note that these are examples only, and as just about every encoder setup is different. Testing and verification should be performed.</p>
+      <li> トランスコーダのオーバーロードにより、スキップフレームが発生します。トランスコーダに十分なオーバーヘッドがあることを確認するためにあらゆる作業を行っている間に、コンテンツの複雑さ、ネットワークのシャックアップ/キャッチアップ、またはトランスコーダへのその他の割り込みにより、スキップフレームが発生することがあります。入力が複雑であるほど、スキップされたフレームが発生する可能性が高くなります。また、静止画から5分以上の長時間（例えば、5分以上）の変更や、アクションコンテンツへの突然の変更によって過負荷が発生することがあるという既知の問題もあります。 </li>
+      <li>可変フレーム期間を送信するエンコーダ:フレームレートは一定である必要があり、一定のキーフレーム間隔を許容する必要があります。たとえば、29.97aka30000/1001や23.976aka24000/1001のようなフレームレートでは、キーフレームを一定の間隔で設定することはできません。そのような場合は避ける必要があります。</li>
+      <li>一貫した持続時間間隔でないキーフレームを送信するエンコーダ。キーフレームレートは、フレームレートの2倍（秒単位）以上にする必要があります。たとえば、フレームレートが30fpsの場合、キーフレーム間隔は2秒で、セグメントごとに1回の最大間隔である60フレームにする必要があります。たとえば、6秒のセグメントがある場合、最大間隔は30fpsで180フレームになります。</li>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Content_types">コンテンツタイプ</h2>
+    <p>一般に、より複雑なコンテンツは、これらの設定のうち高い方を使用する必要があるため、スキップされたフレームの影響を受けやすくなります。次の表に、複雑さの順にいくつかの例を示します。これらはあくまでも例であり、エンコーダの設定によって異なることに注意してください。テストと検証を実行する必要があります。</p>
     <table class="bcls-table">
       <caption class="bcls-caption--table">
-      Content Type Examples
+      コンテンツタイプの例
       </caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Content Type</th>
-          <th>Example Settings</th>
+          <th>コンテンツタイプ</th>
+          <th>設定例</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
-          <td>Webcam</td>
+          <td>ウェブカメラ</td>
           <td><ul>
-              <li>Resolution: 360p</li>
-              <li>Bitrate: 1 MBPS</li>
-              <li>Profile: Baseline</li>
+              <li>解像度:360p</li>
+              <li>ビットレート:1Mbps</li>
+              <li>プロファイル:ベースライン</li>
             </ul></td>
         </tr>
         <tr>
-          <td>Web conference</td>
+          <td>Web会議</td>
           <td><ul>
-              <li>Resolution: 480p</li>
-              <li>Bitrate: 2.5 MBPS</li>
-              <li>Profile: Main</li>
+              <li>解像度:480p</li>
+              <li>ビットレート:2.5Mbps</li>
+              <li>プロファイル:メイン</li>
             </ul></td>
         </tr>
         <tr>
-          <td>Animation</td>
+          <td>アニメーション</td>
           <td><ul>
-              <li>Resolution: 720p</li>
-              <li>Bitrate: 2.5 MBPS</li>
-              <li>Profile: Main</li>
+              <li>解像度:720p</li>
+              <li>ビットレート:2.5Mbps</li>
+              <li>プロファイル:メイン</li>
             </ul></td>
         </tr>
         <tr>
-          <td>Talking Head / News</td>
+          <td>トーキングヘッド/ニュース</td>
           <td><ul>
-              <li>Resolution: 720p</li>
-              <li>Bitrate: 4 MBPS</li>
-              <li>Profile: Main</li>
+              <li>解像度:720p</li>
+              <li>ビットレート:4Mbps</li>
+              <li>プロファイル:メイン</li>
             </ul></td>
         </tr>
         <tr>
-          <td>Live Concert</td>
+          <td>ライブコンサート</td>
           <td><ul>
-              <li>Resolution: 1080p (or source)</li>
-              <li>Bitrate: 5 MBPS</li>
-              <li>Profile: High</li>
+              <li>解像度:1080p（またはソース）</li>
+              <li>ビットレート:5Mbps</li>
+              <li>プロファイル:高い</li>
             </ul></td>
         </tr>
         <tr>
-          <td>Live Sport</td>
+          <td>ライブ·スポーツ</td>
           <td><ul>
-              <li>Resolution: 1080p (or source)</li>
-              <li>Bitrate: 6 MBPS</li>
-              <li>Profile: High</li>
+              <li>解像度:1080p（またはソース）</li>
+              <li>ビットレート:6Mbps</li>
+              <li>プロファイル:高い</li>
             </ul></td>
         </tr>
         <tr>
-          <td>Live Sport High FPS</td>
+          <td>LiveSportHighFPS（ライブスポーツハイFPS）</td>
           <td><ul>
-              <li>Resolution: 1080p (or source)</li>
-              <li>Bitrate: 10 MBPS</li>
-              <li>Profile: High</li>
+              <li>解像度:1080p（またはソース）</li>
+              <li>ビットレート:10Mbps</li>
+              <li>プロファイル:高い</li>
             </ul></td>
         </tr>
       </tbody>
-    </table>
-  </section>
-  <section class="bcls-section">
-    <h2 id="verification">Verification and testing</h2>
-    <p>Ideally you should start with the lowest possible settings on your most complex (most changing content) and test with their content by increasing the various settings until the output is acceptable. This is because generally the higher the settings the more likely issues are to be encountered in either the network or transcoding.</p>
-    <h3>Testing bandwidth</h3>
-    <p>The first step towards arriving at the appropriate settings for the input stream is to determine the available bandwidth on site. There are a few tools that can help:</p>
+    </table>  </section><section class="bcls-section">
+    <h2 id="verification">検証とテスト</h2>
+    <p>理想的には、最も複雑な（最も変化するコンテンツ）可能な最小の設定から開始し、出力が許容されるまでさまざまな設定を増やすことによって、コンテンツを使用してテストする必要があります。これは、一般的に設定が高いほど、ネットワークまたはトランスコーディングのいずれかで問題が発生する可能性が高いためです。</p>
+    <h3>帯域幅のテスト</h3>
+    <p>入力ストリームの適切な設定を見つける第一歩は、現場で利用可能な帯域幅を特定することです。次のようなツールが役立ちます。</p>
     <ul>
-      <li>SpeedOf.Me (<a href="https://speedof.me">http://speedof.me</a>) - Determining the total bandwidth available for HTTP connections is a good first step. However, since the input feed will be streamed to the Live module over RTMP instead of HTTP, the actual bandwidth available for RTMP connections will be significantly less.</li>
-      <li>Speedtest (<a href="http://www.speedtest.net">http://www.speedtest.net</a>) - Online tool for determining current upload and download speeds.</li>
+      <li>SpeedOf.Me (<a href="https://speedof.me"> http://speedof.me</a> ) - HTTP 接続に使用できる合計帯域幅を決定することは、最初の適切なステップです。しかし、入力フィードはHTTPではなく、RTMPでLiveモジュールにストリーミングされるため、RTMP接続で利用可能な実際の帯域幅は相当少なくなります。</li>
+      <li>スピードテスト (<a href="http://www.speedtest.net"> http://www.speedtest.net</a> ) - 現在のアップロード速度とダウンロード速度を判断するためのオンライン ツール。</li>
     </ul>
-    <h3>Input Bandwidth</h3>
-    <p>Providing a high-quality, stable input stream is the only way to ensure the best user experience for viewers. A good input stream provides the best video quality at the highest consistently available bandwidth from a location.</p>
+    <h3>入力帯域幅</h3>
+    <p>視聴者に最高のユーザー視聴エクスペリエンスを提供する唯一確実な方法は、高品質で安定した入力ストリームを提供することです。品質の高い入力ストリームを提供することで、特定の場所から一貫して利用可能な最大帯域幅で最高の動画品質を実現できます。</p>
     <ul>
-      <li>Minimum input bandwidth: 2.5 mbps</li>
-      <li>Maximum input bandwidth: 10 mbps</li>
-    </ul>
-    <aside class="bcls-aside bcls-aside--information">Note: For the best user experience, match your output renditions to the quality of your encoder stream.</aside>
-    <h3>Determining encoder capabilities</h3>
-    <p>Understanding the capabilities of the software and hardware used to encode the live stream and send it to the Live module is also important. There may be plenty of bitrate to send a high-quality, 1080p input stream, but the hardware also needs to be able to encode in faster-than-realtime speeds. Some encoding tools display information about the total CPU usage and bandwidth being used. For example, Telestream Wirecast will display the output statistics at the bottom of the Wirecast window.</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/wirecast-status-bar.png" /></figure>
-    <p>This information is useful when determining the most stable, highest quality stream that is possible on given hardware. Things to watch in Wirecast:</p>
+      <li>最小入力帯域幅:2.5メガビット/秒</li>
+      <li>最大入力帯域幅:10 mbps</li>
+    </ul> <aside class="bcls-aside bcls-aside--information">注:最高のユーザー視聴エクスペリエンスを提供するために、出力レンディションをエンコーダーストリームの品質に合わせます。</aside>
+    <h3>エンコーダー機能の決定</h3>
+    <p>ライブストリームをエンコードし、Liveモジュールに送信するソフトウェアおよびハードウェアの機能について理解することも重要です。高品質な1080p入力ストリームの送信に十分なビットレートが確保できでも、ハードウェアがエンコードを行うにはリアルタイムよりも速い速度が必要です。一部のエンコーディングツールでは、合計CPU使用率および使用帯域幅に関する情報が表示されます。たとえば、TelestreamWirecastでは、[Wirecast]ウィンドウの下部に出力統計情報が表示されます。</p> <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/wirecast-status-bar.png" /></figure>
+    <p>この情報は、特定のハードウェア上で可能な最も安定した、最高品質のストリームを判断するときに役立ちます。Wirecastで確認する項目は次のとおりです。</p>
     <ul>
-      <li>CPU should be less than 80%</li>
-      <li>Datarate should be near the target bitrate</li>
-      <li>FPS should be at the rate of the input stream settings</li>
-    </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="gop_structure">GOP structure</h2>
-    <p>The Group of Pictures (GOP) structure of the video is dependent first on the profile that is used as:</p>
+      <li>CPU使用率が80%未満であること</li>
+      <li>データレートが目標ビットレートに近いこと</li>
+      <li>FPSが入力ストリーム設定のレートであること</li>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="gop_structure">GOP構造</h2>
+    <p>ビデオのGroupofPictures（GOP;グループオブピクチャ）構造は、最初に次のように使用されるプロファイルに依存します。</p>
     <ol>
-      <li><strong>Baseline</strong> profile only supports I and P frames and CAVLC entropy encoding</li>
-      <li><strong>Main</strong> and <strong>High</strong> support I, B and P frames and CABAC entropy encoding</li>
+      <li><strong>ベースライン</strong>プロファイルは、I フレームと P フレーム、および CAVLC エントロピー エンコーディングのみをサポートします</li>
+      <li><strong>主要</strong>と<strong>高い</strong>I、B、P フレームと CABAC エントロピー エンコーディングをサポート</li>
     </ol>
-    <p>Main and High profiles generally result in better compression at better quality but also require additional computation to encode and decode, as such may be more susceptible to skipped frames. In addition, as these profiles use B (bi-directional) frames, they induce some delay in the encoding process.</p>
-    <p>Baseline profile requires less CPU to encode and decode, but as it offers less compression, it requires a higher bitrate to maintain quality and as such is more susceptible to network issues.</p>
-    <h3>Notes on frame types and their likely impact on performance:</h3>
+    <p>通常、メインプロファイルとハイプロファイルは、より高品質の圧縮を実現しますが、エンコードとデコードには追加の計算が必要です。そのため、スキップされたフレームの影響を受けやすくなります。さらに、これらのプロファイルではB（双方向）フレームが使用されるため、符号化プロセスに多少の遅延が生じます。</p>
+    <p>ベースラインプロファイルでは、符号化およびデコードに必要なCPUの数が少なくなりますが、圧縮機能が少ないため、品質を維持するために高いビットレートが必要になるため、ネットワークの問題により影響されやすくなります。</p>
+    <h3>フレームタイプとパフォーマンスへの影響に関する注意事項:</h3>
     <ol>
-      <li><strong>I frames</strong>: uses the most bandwidth. Best added for complete scene changes or at the segment boundaries - i.e. the more the content changes the more of these you need (shorter GOP length)</li>
-      <li><strong>P frames</strong>: are the base unit between I frames</li>
-      <li><strong>B frames</strong>: use both prior and future frames, the more you add the better the compression will be but the higher the CPU and latency</li>
+      <li><strong>I フレーム</strong>: 帯域幅を最も多く使用します。シーン全体の変更やセグメント境界での変更に最適です。つまり、コンテンツの変更が多いほど、必要なGOPの長さが短くなります。</li>
+      <li><strong>P フレーム</strong>: I フレーム間の基本単位</li>
+      <li><strong>B フレーム</strong>: 前のフレームと将来のフレームの両方を使用します。追加するほど圧縮は向上しますが、CPU とレイテンシが高くなります。</li>
     </ol>
-    <p>The use of <strong>I frames</strong> should ideally be limited to start of segments (critical if using passthrough) or scene changes. All or high numbers of I frames should be avoided as this can cause excess load leading to skipped frames.</p>
-    <h3>Additional notes:</h3>
+    <p>の用法<strong>I フレーム</strong>理想的には、セグメントの開始 (パススルーを使用する場合は重要) またはシーンの変更に制限する必要があります。Iフレームの数が多い場合は、過剰な負荷が発生してフレームがスキップされる可能性があるため、すべてのIフレームを避ける必要があります。</p>
+    <h3>その他の注意事項:</h3>
     <ul>
-      <li>Use options for preventing dense placement of key frames (example: <code>min_keyin</code> = 3+).</li>
-      <li>Use options ensuring a regular cadence of insertion of Key frames. For example, instead of specifying GOP length in seconds, specify it in exact fractions or frames.</li>
-    </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="bitrate">Bitrate</h2>
+      <li>キー フレームが密集して配置されないようにするためのオプションを使用します (例:<code> min_keyin</code> = 3+)。</li>
+      <li>キーフレームの定期的な挿入の遅延を保証するオプションを使用します。たとえば、GOP長を秒単位で指定する代わりに、正確な分数またはフレーム単位で指定します。</li>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="bitrate">ビットレート</h2>
     <ul>
-      <li>Minimum input bandwidth: 2.5 mbps</li>
-      <li>Maximum input bandwidth: 10 mbps</li>
+      <li>最小入力帯域幅:2.5メガビット/秒</li>
+      <li>最大入力帯域幅:10 mbps</li>
     </ul>
     <ul>
-      <li>Make the stream "almost CBR"" - with <code>max_bitrate</code> = 1.1 * target_bitrate.</li>
-      <li>Use strict HRD-compliant rate control mode, if available.</li>
-    </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Protocol">Protocol</h2>
-    <p>It is important to note that the internet is not a guaranteed delivery network, and that while an internet connection may be considered "good", it may not be good enough for reliable live video streaming at high quality. A small disruption in the path between the customer encoder and the Brightcove transcoding platform such as a small amount of congestion at an ISP, an unplanned failover between routers, or similar issues can cause a disruption in the video output. In high stakes live broadcast it is normal practice to have multiple dedicated networks consisting of either dedicated fibre, booked satellite bandwidth, or committed bandwidth on a managed network. This comes with a substantial cost, and in most cases it is possible to achieve a good enough outcome over the internet. If, however, it is critical to maintain fault-free transport please consider AWS Direct Connect or an ISP that can provide some level of dedicated bandwidth.</p>
-    <p>Generally, we recommend dedicating bandwidth two times the encoder's expected stream size to completely avoid any bandwidth-related network issues.</p>
-    <p>The options we recommend are (in order):</p>
+      <li>ストリームをほぼ CBRにする - を使用<code>max_bitrate</code> = 1.1 * target_bitrate。</li>
+      <li>使用可能な場合は、厳密なHRD準拠レート制御モードを使用します。</li>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="Protocol">プロトコル</h2>
+    <p>注意すべき点は、インターネットは保証された配信ネットワークではなく、インターネット接続は良好と見なされるかもしれないが、高品質の信頼性の高いライブビデオストリーミングには十分ではない可能性があることです。カスタマーエンコーダとBrightcoveトランスコーディングプラットフォーム間のパスにわずかな障害（ISPでの輻輳の発生が少ない、ルータ間の予期しないフェールオーバーなど）が発生すると、ビデオ出力が中断される可能性があります。ハイリスクライブブロードキャストでは、管理対象ネットワーク上に専用ファイバ、予約済み衛星帯域幅、またはコミット済み帯域幅のいずれかで構成される複数の専用ネットワークを持つのが一般的です。これにはかなりのコストがかかりますが、ほとんどの場合、インターネット上で十分な結果を得ることが可能です。ただし、障害のない転送を維持することが重要な場合は、AWSDirectConnectまたはある程度の専用帯域幅を提供できるISPを検討してください。</p>
+    <p>一般に、帯域幅に関連するネットワークの問題を完全に回避するために、エンコーダの予想ストリームサイズの2倍の帯域幅を割り当てることを推奨します。</p>
+    <p>推奨されるオプションは次のとおりです（順番に）。</p>
     <ol>
-      <li><strong>SRT</strong> - provides a good combination of speed of transport (UDP) with some control and error resilience. Not available on all encoders, though there are tools that can translate from local RTP such as srt-transmit.</li>
-      <li><strong>RTMP</strong> - being TCP based, it provides a good level of error resilience, downsides are that this comes with a substantial overhead. Note that not all features such as multiple audio tracks are available with RTMP.</li>
-      <li><strong>RTP-FEC</strong> - provides fast UDP based transport with some error resilience</li>
-      <li><strong>RTP</strong> - provides fast transport and advanced features with no error resilience</li>
-    </ol>
-    <aside class="bcls-aside bcls-aside--information">Note: if you use RTMP, please consider disabling slices if possible as they may result in parts of a frame arriving out of order.</aside>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Certified_encoders">Supported encoders</h2>
-    {% if site.product_short == "Video Cloud" or site.product_short == "Beacon" or site.product_short == "CorpTV" %}
-    <p>See <a href="/live/general/supported-encoders-live-events.html">Supported Encoders for Live Events</a> for list of encoders known to work with Live. Note that other encoders may also work, but have not been tested.</p>
-{% endif %}
-{% if site.product_short == "Live" %}
-          <p>See <a href="/general/supported-encoders-live-events.html">Supported Encoders for Live Events</a> for list of encoders known to work with Live. Note that other encoders may also work, but have not been tested.</p>
-{% endif %}
-  </section>
-  <section class="bcls-section">
-    <h2 id="Supported_CDNs">Supported CDNs</h2>
+      <li><strong>SRT</strong> - トランスポート速度 (UDP) と制御およびエラー回復力の適切な組み合わせを提供します。一部のエンコーダでは使用できませんが、srt-transmitなどのローカルRTPから変換できるツールがあります。</li>
+      <li><strong>RTMP</strong> - TCP ベースであるため、適切なレベルのエラー回復力を提供します。欠点は、これにはかなりのオーバーヘッドが伴うことです。複数のオーディオトラックなど、すべての機能がRTMPで使用できるわけではないことに注意してください。</li>
+      <li><strong>RTP-FEC</strong> - ある程度のエラー回復力を備えた高速な UDP ベースのトランスポートを提供します</li>
+      <li><strong>RTP</strong> - エラー耐性のない高速トランスポートと高度な機能を提供</li>
+    </ol> <aside class="bcls-aside bcls-aside--information">注意:RTMPを使用している場合は、可能であればスライスを無効にすることを検討してください。フレームの一部が順序どおりにならないことがあります。</aside> </section> <section class="bcls-section">
+    <h2 id="Certified_encoders">サポートされているエンコーダ</h2>
+    {% if site.product_short==&quot;VideoCloud&quot;またはsite.product_short=="Beacon"またはsite.product_short=="CorpTV"%}
+    <p>見る<a href="/live/general/supported-encoders-live-events.html">ライブ イベントでサポートされているエンコーダー</a>Live で動作することが知られているエンコーダーのリストについては、.他のエンコーダも動作しますが、テストされていないことに注意してください。</p>
+{% endif%}{%if site.product_short==&quot;Live&quot;%}
+          <p>見る<a href="/general/supported-encoders-live-events.html">ライブ イベントでサポートされているエンコーダー</a>Live で動作することが知られているエンコーダーのリストについては、.他のエンコーダも動作しますが、テストされていないことに注意してください。</p>
+{% endif %} </section> <section class="bcls-section">
+    <h2 id="Supported_CDNs">サポートされるCDN</h2>
     <ul>
       <li>Akamai</li>
       <li>Amazon CloudFront</li>
-    </ul>
-    <aside class="bcls-aside bcls-aside--information">The CDNs above are officially supported, but other file-based CDNs should work.</aside>
-  </section>
-  <section class="bcls-section">
-    <h2 id="retries">Retries</h2>
-    <p>We recommend enabling retries for the RTMP connection from the encoder. A large number of retry attempts with a 5-second retry interval will mitigate any intermittent connectivity issues between the encoder and the entry point.</p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="job_settings">Job settings (Live API only)</h2>
-    <p>Recommended job settings</p>
+    </ul> <aside class="bcls-aside bcls-aside--information">上記の CDN は正式にサポートされていますが、他のファイルベースの CDN は動作するはずです。</aside> </section> <section class="bcls-section">
+    <h2 id="retries">再試行</h2>
+    <p>エンコーダからの RTMP 接続の再試行をイネーブルにすることを推奨します。5 秒の再試行間隔での再試行回数が多くなると、エンコーダとエントリポイント間の断続的な接続の問題が軽減されます。</p>  </section><section class="bcls-section">
+    <h2 id="job_settings">ジョブ設定（LiveAPIのみ）</h2>
+    <p>推奨ジョブ設定</p>
     <table class="bcls-table">
       <caption class="bcls-caption--table">
-      Job Settings
+      ジョブ設定
       </caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Field</th>
-          <th>Recommended Value</th>
+          <th>フィールド</th>
+          <th>推奨値</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
-          <td><code translate="No">ad_audio_loudness_level</code></td>
-          <td><code translate="No">-23 </code> (EBU R.128 standard)</td>
+          <td><code translate="No">ad_transportness_level</code></td>
+          <td><code translate="No">-23</code> (EBU R.128規格)</td>
         </tr>
       </tbody>
-    </table>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Start_a_live_stream_recommendations">Start a live stream recommendations</h2>
-    <p>A job must be activated before the encoder connection. Also, activating a job after starting the stream from the encoder is not a supported procedure and may cause unexpected behavior.</p>
-  </section>
+    </table>  </section><section class="bcls-section">
+    <h2 id="Start_a_live_stream_recommendations">ライブストリームの推奨事項を開始します。</h2>
+    <p>エンコーダ接続の前にジョブをアクティブにする必要があります。また、エンコーダからストリームを開始した後にジョブをアクティブにすることはサポートされていない手順であり、予期しない動作を引き起こす可能性があります。</p> </section>
   
   <!-- <section class="bcls-section">
     <h2 id="input_requirements">Input requirements</h2>
@@ -350,100 +317,90 @@
     <ul>
       <li id="note1-1"><sup><strong>[1-1]</strong></sup> If you have multiple video/audio tracks in your TS input, we will pick the first for each. We also strongly recommend using FEC, as plain TS over UDP over the internet is very unreliable. For FEC, we could note that the <em>smaller</em> the values you use for rows/columns, the more reliable the error correction will be (at the cost of increased bandwidth.</li>
     </ul>
-  </section> -->
-  
-  <section class="bcls-section">
-    <h2 id="slate_source_file_recommendations">Slate source file recommendations</h2>
+  </section> --> <section class="bcls-section">
+    <h2 id="slate_source_file_recommendations">スレートソースファイルの推奨事項</h2>
     <ul>
-      <li><strong>Resolution</strong>: (best in your encoding ladder)</li>
-      <li><strong>FPS</strong>: (same as your source)</li>
-      <li><strong>Bitrate</strong>: (best in your encoding ladder or better)</li>
-      <li><strong>Audio</strong>: (same bitrate, channels, sampling frequency, and bits per sample as your best rendition, or same as your input)</li>
-    </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="output_recommendations">Output recommendations</h2>
-    <p>Below are recommended output settings, but note that for many encoders, the RTMP input is limited to 10 MBPS (video + audio) and a framerate of 30fps.</p>
+      <li><strong>解像度</strong>: (エンコーディングラダーで最高)</li>
+      <li><strong>FPS</strong> : (ソースと同じ)</li>
+      <li><strong>ビットレート</strong>: (エンコーディングラダーで最高かそれ以上)</li>
+      <li><strong>オーディオ</strong>: (ビットレート、チャネル、サンプリング周波数、およびサンプルあたりのビット数を最適な表現と同じにするか、入力と同じにする)</li>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="output_recommendations">推奨を出力する</h2>
+    <p>以下は推奨出力設定ですが、多くのエンコーダでは、RTMP入力は10MBPS（ビデオ+オーディオ）、フレームレートは30fpsに制限されています。</p>
     <table class="bcls-table">
       <caption class="bcls-caption--table">
-      Output Recommendations
+      出力に関する推奨事項
       </caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Item</th>
-          <th>Recommendation</th>
+          <th>項目</th>
+          <th>推奨</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
-          <td>Video codec</td>
-          <td><code translate="No">h264</code> is currently the only option</td>
+          <td>動画コーデック</td>
+          <td><code translate="No">h264</code>が現在唯一のオプションです</td>
         </tr>
         <tr>
-          <td>Audio codec</td>
-          <td><code translate="No">aac</code> is currently the only option</td>
+          <td>オーディオコーデック</td>
+          <td><code translate="No">aac</code>が現在唯一のオプションです</td>
         </tr>
         <tr>
-          <td>Width</td>
-          <td>If no <code translate="No">width</code> or <code translate="No">height</code> is supplied, the source dimensions are used. If either <code translate="No">width</code> or <code translate="No">height</code> is supplied, the other dimension will be calculated to maintain the aspect ratio of the source.</td>
+          <td>幅</td>
+          <td>いいえ<code translate="No">幅</code>また<code translate="No">身長</code>ソース次元が使用されます。いずれかの場合<code translate="No">幅</code>また<code translate="No">身長</code>が指定されている場合、ソースの縦横比を維持するために他の寸法が計算されます。</td>
         </tr>
         <tr>
-          <td>Height</td>
-          <td>If no <code translate="No">width</code> or <code translate="No">height</code> is supplied, the source dimensions are used. If either <code translate="No">width</code> or <code translate="No">height</code> is supplied, the other dimension will be calculated to maintain the aspect ratio of the source.</td>
+          <td>高さ</td>
+          <td>いいえ<code translate="No">幅</code>また<code translate="No">身長</code>ソース次元が使用されます。いずれかの場合<code translate="No">幅</code>また<code translate="No">身長</code>が指定されている場合、ソースの縦横比を維持するために他の寸法が計算されます。</td>
         </tr>
         <tr>
-          <td>Bitrate</td>
-          <td>Less than or equal to the input bitrate (for best results, highest output bitrate should be half of the input bitrate)</td>
+          <td>ビットレート</td>
+          <td>入力ビットレート以下（最良の結果を得るために、最高出力ビットレートは入力ビットレートの半分にする必要があります）</td>
         </tr>
         <tr>
-          <td>Keyframe rate</td>
-          <td>2 seconds</td>
+          <td>キーフレームレート</td>
+          <td>2秒</td>
         </tr>
       </tbody>
-    </table>
-  </section>
-  <section class="bcls-section">
-    <h2 id="FAQ">FAQ</h2>
+    </table>  </section><section class="bcls-section">
+    <h2 id="FAQ">よくある質問</h2>
     <dl>
-      <dt class="bcls-question">How soon do you have to start streaming after creating a live job?</dt>
-      <dd class="bcls-answer">In Brightcove Live, there are two conditions when the state transitions from <code translate="No">waiting </code> to <code translate="No">finishing </code>:
+      <dt class="bcls-question">ライブジョブを作成した後、ストリーミングを開始する必要があるのはどれくらいですか？</dt>
+      <dd class="bcls-answer">Brightcove Live では、状態が次から遷移するときに 2 つの条件があります。<code translate="No">待っている</code>に<code translate="No">仕上げ</code>:
         <ol>
-          <li>if the job is in the <strong>waiting</strong> state (not yet started) and the <code translate="No">max_waiting_time_ms</code> has elapsed, the job is finished/deactivated.</li>
-          <li>If the job is in the <strong>disconnected</strong> state (started, but disconnected) and the <code translate="No">reconnect_time</code> has elapsed, the job is finished/deactivated.</li>
+          <li>仕事が<strong>待っている</strong>状態 (まだ開始されていない) と<code translate="No">max_waiting_time_ms</code>が経過すると、ジョブは終了/非アクティブ化されます。</li>
+          <li>ジョブが<strong>切断された</strong>状態 (開始されているが切断されている) と<code translate="No">再接続時間</code>が経過すると、ジョブは終了/非アクティブ化されます。</li>
         </ol>
-        <p>If the <code translate="No">event_length </code> is greater than 30 minutes, the job will terminate in 30 minutes. If the <code translate="No">event_length </code> is less than 30 minutes, the job will terminate in <code translate="No">event_length </code>.</p>
-        <p>For example, if the <code translate="No">event_length </code> is 60 minutes, then, the live job will terminate in 30 minutes. If the <code translate="No">event_length </code> is 15 minutes, then, the live job will terminate in 15 minutes</p>
-        <p>The <code translate="No">reconnect_time </code> has no effect for waiting state.</p>
+        <p>もし<code translate="No">イベントの長さ</code>が 30 分を超える場合、ジョブは 30 分で終了します。もし<code translate="No">イベントの長さ</code>が 30 分未満の場合、ジョブは 30 分以内に終了します<code translate="No">イベントの長さ</code>.</p>
+        <p>たとえば、<code translate="No">イベントの長さ</code>が 60 分である場合、ライブ ジョブは 30 分で終了します。もし<code translate="No">イベントの長さ</code>が 15 分の場合、ライブ ジョブは 15 分で終了します</p>
+        <p>の<code translate="No">再接続時間</code>待機状態には影響しません。</p>
       </dd>
-      <dt class="bcls-question">What are the limitations on concurrent live job_settings?</dt>
+      <dt class="bcls-question">同時ライブ job_settings の制限は何ですか？</dt>
       <dd class="bcls-answer">
-        <p>A maximum of 5 active <strong>waiting, unstarted</strong> jobs is allowed at any time.</p>
-        <p>Additional limitations on concurrent jobs:</p>
+        <p>最大 5 アクティブ<strong>待っている、開始されていない</strong>仕事はいつでも許可されます。</p>
+        <p>同時ジョブの追加制限:</p>
         <ul>
-          <li>The number of <code translate="No">channel</code> (24x7) jobs is limited to 0 or a low number per region (depending on the account type).</li>
-          <li>The number of concurrently <strong>running</strong> <code translate="No">event</code> jobs is limited by region, generally to 100.</li>
-          <li>The number of concurrently <strong>waiting to connect</strong> <code translate="No">event</code> jobs is limited to 5.</li>
-          <li>The number of SEP jobs per region is limited to 3 or 10 (see <a href="https://apis.support.brightcove.com/live-api/getting-started/overview-brightcove-live-api.html#Support_aws_regions">Supported AWS regions</a>).</li>
+          <li>の数<code translate="No">チャネル</code>(24x7) ジョブは、地域ごとに 0 または少数に制限されます (アカウントの種類によって異なります)。</li>
+          <li>同時実行数<strong>ランニング</strong> <code translate="No">イベント</code>ジョブは地域によって制限され、通常は 100 に制限されます。</li>
+          <li>同時実行数<strong>接続待ち</strong> <code translate="No">イベント</code>ジョブは 5 つに制限されています。</li>
+          <li>リージョンごとの SEP ジョブの数は 3 または 10 に制限されています (<a href="https://apis.support.brightcove.com/live-api/getting-started/overview-brightcove-live-api.html#Support_aws_regions">サポートされている AWS リージョン</a>）。</li>
         </ul>
-        <p>Any of these limits can be adjusted on an account level by Support. Contact your account manager if you need additional capacity.</p>
+        <p>これらの制限は、サポートがアカウントレベルで調整できます。追加の容量が必要な場合は、アカウントマネージャーにお問い合わせください。</p>
       </dd>
-      <dt class="bcls-question">Can Brightcove Live push 1080p quality provided the input bandwidth is sufficient?</dt>
-      <dd class="bcls-answer">Yes, 1080p input is enabled for all accounts.</dd>
-      <dt class="bcls-question">Is DRM available?</dt>
-      <dd class="bcls-answer">Yes! Contact your account manager if you are interested in adding DRM support to your live account.</dd>
-    </dl>
-    <section class="BCL-subsection">
-      <h3>For further help</h3>
-      <p>If you need further help getting your live event to work, you can <a href="https://supportportal.brightcove.com/s/createrecord/Create_a_new_case">contact us</a>. To make sure you get the fastest response possible, below is a list of what Brightcove Support will need to solve the problem.</p>
+      <dt class="bcls-question">入力帯域幅が十分であれば、Brightcoveライブは 1080p 品質をプッシュできますか？</dt>
+      <dd class="bcls-answer">はい、1080p 入力はすべてのアカウントで有効です。</dd>
+      <dt class="bcls-question">DRMは利用可能ですか？</dt>
+      <dd class="bcls-answer">はい！ライブアカウントに DRM サポートを追加する場合は、アカウントマネージャーにお問い合わせください。</dd>
+    </dl> <section class="BCL-subsection">
+      <h3>さらにサポートが必要な場合</h3>
+      <p>ライブ イベントを機能させるためにさらにサポートが必要な場合は、<a href="https://supportportal.brightcove.com/s/createrecord/Create_a_new_case">お問い合わせ</a>.なるべく早くご返信ができるよう、問題解決のためにBrightcoveサポートチームが必要とする情報を以下にリストアップしています。</p>
       <ul>
-        <li>The specific symptoms the stream is having. For example, does it not play at all or does it stutter or freeze?</li>
-        <li>Whether this stream worked correctly in the past</li>
-        <li>The entry point URL you are using in your encoder</li>
-        <li>The encoding software and hardware are you using</li>
-        <li>The URL to the player to which you have published the live event</li>
-        <li>The video ID of your live asset</li>
-        <li>The results of a trace-route from your encoder to the publishing point host</li>
-      </ul>
-    </section>
-  </section>
-</article>
+        <li>ストリームに見受けられる特定の兆候。たとえば、一部が再生できない、スムーズに再生できないなど</li>
+        <li>問題のストリームが過去に正しく機能していたか</li>
+        <li>エンコーダーで使用しているエントリーポイントURL</li>
+        <li>使用しているエンコーディングソフトウェアおよびハードウェア</li>
+        <li>ライブイベントを公開したプレーヤーのURL</li>
+        <li>ライブアセットのビデオID</li>
+        <li>エンコーダーから公開ポイントホストへのルートトラッキングの結果</li>
+      </ul>    </section></section></article>
